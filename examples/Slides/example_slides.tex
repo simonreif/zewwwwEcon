@@ -1,0 +1,524 @@
+%***********************************************************
+% ZEW Slides Template
+% Simon Reif & Benedikt Stelter, 19 September 2024
+%
+% Preamble
+% This tex code is use to be run together with the
+% corresponding Quarto file.
+%***********************************************************
+
+% Packages
+
+\documentclass[11pt, aspectratio=169, t]{beamer}
+\def\tightlist{}
+
+\RequirePackage{beamerbaserequires}
+\usepackage[style=apa]{biblatex}
+\addbibresource{references.bib}
+\AtBeginBibliography{\footnotesize}
+
+\usepackage[labelfont={color=black,bf}]{caption}
+\usepackage{booktabs, longtable, colortbl, array}
+\usepackage{threeparttable}
+\usepackage{subcaption}
+
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathreplacing,calc}
+\usepackage{color,framed}
+\usepackage{xcolor}
+
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{iftex}
+
+\usepackage{unicode-math}
+\defaultfontfeatures{Scale=MatchLowercase}
+\defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+
+% Use packages from YMAL header:
+\usepackage{setspace}
+\usepackage{lipsum}
+
+
+
+\def\tightlist{}
+\definecolor{zewwwwRed}{RGB}{139, 0, 0}
+\definecolor{zewwwwGrey}{RGB}{167, 179, 205}
+
+\setbeamercolor{itemize item}{fg=zewwwwGrey}
+\setbeamercolor{itemize subitem}{fg=zewwwwGrey}
+\setbeamercolor{itemize subsubitem}{fg=zewwwwGrey}
+
+\captionsetup[figure]{labelformat=empty, font=bf}% redefines the caption setup of the figures environment in the beamer class.
+\captionsetup[table]{labelformat=empty, font=bf}% redefines the caption setup of the tables environment in the beamer class.
+
+\setbeamertemplate{itemize item}[square]
+\setbeamertemplate{itemize subitem}[circle]
+\setbeamertemplate{itemize subsubitem}[circle]
+\setbeamertemplate{frametitle continuation}{}
+
+\setbeamercolor{bibliography item}{fg=black}
+\setbeamercolor{bibliography entry author}{fg=black}
+\setbeamercolor{bibliography entry title}{fg=black}
+\setbeamercolor{bibliography entry location}{fg=black}
+\setbeamercolor{bibliography entry note}{fg=black}
+\setbeamertemplate{bibliography item}{}
+
+
+\setbeamertemplate{blocks}[rounded][shadow=false]
+\addtobeamertemplate{block begin}{\pgfsetfillopacity{0.8}}{\pgfsetfillopacity{1}}
+\setbeamercolor{structure}{fg=zewwwwRed}
+\setbeamercolor*{block title example}{fg=white,
+bg= zewwwwRed}
+\setbeamercolor*{block body example}{fg= black,
+bg= zewwwwGrey!30}
+
+
+% Insert invers color Section Title Slide
+\AtBeginSection{
+\addtocounter{framenumber}{0} %Ignore Black Headline Pages for slide count
+\usebackgroundtemplate{\includegraphics[width=\paperwidth,height=\paperheight]{zewwwImages/bg.png}}
+\begin{frame}[c, noframenumbering, plain]
+\begin{minipage}{300pt}
+\textcolor{white}{\huge\insertsection}
+\end{minipage}
+\end{frame}
+
+\usebackgroundtemplate{\includegraphics[width=\paperwidth,height=\paperheight]{zewwwImages/bgmain.pdf}}
+
+
+\setbeamertemplate{footline}{%
+\raisebox{10pt}{\makebox[\paperwidth]{\hfill{\tiny Simon \textcolor{zewwwwRed}{\bfseries{|}} \insertframenumber \makebox[10pt]{} }}}}
+}
+
+
+
+\makeatletter
+\patchcmd\beamer@@tmpl@frametitle{sep=0.8cm}{sep=2cm}{}{}
+\makeatother
+
+\beamertemplatenavigationsymbolsempty
+\setbeamertemplate{frametitle}{\textcolor{black}{\insertframetitle}}
+\addtobeamertemplate{frametitle}{\vskip3ex}{}
+\providecommand{\tightlist}{%
+	\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\begin{document}
+% Title page
+{
+\addtocounter{framenumber}{-1} %Ignore Titlepage for slide count
+\usebackgroundtemplate{\includegraphics[width=\paperwidth,height=\paperheight]{zewwwImages/bgtitle.png}}
+\begin{frame}[c]
+
+\begin{tikzpicture}[remember picture,overlay]
+  \node[anchor=south west,inner sep=0pt] at (-0.2,2.5) {
+   \includegraphics[height=0.7cm]{zewwwImages/yourlogo.png}
+  };
+  \node[anchor=south west,inner sep=0pt] at (-0.2,1.8) {
+   \includegraphics[height=0.7cm]{zewwwImages/empty.png}
+  };
+\end{tikzpicture}
+\begin{tikzpicture}
+\node[overlay, anchor=south west, align=left, text width=0.54\linewidth] at (-0.4,-1.2) {\baselineskip=16pt\textcolor{white}{\textbf{\Large Introducing
+the zewwwwEcon Presentation Template}} \par};
+\node[overlay, anchor=north west, align=left, text width=9.8cm] at (-0.4,-1.2) { 	\textcolor{white}{Max
+Mustermann} \textcolor{zewwwwGrey}{\bfseries{|}}	\textcolor{white}{Institute
+X, University ABC} \\
+		\textcolor{white}{Erika
+Musterfrau} \textcolor{zewwwwGrey}{\bfseries{|}}	\textcolor{white}{Institute
+X} \\
+	 \vspace{10pt} \textcolor{white}{\textbf{Important
+Conference}} \textcolor{zewwwwGrey}{\bfseries{|}} \textbf{\textcolor{white}{23
+Sep 2024}}}
+;
+\end{tikzpicture}
+\end{frame}
+}
+
+% Main page
+\setbeamertemplate{footline}{%
+  \raisebox{10pt}{\makebox[\paperwidth]{\hfill{\tiny Simon \textcolor{zewwwwRed}{\bfseries{|}} \insertframenumber \makebox[10pt]{} }}}}
+
+% Define background
+\usebackgroundtemplate{\includegraphics[width=\paperwidth,height=\paperheight]{zewwwImages/bgmain.pdf}}
+
+
+
+\begin{frame}{Introduction}
+\protect\hypertarget{introduction}{}
+This Quarto template is supposed to make writing and presenting economic
+research easy. Since everything from data to publication is happening in
+the same environment, everything is easily reproducible and output can
+be modified for the paper and the presentation at the same time.
+
+This example slide covers all aspects necessary for the standard
+(economic) researcher:
+
+\begin{itemize}
+\tightlist
+\item
+  Displaying text in different forms
+\item
+  Handling images
+\item
+  Graphs that fit the aesthetic of the slides
+\item
+  Tables 1 to 3 of a standard econ project
+\end{itemize}
+
+If you have other useful examples, we can include them in this
+presentation so others can benefit as well.
+\end{frame}
+
+\hypertarget{the-various-forms-of-displaying-text-in-a-presentation}{%
+\section{The various forms of displaying text in a
+presentation}\label{the-various-forms-of-displaying-text-in-a-presentation}}
+
+\begin{frame}{Different text inputs}
+\protect\hypertarget{different-text-inputs}{}
+You can make bullet lists with different levels
+
+\begin{itemize}
+\tightlist
+\item
+  This looks nice and helps separate thoughts
+\item
+  But you should always have two bullets, otherwise it looks a bit
+  weired
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Which to be fair one can argue about
+
+    \begin{itemize}
+    \tightlist
+    \item
+      At least on the third level
+    \end{itemize}
+  \end{itemize}
+\item
+  And going back to the first level
+\end{itemize}
+
+Sometimes one might need equations. Just use LaTeX for this in the text
+to show that \(2^{2} > 3\). You can also have your equation stand out
+like this:
+
+\[\hat{\beta} = (X'X)^{-1} X'Y\]
+\end{frame}
+
+\begin{frame}{Text and picture side by side using columns}
+\protect\hypertarget{text-and-picture-side-by-side-using-columns}{}
+There is a very small (0.4\%) column on the left that aligns the first
+context column with the headline. These type of slides are in general
+not much fun to produce.
+
+\begin{columns}[T]
+\begin{column}{0.004\textwidth}
+\end{column}
+
+\begin{column}{0.446\textwidth}
+\includegraphics[width=\textwidth,height=1.94444in]{pictures/OLSpic.png}
+\scriptsize\textbf{Source:} Dall-E drawing a Bauhaus style
+representation of the OLS mechanism.
+\end{column}
+
+\begin{column}{0.55\textwidth}
+\begin{equation}
+\frac{\partial S(\beta)}{\partial \beta} = -2X^\top (y - X\beta) = 0
+\end{equation}
+
+\begin{equation}
+X^\top X \hat{\beta} = X^\top y
+\end{equation}
+
+\begin{equation}
+\hat{\beta} = (X^\top X)^{-1} X^\top y
+\end{equation}
+
+These equations minimize the sum of squared residuals \(S\). While this
+seems promising, others argue that this has been done before.
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Highlighting and References}
+\protect\hypertarget{highlighting-and-references}{}
+Sometimes it seems that not only are people putting books from boxes but
+also like boxes around some highlight text. An example would be
+something you (can not) find in \textcite{stern2022}:
+
+\begin{exampleblock}{Defining an example}
+A lot could be in here. A definition. An equation. Literally there is so much that one would want to get framed with a highlighted headline. 
+\end{exampleblock}
+\end{frame}
+
+\hypertarget{graphs}{%
+\section{Graphs}\label{graphs}}
+
+\begin{frame}{Histogram}
+\protect\hypertarget{histogram}{}
+\begin{figure}
+
+\caption{\label{fig-hist}Distribution of height (in cm) in random data}
+
+{\centering 
+
+\begin{figure}[H]
+
+{\centering \includegraphics{example_slides_files/figure-beamer/Histogram-1.pdf}
+
+}
+
+\end{figure}
+
+\hypertarget{fig-hist-1}{}
+\vspace{-5pt}
+\begin{minipage}{0.9\textwidth}
+\scriptsize
+\singlespacing
+\textbf{Notes:} You can use this text to provide further information about the table. \lipsum[66]
+\end{minipage}
+\vspace{15pt}
+
+}
+
+\end{figure}
+\end{frame}
+
+\begin{frame}{Barchart}
+\protect\hypertarget{barchart}{}
+\begin{figure}
+
+\caption{\label{fig-barchart}Number of Federal States by Country}
+
+{\centering 
+
+\begin{figure}[H]
+
+{\centering \includegraphics{example_slides_files/figure-beamer/Barchart-1.pdf}
+
+}
+
+\end{figure}
+
+\hypertarget{fig-barchart-1}{}
+\vspace{-5pt}
+\begin{minipage}{0.9\textwidth}
+\scriptsize
+\singlespacing
+\textbf{Notes:} You can use this text to provide further information about the table. \lipsum[66]
+\end{minipage}
+\vspace{15pt}
+
+}
+
+\end{figure}
+\end{frame}
+
+\begin{frame}{Time Series}
+\protect\hypertarget{time-series}{}
+\begin{figure}
+
+\caption{\label{fig-ts1}Displaying how things evolve over time}
+
+{\centering 
+
+\begin{figure}[H]
+
+{\centering \includegraphics{example_slides_files/figure-beamer/tsplot1-1.pdf}
+
+}
+
+\end{figure}
+
+\hypertarget{fig-ts1-1}{}
+\vspace{-5pt}
+\begin{minipage}{0.9\textwidth}
+\scriptsize
+\singlespacing
+\textbf{Notes:} You can use this text to provide further information about the table. \lipsum[66]
+\end{minipage}
+\vspace{15pt}
+
+}
+
+\end{figure}
+\end{frame}
+
+\begin{frame}{Scatterplot}
+\protect\hypertarget{scatterplot}{}
+\begin{figure}
+
+\caption{\label{fig-scatterplot}Two groups have very different values}
+
+{\centering 
+
+\begin{figure}[H]
+
+{\centering \includegraphics{example_slides_files/figure-beamer/scatterplot-1.pdf}
+
+}
+
+\end{figure}
+
+\hypertarget{fig-scatterplot-1}{}
+\vspace{-5pt}
+\begin{minipage}{0.9\textwidth}
+\scriptsize
+\singlespacing
+\textbf{Notes:} You can use this text to provide further information about the table. \lipsum[66]
+\end{minipage}
+\vspace{15pt}
+
+}
+
+\end{figure}
+\end{frame}
+
+\begin{frame}{Dotplot}
+\protect\hypertarget{dotplot}{}
+\begin{figure}
+
+\caption{\label{fig-dotplot}Visualizing distributions with few
+observations}
+
+{\centering 
+
+\begin{figure}[H]
+
+{\centering \includegraphics{example_slides_files/figure-beamer/dotplot-1.pdf}
+
+}
+
+\end{figure}
+
+\hypertarget{fig-dotplot-1}{}
+\vspace{-10pt}
+\begin{minipage}{0.9\textwidth}
+\scriptsize
+\singlespacing
+\textbf{Notes:} You can use this text to provide further information about the table. \lipsum[66]
+\end{minipage}
+\vspace{15pt}
+
+}
+
+\end{figure}
+\end{frame}
+
+\begin{frame}{Event Study}
+\protect\hypertarget{event-study}{}
+\begin{figure}
+
+\caption{\label{fig-eventstudy}Coefficients relative to treatment time}
+
+{\centering 
+
+\begin{figure}[H]
+
+{\centering \includegraphics{example_slides_files/figure-beamer/eventstudy-1.pdf}
+
+}
+
+\end{figure}
+
+\hypertarget{fig-eventstudy-1}{}
+\vspace{-10pt}
+\begin{minipage}{0.9\textwidth}
+\scriptsize
+\singlespacing
+\textbf{Notes:} You can use this text to provide further information about the table. \lipsum[66]
+\end{minipage}
+\vspace{15pt}
+
+}
+
+\end{figure}
+\end{frame}
+
+\hypertarget{tables}{%
+\section{Tables}\label{tables}}
+
+\begin{frame}{Descriptives Table}
+\protect\hypertarget{descriptives-table}{}
+\hypertarget{tab-descriptives}{}
+\begin{longtable}[]{@{}lcc@{}}
+\caption{Descriptive statistics by group }\tabularnewline
+\toprule\noalign{}
+\textbf{Characteristic} & \textbf{0}, N = 265 & \textbf{1}, N = 235 \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\textbf{Characteristic} & \textbf{0}, N = 265 & \textbf{1}, N = 235 \\
+\midrule\noalign{}
+\endhead
+Survival & 0.16 (0.37) & 0.47 (0.50) \\
+Age in years & 49.86 (16.75) & 50.50 (17.93) \\
+Female & 0.51 (0.50) & 0.52 (0.50) \\
+Severity Score & 0.39 (0.49) & 0.36 (0.48) \\
+\bottomrule\noalign{}
+\end{longtable}
+
+\vspace{-10pt}
+\begin{minipage}{0.9\textwidth}
+\scriptsize
+\singlespacing
+\textbf{Notes:} You can use this text to provide further information about the table. \lipsum[66]
+\end{minipage}
+\vspace{15pt}
+\end{frame}
+
+\begin{frame}{Regression Tables}
+\protect\hypertarget{regression-tables}{}
+\hypertarget{tab-regression}{}
+\begin{longtable}{lcccccc}
+\caption{Linear Regression Models}\tabularnewline
+
+\toprule
+ & \multicolumn{2}{c}{Full Sample} & \multicolumn{2}{c}{Men} & \multicolumn{2}{c}{Women} \\ 
+\cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7}
+  & (I) & (II) & (III) & (IV) & (V) & (VI) \\ 
+\midrule\addlinespace[2.5pt]
+Treatment & 0.310*** & 0.299*** & 0.337*** & 0.326*** & 0.284*** & 0.267*** \\ 
+ & (0.040) & (0.038) & (0.057) & (0.053) & (0.055) & (0.054) \\ 
+N & 500 & 500 & 242 & 242 & 258 & 258 \\ 
+R² & 0.11 & 0.20 & 0.13 & 0.25 & 0.10 & 0.17 \\ 
+\bottomrule
+\end{longtable}
+
+\vspace{-10pt}
+\begin{minipage}{0.9\textwidth}
+\scriptsize
+\singlespacing
+\textbf{Notes:} You can use this text to provide further information about the table. \lipsum[66]
+\end{minipage}
+\vspace{15pt}
+\end{frame}
+
+\hypertarget{what-we-have-learned}{%
+\section{What we have learned}\label{what-we-have-learned}}
+
+\begin{frame}{Last Slide}
+\protect\hypertarget{last-slide}{}
+This slide will most likely be the one that the audience sees the
+longest. Take this into account when designing it. We could for example
+point to some things not really working well here until now:
+
+\begin{itemize}
+\item
+  Display code: It is probably only a small hack but someone needs to do
+  it
+\item
+  Descriptives tables: For some reason there is no easy solution.
+\item
+  Some equation things do not work: Plotting the LaTeX Symbol conflicts
+  with things.
+\end{itemize}
+\end{frame}
+\end{document}
