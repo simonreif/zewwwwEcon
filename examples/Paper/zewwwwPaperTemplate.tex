@@ -39,6 +39,20 @@ $tex-packages$
 ItalicFont=LinLibertine_RI.ttf]{LinLibertine_R.ttf}
 \definecolor{footnotecolor}{RGB}{$if(color-links)$$color-links$$else$0, 0, 0$endif$}
 
+% Add new pandocbounced command to comply with pandoc update 3.5
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+\makeatother
+
 % Unnecessary but nice: change symbols for title page notes
 \makeatletter
 \def\@fnsymbol#1{\ensuremath{\ifcase#1\or \varheartsuit \or \bigstar \or \dagger\or \ddagger\or
@@ -74,6 +88,9 @@ ItalicFont=LinLibertine_RI.ttf]{LinLibertine_R.ttf}
             \hb@xt@1.8em{%
                 \hss\@textsuperscript{\normalfont\@thefnmark}}#1}
 \makeatother
+
+% Make font size of minipage scriptsize by default s.t. table notes are small
+\AtBeginEnvironment{minipage}{\scriptsize}
 
 \hypersetup{
 	$if(title-meta)$

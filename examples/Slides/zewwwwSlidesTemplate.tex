@@ -40,7 +40,7 @@
 \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 
 % Use packages from YMAL header:
-$tex-packages$
+$add-tex$
 
 
 
@@ -75,6 +75,23 @@ $tex-packages$
 bg= zewwwwRed}
 \setbeamercolor*{block body example}{fg= black,
 bg= zewwwwGrey!30}
+
+% Add new pandocbounced command to comply with pandoc update 3.5
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+\makeatother
+
+% Make font size of minipage scriptsize by default s.t. table notes are small
+\AtBeginEnvironment{minipage}{\scriptsize}
 
 
 % Insert invers color Section Title Slide

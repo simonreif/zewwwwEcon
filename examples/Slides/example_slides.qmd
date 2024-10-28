@@ -24,7 +24,7 @@ cap-location: top
 bibliography: references.bib
 biblio-style: apa #Select from https://www.overleaf.com/learn/latex/Biblatex_bibliography_styles  
 
-tex-packages: |
+add-tex: |
    \usepackage{setspace}
    \usepackage{lipsum} 
    
@@ -94,6 +94,7 @@ There is a very small (0.4%) column on the left that aligns the first context co
 :::
 
 ::: {.column width="55%"}
+\normalsize
 ```{=tex}
 \begin{equation}
 \frac{\partial S(\beta)}{\partial \beta} = -2X^\top (y - X\beta) = 0
@@ -117,7 +118,7 @@ Sometimes it seems that not only are people putting books from boxes but also li
 
 ```{=tex}
 \begin{exampleblock}{Defining an example}
-A lot could be in here. A definition. An equation. Literally there is so much that one would want to get framed with a highlighted headline. 
+\normalsize A lot could be in here. A definition. An equation. Literally there is so much that one would want to get framed with a highlighted headline. 
 \end{exampleblock}
 ```
 # Graphs
@@ -160,6 +161,7 @@ ggplot(df) + geom_histogram(mapping = aes(x=height, fill=sex), color= "white", b
 ```
 Distribution of height (in cm) in random data
 :::
+
 ## Barchart
 
 ::: {#fig-barchart}
@@ -203,7 +205,6 @@ Number of Federal States by Country
 :::
 
 ## Time Series
-
 
 ::: {#fig-ts1}
 ```{r tsplot1}
@@ -393,12 +394,11 @@ Coefficients relative to treatment time
 
 ## Descriptives Table
 
-::: {#tab-descriptives}
+::: {#tbl-descriptives}
 ```{r descriptives}
 #| echo: false 
 #| warning: false
 #| message: false
-#| tbl-cap: Descriptive statistics by group
 #| tbl-align: center
 #| tbl-pos: T
 
@@ -432,28 +432,25 @@ tbl_summary(df,
   age = "Age in years",
   female = "Female",
   severity = "Severity Score"),
-              digits = all_continuous() ~ 2)
+              digits = all_continuous() ~ 2) %>% as_gt() %>%
+  rm_footnotes() %>%
+     tab_source_note(source_note = md(
+    "­")) %>%
+   tab_source_note(source_note = md(
+    "**Notes:** Here is additional information on the table, which can be lengthy. It does not have to be but in order to check for line breaks, it makes sense to have it this way. It does not have to be but in order to check for line breaks, it makes sense to have it this way."
+  ))
 ```
 
-```{=tex}
-\vspace{-10pt}
-\begin{minipage}{0.9\textwidth}
-\scriptsize
-\singlespacing
-\textbf{Notes:} You can use this text to provide further information about the table. \lipsum[66]
-\end{minipage}
-\vspace{15pt}
-```
+Descriptive statistics by group
 :::
 
 ## Regression Tables
 
-::: {#tab-regression}
+::: {#tbl-regression}
 ```{r regressions}
 #| echo: false 
 #| warning: false
 #| message: false
-#| tbl-cap: Linear Regression Models
 #| tbl-align: center
 #| tbl-pos: T
 
@@ -523,18 +520,17 @@ modelsummary(models,
   tab_spanner(
     label = "Women",
     columns = c(6,7)) %>% 
-  rm_source_notes() 
+  rm_source_notes() %>% 
+     tab_source_note(source_note = md(
+    "­")) %>%
+   tab_source_note(source_note = md(
+    "**Notes:** Here is additional information on the table, which can be lengthy. It does not have to be but in order to check for line breaks, it makes sense to have it this way. It does not have to be but in order to check for line breaks, it makes sense to have it this way."
+  )) %>%
+  tab_style(style = cell_borders(sides = c("bottom"), color="red", weight = px(1.5)),
+            locations = cells_body(rows = c(2))) #ATM tab_style not converted to TeX!
 ```
 
-```{=tex}
-\vspace{-10pt}
-\begin{minipage}{0.9\textwidth}
-\scriptsize
-\singlespacing
-\textbf{Notes:} You can use this text to provide further information about the table. \lipsum[66]
-\end{minipage}
-\vspace{15pt}
-```
+Linear Regression Models
 :::
 
 # What we have learned

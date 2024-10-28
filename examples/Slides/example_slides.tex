@@ -77,6 +77,23 @@ bg= zewwwwRed}
 \setbeamercolor*{block body example}{fg= black,
 bg= zewwwwGrey!30}
 
+% Add new pandocbounced command to comply with pandoc update 3.5
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+\makeatother
+
+% Make font size of minipage scriptsize by default s.t. table notes are small
+\AtBeginEnvironment{minipage}{\scriptsize}
+
 
 % Insert invers color Section Title Slide
 \AtBeginSection{
@@ -132,8 +149,8 @@ X, University ABC} \\
 Musterfrau} \textcolor{zewwwwGrey}{\bfseries{|}}	\textcolor{white}{Institute
 X} \\
 	 \vspace{10pt} \textcolor{white}{\textbf{Important
-Conference}} \textcolor{zewwwwGrey}{\bfseries{|}} \textbf{\textcolor{white}{23
-Sep 2024}}}
+Conference}} \textcolor{zewwwwGrey}{\bfseries{|}} \textbf{\textcolor{white}{27
+Oct 2024}}}
 ;
 \end{tikzpicture}
 \end{frame}
@@ -149,7 +166,7 @@ Sep 2024}}}
 
 
 \begin{frame}{Introduction}
-\protect\hypertarget{introduction}{}
+\phantomsection\label{introduction}
 This Quarto template is supposed to make writing and presenting economic
 research easy. Since everything from data to publication is happening in
 the same environment, everything is easily reproducible and output can
@@ -174,12 +191,11 @@ If you have other useful examples, we can include them in this
 presentation so others can benefit as well.
 \end{frame}
 
-\hypertarget{the-various-forms-of-displaying-text-in-a-presentation}{%
 \section{The various forms of displaying text in a
-presentation}\label{the-various-forms-of-displaying-text-in-a-presentation}}
+presentation}\label{the-various-forms-of-displaying-text-in-a-presentation}
 
 \begin{frame}{Different text inputs}
-\protect\hypertarget{different-text-inputs}{}
+\phantomsection\label{different-text-inputs}
 You can make bullet lists with different levels
 
 \begin{itemize}
@@ -213,22 +229,24 @@ like this:
 \end{frame}
 
 \begin{frame}{Text and picture side by side using columns}
-\protect\hypertarget{text-and-picture-side-by-side-using-columns}{}
+\phantomsection\label{text-and-picture-side-by-side-using-columns}
 There is a very small (0.4\%) column on the left that aligns the first
 context column with the headline. These type of slides are in general
 not much fun to produce.
 
 \begin{columns}[T]
-\begin{column}{0.004\textwidth}
+\begin{column}{0.004\linewidth}
 \end{column}
 
-\begin{column}{0.446\textwidth}
-\includegraphics[width=\textwidth,height=1.94444in]{pictures/OLSpic.png}
+\begin{column}{0.446\linewidth}
+\includegraphics[width=\linewidth,height=1.94444in,keepaspectratio]{pictures/OLSpic.png}
 \scriptsize\textbf{Source:} Dall-E drawing a Bauhaus style
 representation of the OLS mechanism.
 \end{column}
 
-\begin{column}{0.55\textwidth}
+\begin{column}{0.55\linewidth}
+\normalsize
+
 \begin{equation}
 \frac{\partial S(\beta)}{\partial \beta} = -2X^\top (y - X\beta) = 0
 \end{equation}
@@ -248,36 +266,28 @@ seems promising, others argue that this has been done before.
 \end{frame}
 
 \begin{frame}{Highlighting and References}
-\protect\hypertarget{highlighting-and-references}{}
+\phantomsection\label{highlighting-and-references}
 Sometimes it seems that not only are people putting books from boxes but
 also like boxes around some highlight text. An example would be
 something you (can not) find in \textcite{stern2022}:
 
 \begin{exampleblock}{Defining an example}
-A lot could be in here. A definition. An equation. Literally there is so much that one would want to get framed with a highlighted headline. 
+\normalsize A lot could be in here. A definition. An equation. Literally there is so much that one would want to get framed with a highlighted headline. 
 \end{exampleblock}
 \end{frame}
 
-\hypertarget{graphs}{%
-\section{Graphs}\label{graphs}}
+\section{Graphs}\label{graphs}
 
 \begin{frame}{Histogram}
-\protect\hypertarget{histogram}{}
+\phantomsection\label{histogram}
 \begin{figure}
 
 \caption{\label{fig-hist}Distribution of height (in cm) in random data}
 
-{\centering 
+\centering{
 
-\begin{figure}[H]
+\pandocbounded{\includegraphics[keepaspectratio]{example_slides_files/figure-beamer/Histogram-1.pdf}}
 
-{\centering \includegraphics{example_slides_files/figure-beamer/Histogram-1.pdf}
-
-}
-
-\end{figure}
-
-\hypertarget{fig-hist-1}{}
 \vspace{-5pt}
 \begin{minipage}{0.9\textwidth}
 \scriptsize
@@ -288,26 +298,19 @@ A lot could be in here. A definition. An equation. Literally there is so much th
 
 }
 
-\end{figure}
+\end{figure}%
 \end{frame}
 
 \begin{frame}{Barchart}
-\protect\hypertarget{barchart}{}
+\phantomsection\label{barchart}
 \begin{figure}
 
 \caption{\label{fig-barchart}Number of Federal States by Country}
 
-{\centering 
+\centering{
 
-\begin{figure}[H]
+\pandocbounded{\includegraphics[keepaspectratio]{example_slides_files/figure-beamer/Barchart-1.pdf}}
 
-{\centering \includegraphics{example_slides_files/figure-beamer/Barchart-1.pdf}
-
-}
-
-\end{figure}
-
-\hypertarget{fig-barchart-1}{}
 \vspace{-5pt}
 \begin{minipage}{0.9\textwidth}
 \scriptsize
@@ -318,26 +321,19 @@ A lot could be in here. A definition. An equation. Literally there is so much th
 
 }
 
-\end{figure}
+\end{figure}%
 \end{frame}
 
 \begin{frame}{Time Series}
-\protect\hypertarget{time-series}{}
+\phantomsection\label{time-series}
 \begin{figure}
 
 \caption{\label{fig-ts1}Displaying how things evolve over time}
 
-{\centering 
+\centering{
 
-\begin{figure}[H]
+\pandocbounded{\includegraphics[keepaspectratio]{example_slides_files/figure-beamer/tsplot1-1.pdf}}
 
-{\centering \includegraphics{example_slides_files/figure-beamer/tsplot1-1.pdf}
-
-}
-
-\end{figure}
-
-\hypertarget{fig-ts1-1}{}
 \vspace{-5pt}
 \begin{minipage}{0.9\textwidth}
 \scriptsize
@@ -348,26 +344,19 @@ A lot could be in here. A definition. An equation. Literally there is so much th
 
 }
 
-\end{figure}
+\end{figure}%
 \end{frame}
 
 \begin{frame}{Scatterplot}
-\protect\hypertarget{scatterplot}{}
+\phantomsection\label{scatterplot}
 \begin{figure}
 
 \caption{\label{fig-scatterplot}Two groups have very different values}
 
-{\centering 
+\centering{
 
-\begin{figure}[H]
+\pandocbounded{\includegraphics[keepaspectratio]{example_slides_files/figure-beamer/scatterplot-1.pdf}}
 
-{\centering \includegraphics{example_slides_files/figure-beamer/scatterplot-1.pdf}
-
-}
-
-\end{figure}
-
-\hypertarget{fig-scatterplot-1}{}
 \vspace{-5pt}
 \begin{minipage}{0.9\textwidth}
 \scriptsize
@@ -378,27 +367,20 @@ A lot could be in here. A definition. An equation. Literally there is so much th
 
 }
 
-\end{figure}
+\end{figure}%
 \end{frame}
 
 \begin{frame}{Dotplot}
-\protect\hypertarget{dotplot}{}
+\phantomsection\label{dotplot}
 \begin{figure}
 
 \caption{\label{fig-dotplot}Visualizing distributions with few
 observations}
 
-{\centering 
+\centering{
 
-\begin{figure}[H]
+\pandocbounded{\includegraphics[keepaspectratio]{example_slides_files/figure-beamer/dotplot-1.pdf}}
 
-{\centering \includegraphics{example_slides_files/figure-beamer/dotplot-1.pdf}
-
-}
-
-\end{figure}
-
-\hypertarget{fig-dotplot-1}{}
 \vspace{-10pt}
 \begin{minipage}{0.9\textwidth}
 \scriptsize
@@ -409,26 +391,19 @@ observations}
 
 }
 
-\end{figure}
+\end{figure}%
 \end{frame}
 
 \begin{frame}{Event Study}
-\protect\hypertarget{event-study}{}
+\phantomsection\label{event-study}
 \begin{figure}
 
 \caption{\label{fig-eventstudy}Coefficients relative to treatment time}
 
-{\centering 
+\centering{
 
-\begin{figure}[H]
+\pandocbounded{\includegraphics[keepaspectratio]{example_slides_files/figure-beamer/eventstudy-1.pdf}}
 
-{\centering \includegraphics{example_slides_files/figure-beamer/eventstudy-1.pdf}
-
-}
-
-\end{figure}
-
-\hypertarget{fig-eventstudy-1}{}
 \vspace{-10pt}
 \begin{minipage}{0.9\textwidth}
 \scriptsize
@@ -439,73 +414,75 @@ observations}
 
 }
 
-\end{figure}
+\end{figure}%
 \end{frame}
 
-\hypertarget{tables}{%
-\section{Tables}\label{tables}}
+\section{Tables}\label{tables}
 
 \begin{frame}{Descriptives Table}
-\protect\hypertarget{descriptives-table}{}
-\hypertarget{tab-descriptives}{}
-\begin{longtable}[]{@{}lcc@{}}
-\caption{Descriptive statistics by group }\tabularnewline
-\toprule\noalign{}
-\textbf{Characteristic} & \textbf{0}, N = 265 & \textbf{1}, N = 235 \\
-\midrule\noalign{}
-\endfirsthead
-\toprule\noalign{}
-\textbf{Characteristic} & \textbf{0}, N = 265 & \textbf{1}, N = 235 \\
-\midrule\noalign{}
-\endhead
-Survival & 0.16 (0.37) & 0.47 (0.50) \\
-Age in years & 49.86 (16.75) & 50.50 (17.93) \\
-Female & 0.51 (0.50) & 0.52 (0.50) \\
-Severity Score & 0.39 (0.49) & 0.36 (0.48) \\
-\bottomrule\noalign{}
-\end{longtable}
+\phantomsection\label{descriptives-table}
+\begin{table}
 
-\vspace{-10pt}
-\begin{minipage}{0.9\textwidth}
-\scriptsize
-\singlespacing
-\textbf{Notes:} You can use this text to provide further information about the table. \lipsum[66]
+\caption{\label{tbl-descriptives}Descriptive statistics by group}
+
+\centering{
+
+\fontsize{12.0pt}{14.4pt}\selectfont
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lcc}
+\toprule
+\textbf{Characteristic} & \textbf{0}, N = 265 & \textbf{1}, N = 235 \\ 
+\midrule\addlinespace[2.5pt]
+Survival & 0.16 (0.37) & 0.47 (0.50) \\ 
+Age in years & 49.86 (16.75) & 50.50 (17.93) \\ 
+Female & 0.51 (0.50) & 0.52 (0.50) \\ 
+Severity Score & 0.39 (0.49) & 0.36 (0.48) \\ 
+\bottomrule
+\end{tabular*}
+\begin{minipage}{\linewidth}
+­\\
+\textbf{Notes:} Here is additional information on the table, which can be lengthy. It does not have to be but in order to check for line breaks, it makes sense to have it this way. It does not have to be but in order to check for line breaks, it makes sense to have it this way.\\
 \end{minipage}
-\vspace{15pt}
+
+}
+
+\end{table}%
 \end{frame}
 
 \begin{frame}{Regression Tables}
-\protect\hypertarget{regression-tables}{}
-\hypertarget{tab-regression}{}
-\begin{longtable}{lcccccc}
-\caption{Linear Regression Models}\tabularnewline
+\phantomsection\label{regression-tables}
+\begin{table}
 
+\caption{\label{tbl-regression}Linear Regression Models}
+
+\centering{
+
+\fontsize{12.0pt}{14.4pt}\selectfont
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lcccccc}
 \toprule
  & \multicolumn{2}{c}{Full Sample} & \multicolumn{2}{c}{Men} & \multicolumn{2}{c}{Women} \\ 
 \cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7}
   & (I) & (II) & (III) & (IV) & (V) & (VI) \\ 
 \midrule\addlinespace[2.5pt]
 Treatment & 0.310*** & 0.299*** & 0.337*** & 0.326*** & 0.284*** & 0.267*** \\ 
- & (0.040) & (0.038) & (0.057) & (0.053) & (0.055) & (0.054) \\ 
+{} & {(0.040)} & {(0.038)} & {(0.057)} & {(0.053)} & {(0.055)} & {(0.054)} \\ 
 N & 500 & 500 & 242 & 242 & 258 & 258 \\ 
 R² & 0.11 & 0.20 & 0.13 & 0.25 & 0.10 & 0.17 \\ 
 \bottomrule
-\end{longtable}
-
-\vspace{-10pt}
-\begin{minipage}{0.9\textwidth}
-\scriptsize
-\singlespacing
-\textbf{Notes:} You can use this text to provide further information about the table. \lipsum[66]
+\end{tabular*}
+\begin{minipage}{\linewidth}
+­\\
+\textbf{Notes:} Here is additional information on the table, which can be lengthy. It does not have to be but in order to check for line breaks, it makes sense to have it this way. It does not have to be but in order to check for line breaks, it makes sense to have it this way.\\
 \end{minipage}
-\vspace{15pt}
+
+}
+
+\end{table}%
 \end{frame}
 
-\hypertarget{what-we-have-learned}{%
-\section{What we have learned}\label{what-we-have-learned}}
+\section{What we have learned}\label{what-we-have-learned}
 
 \begin{frame}{Last Slide}
-\protect\hypertarget{last-slide}{}
+\phantomsection\label{last-slide}
 This slide will most likely be the one that the audience sees the
 longest. Take this into account when designing it. We could for example
 point to some things not really working well here until now:
