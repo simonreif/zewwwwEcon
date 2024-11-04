@@ -1,5 +1,5 @@
 %***********************************************************
-% ZEW Paper Template
+% zewwww Paper Template
 % Simon Reif & Benedikt Stelter, 19 September 2024
 %
 % Preamble
@@ -29,6 +29,7 @@
 \usepackage{titling}
 \usepackage[style=apa]{biblatex}
 \usepackage[linktoc=all, colorlinks=true]{hyperref}
+\usepackage{placeins}
 
 
 % Use packages from YMAL header:
@@ -108,7 +109,8 @@ ItalicFont=LinLibertine_RI.ttf]{LinLibertine_R.ttf}
 		{\LARGE zewwwwEcon: A Template for Econ Articles with
 Quarto \vspace{-15pt} }}\thanks{\noindent { }We would like to thank
 \ldots.}  \rule{\linewidth}{0.5mm}  }
-\date{\today}
+\date{\hspace{87pt}\scriptsize{\textbf{Version
+0.1 \#8098b377}} \vspace{-5pt} \newline  \normalsize 4 November 2024} 
 
 \author{
 		\textbf{First Name}\\
@@ -169,8 +171,8 @@ To learn more about Quarto see \url{https://quarto.org}.\footnote{Here,
   we have an excellent example of a footnote.} You can easily refer to
 parts of the paper such as Figure~\ref{fig-eventstudy} or
 Table~\ref{tbl-regression2}. Sometimes one might need equations. Just
-use LaTeX for this in the text to show that \(2^{2} > 3\). You can do it
-like this:
+use \LaTeX~for this in the text to show that \(2^{2} > 3\). You can do
+it like this:
 
 \begin{equation}
 \frac{\partial S(\beta)}{\partial \beta} = -2X^\top (y - X\beta) = 0
@@ -181,7 +183,7 @@ X^\top X \hat{\beta} = X^\top y
 \end{equation}
 
 \begin{equation}
-\hat{\beta} = (X^\top X)^{-1} X^\top y
+\hat{\bm{\beta}} = (X^\top X)^{-1} X^\top y
 \end{equation}
 
 \lipsum[2-4]
@@ -396,8 +398,7 @@ R² & 0.11 & 0.20 & 0.13 & 0.25 & 0.10 & 0.17 \\
 \renewcommand{\thefigure}{A.\arabic{figure}}
 \setcounter{table}{0}
 \setcounter{figure}{0}
-
-\clearpage
+\FloatBarrier
 
 \begin{table}
 

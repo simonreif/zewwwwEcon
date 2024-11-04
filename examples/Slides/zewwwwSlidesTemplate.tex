@@ -1,5 +1,5 @@
 %***********************************************************
-% ZEW Slides Template
+% zewwww Slides Template
 % Simon Reif & Benedikt Stelter, 19 September 2024
 %
 % Preamble
@@ -8,7 +8,6 @@
 %***********************************************************
 
 % Packages
-
 \documentclass[11pt, aspectratio=169, t]{beamer}
 \def\tightlist{}
 
@@ -23,28 +22,16 @@
 \usepackage{subcaption}
 
 \usepackage[utf8]{inputenc}
-\usepackage{graphicx}
-\usepackage{tikz}
+\usepackage{graphicx, tikz, color,framed, xcolor}
 \usetikzlibrary{decorations.pathreplacing,calc}
-\usepackage{color,framed}
-\usepackage{xcolor}
 
-\usepackage{amsmath,amssymb}
-\usepackage{lmodern}
-\usepackage{array}
-\usepackage{multirow}
+\usepackage{amsmath,amssymb, lmodern, array, multirow}
 \usepackage{iftex}
 
-\usepackage{unicode-math}
-\defaultfontfeatures{Scale=MatchLowercase}
-\defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 
 % Use packages from YMAL header:
 $add-tex$
 
-
-
-\def\tightlist{}
 \definecolor{zewwwwRed}{RGB}{139, 0, 0}
 \definecolor{zewwwwGrey}{RGB}{167, 179, 205}
 
@@ -67,7 +54,6 @@ $add-tex$
 \setbeamercolor{bibliography entry note}{fg=black}
 \setbeamertemplate{bibliography item}{}
 
-
 \setbeamertemplate{blocks}[rounded][shadow=false]
 \addtobeamertemplate{block begin}{\pgfsetfillopacity{0.8}}{\pgfsetfillopacity{1}}
 \setbeamercolor{structure}{fg=zewwwwRed}
@@ -75,6 +61,11 @@ $add-tex$
 bg= zewwwwRed}
 \setbeamercolor*{block body example}{fg= black,
 bg= zewwwwGrey!30}
+
+% Allow shaded environment for code display
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
 
 % Add new pandocbounced command to comply with pandoc update 3.5
 \makeatletter
@@ -93,25 +84,21 @@ bg= zewwwwGrey!30}
 % Make font size of minipage scriptsize by default s.t. table notes are small
 \AtBeginEnvironment{minipage}{\scriptsize}
 
-
 % Insert invers color Section Title Slide
 \AtBeginSection{
 \addtocounter{framenumber}{0} %Ignore Black Headline Pages for slide count
-\usebackgroundtemplate{\includegraphics[width=\paperwidth,height=\paperheight]{zewwwImages/bg.png}}
+\usebackgroundtemplate{\includegraphics[width=\paperwidth,height=\paperheight]{zewwwwImages/bg.png}}
 \begin{frame}[c, noframenumbering, plain]
 \begin{minipage}{300pt}
-\textcolor{white}{\huge\insertsection}
+\textcolor{white}{\huge\secname}
 \end{minipage}
 \end{frame}
 
-\usebackgroundtemplate{\includegraphics[width=\paperwidth,height=\paperheight]{zewwwImages/bgmain.pdf}}
-
+\usebackgroundtemplate{\includegraphics[width=\paperwidth,height=\paperheight]{zewwwwImages/bgmain.pdf}}
 
 \setbeamertemplate{footline}{%
 \raisebox{10pt}{\makebox[\paperwidth]{\hfill{\tiny $presenter$ \textcolor{zewwwwRed}{\bfseries{|}} \insertframenumber$if(totalnumber)$-\inserttotalframenumber$endif$ \makebox[10pt]{} }}}}
 }
-
-
 
 \makeatletter
 \patchcmd\beamer@@tmpl@frametitle{sep=0.8cm}{sep=2cm}{}{}
@@ -127,15 +114,15 @@ bg= zewwwwGrey!30}
 % Title page
 {
 \addtocounter{framenumber}{-1} %Ignore Titlepage for slide count
-\usebackgroundtemplate{\includegraphics[width=\paperwidth,height=\paperheight]{zewwwImages/bgtitle.png}}
+\usebackgroundtemplate{\includegraphics[width=\paperwidth,height=\paperheight]{zewwwwImages/bgtitle.png}}
 \begin{frame}[c]
 
 \begin{tikzpicture}[remember picture,overlay]
   \node[anchor=south west,inner sep=0pt] at (-0.2,2.5) {
-   \includegraphics[height=0.7cm]{zewwwImages/yourlogo.png}
+   \includegraphics[height=0.7cm]{zewwwwImages/yourlogo.png}
   };
   \node[anchor=south west,inner sep=0pt] at (-0.2,1.8) {
-   \includegraphics[height=0.7cm]{zewwwImages/$partner-logo$}
+   \includegraphics[height=0.7cm]{zewwwwImages/$partner-logo$}
   };
 \end{tikzpicture}
 \begin{tikzpicture}
@@ -153,9 +140,7 @@ bg= zewwwwGrey!30}
   \raisebox{10pt}{\makebox[\paperwidth]{\hfill{\tiny $presenter$ \textcolor{zewwwwRed}{\bfseries{|}} \insertframenumber$if(totalnumber)$-\inserttotalframenumber$endif$ \makebox[10pt]{} }}}}
 
 % Define background
-\usebackgroundtemplate{\includegraphics[width=\paperwidth,height=\paperheight]{zewwwImages/bgmain.pdf}}
-
-
+\usebackgroundtemplate{\includegraphics[width=\paperwidth,height=\paperheight]{zewwwwImages/bgmain.pdf}}
 
 $body$
 $if(references)$

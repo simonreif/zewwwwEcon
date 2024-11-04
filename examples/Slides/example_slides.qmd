@@ -26,9 +26,10 @@ biblio-style: apa #Select from https://www.overleaf.com/learn/latex/Biblatex_bib
 
 add-tex: |
    \usepackage{setspace}
+   \usepackage{bm}
    \usepackage{lipsum} 
    
-editor: visual
+editor: source
 ---
 
 ```{r Setup}
@@ -46,10 +47,30 @@ library(broom)
 theme_set(theme_classic())
 
 # Define default colors
-options(ggplot2.discrete.colour= c("#900000FF", "#A7B3CDFF", "#CCD7ADFF", "#676155FF", "#D4A76AFF"))
-options(ggplot2.discrete.fill= c("#900000FF", "#A7B3CDFF", "#CCD7ADFF", "#676155FF", "#D4A76AFF"))
+options(ggplot2.discrete.colour = c("#900000FF",
+                                    "#A7B3CDFF",
+                                    "#CCD7ADFF",
+                                    "#676155FF",
+                                    "#D4A76AFF"))
 
-  
+options(ggplot2.discrete.fill = c("#900000FF",
+                                  "#A7B3CDFF",
+                                  "#CCD7ADFF",
+                                  "#676155FF",
+                                  "#D4A76AFF"))
+
+
+ggplot2::update_geom_defaults("point", aes(color = "#900000FF"))
+ggplot2::update_geom_defaults("errorbar", aes(color = "#A7B3CDFF"))
+
+# Define custom scale functions
+scale_fill_gradient_custom <- function(...) {
+  scale_fill_gradient(low = "#F9E0E0", high = "#2B1D1D", ...)
+}
+
+scale_colour_gradient_custom <- function(...) {
+  scale_colour_gradient(low = "#F9E0E0", high = "#2B1D1D", ...)
+}
 ```
 
 ## Introduction
@@ -77,7 +98,7 @@ You can make bullet lists with different levels
         -   At least on the third level
 -   And going back to the first level
 
-Sometimes one might need equations. Just use LaTeX for this in the text to show that $2^{2} > 3$. You can also have your equation stand out like this:
+Sometimes one might need equations. Just use \LaTeX for this in the text to show that $2^{2} > 3$. You can also have your equation stand out like this:
 
 $$\hat{\beta} = (X'X)^{-1} X'Y$$
 
@@ -90,11 +111,12 @@ There is a very small (0.4%) column on the left that aligns the first context co
 :::
 
 ::: {.column width="44.6%"}
-![](pictures/OLSpic.png){width="140pt," height="140pt"} \scriptsize\textbf{Source:} Dall-E drawing a Bauhaus style representation of the OLS mechanism.
+![](pictures/OLSpic.png){width="130pt," height="130pt"} \newline \scriptsize\textbf{Source:} Dall-E drawing a Bauhaus style representation of the OLS mechanism.
 :::
 
 ::: {.column width="55%"}
 \normalsize
+
 ```{=tex}
 \begin{equation}
 \frac{\partial S(\beta)}{\partial \beta} = -2X^\top (y - X\beta) = 0
@@ -105,22 +127,34 @@ X^\top X \hat{\beta} = X^\top y
 \end{equation}
 
 \begin{equation}
-\hat{\beta} = (X^\top X)^{-1} X^\top y
+\hat{\bm{\beta}} = (X^\top X)^{-1} X^\top y
 \end{equation}
 ```
-These equations minimize the sum of squared residuals $S$. While this seems promising, others argue that this has been done before.
+These equations minimize the sum of squared residuals $S$. While this seems promising, others argue that this has been done before. It might even work with real-world data [@stern2022, LancetDH; @abadieSemiparametric2005, REStud].
 :::
 :::
 
 ## Highlighting and References
 
-Sometimes it seems that not only are people putting books from boxes but also like boxes around some highlight text. An example would be something you (can not) find in @stern2022:
+Sometimes it seems that not only are people putting books from boxes but also like boxes around some highlight text. An example would be something you (can not) find in @stern2022 [LancetDH]:
 
 ```{=tex}
 \begin{exampleblock}{Defining an example}
-\normalsize A lot could be in here. A definition. An equation. Literally there is so much that one would want to get framed with a highlighted headline. 
+\normalsize A lot could be in here. A definition. An equation.  A reference to \textcite[REStud]{abadieSemiparametric2005}. Literally there is so much that one would want to get framed with a highlighted headline \autocites[LancetDH]{stern2022}[REStud]{abadieSemiparametric2005}. 
 \end{exampleblock}
 ```
+
+## Show code and Output
+```{r program}
+#| echo: true 
+#| warning: false
+#| message: false
+
+# We can use code that is displayed in the output
+2^2
+2^2 > 3
+```
+
 # Graphs
 
 ## Histogram
@@ -367,8 +401,8 @@ event_study_df <- data.frame(
 
 # Plot
 ggplot(event_study_df, aes(x = rel_time, y = coefficient)) +
-  geom_errorbar(aes(ymin = conf_min, ymax = conf_max), width = 0.2, color = "#A7B3CDFF") +
-  geom_point(color = "#900000FF", size = 2) +
+  geom_errorbar(aes(ymin = conf_min, ymax = conf_max), width = 0.2) +
+  geom_point(size = 2) +
   labs(
     x = "",
     y = ""
@@ -539,8 +573,4 @@ Linear Regression Models
 
 This slide will most likely be the one that the audience sees the longest. Take this into account when designing it. We could for example point to some things not really working well here until now:
 
--   Display code: It is probably only a small hack but someone needs to do it
-
 -   Descriptives tables: For some reason there is no easy solution.
-
--   Some equation things do not work: Plotting the LaTeX Symbol conflicts with things.

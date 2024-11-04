@@ -1,5 +1,5 @@
 %***********************************************************
-% ZEW Slides Template
+% zewwww Slides Template
 % Simon Reif & Benedikt Stelter, 19 September 2024
 %
 % Preamble
@@ -8,7 +8,6 @@
 %***********************************************************
 
 % Packages
-
 \documentclass[11pt, aspectratio=169, t]{beamer}
 \def\tightlist{}
 
@@ -23,29 +22,18 @@
 \usepackage{subcaption}
 
 \usepackage[utf8]{inputenc}
-\usepackage{graphicx}
-\usepackage{tikz}
+\usepackage{graphicx, tikz, color,framed, xcolor}
 \usetikzlibrary{decorations.pathreplacing,calc}
-\usepackage{color,framed}
-\usepackage{xcolor}
 
-\usepackage{amsmath,amssymb}
-\usepackage{lmodern}
-\usepackage{array}
-\usepackage{multirow}
+\usepackage{amsmath,amssymb, lmodern, array, multirow}
 \usepackage{iftex}
 
-\usepackage{unicode-math}
-\defaultfontfeatures{Scale=MatchLowercase}
-\defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 
 % Use packages from YMAL header:
 \usepackage{setspace}
+\usepackage{bm}
 \usepackage{lipsum}
 
-
-
-\def\tightlist{}
 \definecolor{zewwwwRed}{RGB}{139, 0, 0}
 \definecolor{zewwwwGrey}{RGB}{167, 179, 205}
 
@@ -68,7 +56,6 @@
 \setbeamercolor{bibliography entry note}{fg=black}
 \setbeamertemplate{bibliography item}{}
 
-
 \setbeamertemplate{blocks}[rounded][shadow=false]
 \addtobeamertemplate{block begin}{\pgfsetfillopacity{0.8}}{\pgfsetfillopacity{1}}
 \setbeamercolor{structure}{fg=zewwwwRed}
@@ -76,6 +63,48 @@
 bg= zewwwwRed}
 \setbeamercolor*{block body example}{fg= black,
 bg= zewwwwGrey!30}
+
+% Allow shaded environment for code display
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{241,243,245}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.40,0.45,0.13}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.07,0.07,0.07}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
 
 % Add new pandocbounced command to comply with pandoc update 3.5
 \makeatletter
@@ -94,25 +123,21 @@ bg= zewwwwGrey!30}
 % Make font size of minipage scriptsize by default s.t. table notes are small
 \AtBeginEnvironment{minipage}{\scriptsize}
 
-
 % Insert invers color Section Title Slide
 \AtBeginSection{
 \addtocounter{framenumber}{0} %Ignore Black Headline Pages for slide count
-\usebackgroundtemplate{\includegraphics[width=\paperwidth,height=\paperheight]{zewwwImages/bg.png}}
+\usebackgroundtemplate{\includegraphics[width=\paperwidth,height=\paperheight]{zewwwwImages/bg.png}}
 \begin{frame}[c, noframenumbering, plain]
 \begin{minipage}{300pt}
-\textcolor{white}{\huge\insertsection}
+\textcolor{white}{\huge\secname}
 \end{minipage}
 \end{frame}
 
-\usebackgroundtemplate{\includegraphics[width=\paperwidth,height=\paperheight]{zewwwImages/bgmain.pdf}}
-
+\usebackgroundtemplate{\includegraphics[width=\paperwidth,height=\paperheight]{zewwwwImages/bgmain.pdf}}
 
 \setbeamertemplate{footline}{%
 \raisebox{10pt}{\makebox[\paperwidth]{\hfill{\tiny Simon \textcolor{zewwwwRed}{\bfseries{|}} \insertframenumber \makebox[10pt]{} }}}}
 }
-
-
 
 \makeatletter
 \patchcmd\beamer@@tmpl@frametitle{sep=0.8cm}{sep=2cm}{}{}
@@ -128,15 +153,15 @@ bg= zewwwwGrey!30}
 % Title page
 {
 \addtocounter{framenumber}{-1} %Ignore Titlepage for slide count
-\usebackgroundtemplate{\includegraphics[width=\paperwidth,height=\paperheight]{zewwwImages/bgtitle.png}}
+\usebackgroundtemplate{\includegraphics[width=\paperwidth,height=\paperheight]{zewwwwImages/bgtitle.png}}
 \begin{frame}[c]
 
 \begin{tikzpicture}[remember picture,overlay]
   \node[anchor=south west,inner sep=0pt] at (-0.2,2.5) {
-   \includegraphics[height=0.7cm]{zewwwImages/yourlogo.png}
+   \includegraphics[height=0.7cm]{zewwwwImages/yourlogo.png}
   };
   \node[anchor=south west,inner sep=0pt] at (-0.2,1.8) {
-   \includegraphics[height=0.7cm]{zewwwImages/empty.png}
+   \includegraphics[height=0.7cm]{zewwwwImages/empty.png}
   };
 \end{tikzpicture}
 \begin{tikzpicture}
@@ -149,8 +174,8 @@ X, University ABC} \\
 Musterfrau} \textcolor{zewwwwGrey}{\bfseries{|}}	\textcolor{white}{Institute
 X} \\
 	 \vspace{10pt} \textcolor{white}{\textbf{Important
-Conference}} \textcolor{zewwwwGrey}{\bfseries{|}} \textbf{\textcolor{white}{27
-Oct 2024}}}
+Conference}} \textcolor{zewwwwGrey}{\bfseries{|}} \textbf{\textcolor{white}{4
+Nov 2024}}}
 ;
 \end{tikzpicture}
 \end{frame}
@@ -161,9 +186,7 @@ Oct 2024}}}
   \raisebox{10pt}{\makebox[\paperwidth]{\hfill{\tiny Simon \textcolor{zewwwwRed}{\bfseries{|}} \insertframenumber \makebox[10pt]{} }}}}
 
 % Define background
-\usebackgroundtemplate{\includegraphics[width=\paperwidth,height=\paperheight]{zewwwImages/bgmain.pdf}}
-
-
+\usebackgroundtemplate{\includegraphics[width=\paperwidth,height=\paperheight]{zewwwwImages/bgmain.pdf}}
 
 \begin{frame}{Introduction}
 \phantomsection\label{introduction}
@@ -221,7 +244,7 @@ You can make bullet lists with different levels
   And going back to the first level
 \end{itemize}
 
-Sometimes one might need equations. Just use LaTeX for this in the text
+Sometimes one might need equations. Just use \LaTeX~for this in the text
 to show that \(2^{2} > 3\). You can also have your equation stand out
 like this:
 
@@ -239,8 +262,8 @@ not much fun to produce.
 \end{column}
 
 \begin{column}{0.446\linewidth}
-\includegraphics[width=\linewidth,height=1.94444in,keepaspectratio]{pictures/OLSpic.png}
-\scriptsize\textbf{Source:} Dall-E drawing a Bauhaus style
+\includegraphics[width=\linewidth,height=1.80556in,keepaspectratio]{pictures/OLSpic.png}
+\newline \scriptsize\textbf{Source:} Dall-E drawing a Bauhaus style
 representation of the OLS mechanism.
 \end{column}
 
@@ -256,11 +279,13 @@ X^\top X \hat{\beta} = X^\top y
 \end{equation}
 
 \begin{equation}
-\hat{\beta} = (X^\top X)^{-1} X^\top y
+\hat{\bm{\beta}} = (X^\top X)^{-1} X^\top y
 \end{equation}
 
 These equations minimize the sum of squared residuals \(S\). While this
-seems promising, others argue that this has been done before.
+seems promising, others argue that this has been done before. It might
+even work with real-world data
+\autocites[LancetDH]{stern2022}[REStud]{abadieSemiparametric2005}.
 \end{column}
 \end{columns}
 \end{frame}
@@ -269,11 +294,35 @@ seems promising, others argue that this has been done before.
 \phantomsection\label{highlighting-and-references}
 Sometimes it seems that not only are people putting books from boxes but
 also like boxes around some highlight text. An example would be
-something you (can not) find in \textcite{stern2022}:
+something you (can not) find in \textcite[LancetDH]{stern2022}:
 
 \begin{exampleblock}{Defining an example}
-\normalsize A lot could be in here. A definition. An equation. Literally there is so much that one would want to get framed with a highlighted headline. 
+\normalsize A lot could be in here. A definition. An equation.  A reference to \textcite[REStud]{abadieSemiparametric2005}. Literally there is so much that one would want to get framed with a highlighted headline \autocites[LancetDH]{stern2022}[REStud]{abadieSemiparametric2005}. 
 \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{Show code and Output}
+\phantomsection\label{show-code-and-output}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# We can use code that is displayed in the output}
+\DecValTok{2}\SpecialCharTok{\^{}}\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{2}\SpecialCharTok{\^{}}\DecValTok{2} \SpecialCharTok{\textgreater{}} \DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] TRUE
+\end{verbatim}
 \end{frame}
 
 \section{Graphs}\label{graphs}
@@ -488,14 +537,9 @@ longest. Take this into account when designing it. We could for example
 point to some things not really working well here until now:
 
 \begin{itemize}
-\item
-  Display code: It is probably only a small hack but someone needs to do
-  it
+\tightlist
 \item
   Descriptives tables: For some reason there is no easy solution.
-\item
-  Some equation things do not work: Plotting the LaTeX Symbol conflicts
-  with things.
 \end{itemize}
 \end{frame}
 \end{document}

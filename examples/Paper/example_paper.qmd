@@ -30,6 +30,13 @@ abstract: |
 jel: "These are the JEL codes"
  
 keywords: "These are the keywords"
+
+date: today # Alternatively, enter a date as "1 May 2024"
+date-format: "D MMMM YYYY"
+
+number: "Version 0.1"
+repohash: "#`r substr(system('git rev-parse HEAD', intern= TRUE),1,8)`" 
+# To include hash from another repository use system('git ls-remote ../your_git_repository_folder | grep HEAD', intern=TRUE)[1]" 
   
 format:
   pdf: 
@@ -38,13 +45,13 @@ format:
     cite-method: biblatex
 
 cap-location: top
-editor: visual
+editor: source
 color-links: "82,125,164" # This the color for internal links and footnotes 
 # You can set an arbitrary RGB code here. When leaving empty, black is chosen as standard color
 bibliography: references.bib
 biblio-style: apa #Select from https://www.overleaf.com/learn/latex/Biblatex_bibliography_styles
 
-tex-packages: |
+add-tex: |
    \usepackage{bm}
    \usepackage{setspace}
    \usepackage{lipsum} 
@@ -65,16 +72,39 @@ library(broom)
 # ggplot2 Settings
 theme_set(theme_classic())
 
-# Define default colors
-options(ggplot2.discrete.colour= c("#900000FF", "#A7B3CDFF", "#CCD7ADFF", "#676155FF", "#D4A76AFF"))
-options(ggplot2.discrete.fill= c("#900000FF", "#A7B3CDFF", "#CCD7ADFF", "#676155FF", "#D4A76AFF"))
+# ggplot2 Settings
+theme_set(theme_classic())
 
-  
+# Define default colors
+options(ggplot2.discrete.colour = c("#900000FF",
+                                    "#A7B3CDFF",
+                                    "#CCD7ADFF",
+                                    "#676155FF",
+                                    "#D4A76AFF"))
+
+options(ggplot2.discrete.fill = c("#900000FF",
+                                  "#A7B3CDFF",
+                                  "#CCD7ADFF",
+                                  "#676155FF",
+                                  "#D4A76AFF"))
+
+
+ggplot2::update_geom_defaults("point", aes(color = "#900000FF"))
+ggplot2::update_geom_defaults("errorbar", aes(color = "#A7B3CDFF"))
+
+# Define custom scale functions
+scale_fill_gradient_custom <- function(...) {
+  scale_fill_gradient(low = "#F9E0E0", high = "#2B1D1D", ...)
+}
+
+scale_colour_gradient_custom <- function(...) {
+  scale_colour_gradient(low = "#F9E0E0", high = "#2B1D1D", ...)
+}
 ```
 
 # Introduction
 
-Quarto enables you to weave together content and executable code. @abadieSemiparametric2005 have not used this to put their thoughts into a finished document, since Quarto did not exist back then. To learn more about Quarto see <https://quarto.org>.[^1] You can easily refer to parts of the paper such as @fig-eventstudy or @tbl-regression2. Sometimes one might need equations. Just use LaTeX for this in the text to show that $2^{2} > 3$. You can do it like this:
+Quarto enables you to weave together content and executable code. @abadieSemiparametric2005 have not used this to put their thoughts into a finished document, since Quarto did not exist back then. To learn more about Quarto see <https://quarto.org>.[^1] You can easily refer to parts of the paper such as @fig-eventstudy or @tbl-regression2. Sometimes one might need equations. Just use \LaTeX\ for this in the text to show that $2^{2} > 3$. You can do it like this:
 
 [^1]: Here, we have an excellent example of a footnote.
 
@@ -88,7 +118,7 @@ X^\top X \hat{\beta} = X^\top y
 \end{equation}
 
 \begin{equation}
-\hat{\beta} = (X^\top X)^{-1} X^\top y
+\hat{\bm{\beta}} = (X^\top X)^{-1} X^\top y
 \end{equation}
 ```
 ```{=tex}
@@ -339,8 +369,8 @@ event_study_df <- data.frame(
 
 # Plot
 ggplot(event_study_df, aes(x = rel_time, y = coefficient)) +
-  geom_errorbar(aes(ymin = conf_min, ymax = conf_max), width = 0.2, color = "#A7B3CDFF") +
-  geom_point(color = "#900000FF", size = 2) +
+  geom_errorbar(aes(ymin = conf_min, ymax = conf_max), width = 0.2) +
+  geom_point(size = 2) +
   labs(
     x = "",
     y = ""
@@ -523,8 +553,8 @@ Linear Regression Models
 \renewcommand{\thefigure}{A.\arabic{figure}}
 \setcounter{table}{0}
 \setcounter{figure}{0}
+\FloatBarrier
 ```
-\clearpage
 
 ::: {#tbl-regression2}
 ```{r regression2}
