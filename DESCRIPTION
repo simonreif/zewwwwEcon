@@ -1,19 +1,17 @@
- Package: zewwwwEcontemplates
+Package: zewwwwEcontemplates
 Type: Package
-Title: Create documents and plots with Quarto 
-Version: 0.1.0
+Title: Create papers and presentations with 'Quarto' 
+Version: 1.0.0
 Authors@R: c(
-    person("Benedikt", "Stelter", email = "Benedikt.Stelter@zew.de", role=c("aut", "cre")),
-    person("Simon", "Reif", email = "Simon.Reif@zew.de", role=c("aut", "cre)))
+    person("Simon", "Reif", email = "simon.reif@zew.de", role = c("aut", "cre")),
+    person("Benedikt", "Stelter", email = "benedikt.stelter@outlook.com", role = "aut"))
 Description: This package includes templates for papers and
-    presentations nicely layout. 
-Imports:
-    ggplot2,
-    dplyr,
-    httr
-License: GPL-2
+    presentations in a nice layout. 
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.2
-Depends: 
-    R (>= 2.10)
+RoxygenNote: 7.3.2
+Suggests: 
+    quarto
+License: MIT + file LICENSE
+Imports: 
+    rlang
