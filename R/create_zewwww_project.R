@@ -54,7 +54,7 @@ create_project <- function(path) {
 
   dir.create(paste0(path, "/Slides"), recursive = TRUE, showWarnings = FALSE)
 
-  dir.create(paste0(path, "/Slides/zewwwImages"), recursive = TRUE, showWarnings = FALSE)
+  dir.create(paste0(path, "/Slides/zewwwwImages"), recursive = TRUE, showWarnings = FALSE)
 
   file.copy(from = paste0(pkg_loc, "/extdata/_extensions/zewwwwslides_qmd/skeleton/skeleton.qmd"),
             to = paste0(path, "/Slides/Slides.qmd"))
