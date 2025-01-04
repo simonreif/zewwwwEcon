@@ -54,22 +54,22 @@ create_project <- function(path) {
 
   dir.create(paste0(path, "/Slides"), recursive = TRUE, showWarnings = FALSE)
 
-  dir.create(paste0(path, "/Slides/zewwwwImages"), recursive = TRUE, showWarnings = FALSE)
+  dir.create(paste0(path, "/Slides/zewwwImages"), recursive = TRUE, showWarnings = FALSE)
 
   file.copy(from = paste0(pkg_loc, "/extdata/_extensions/zewwwwslides_qmd/skeleton/skeleton.qmd"),
             to = paste0(path, "/Slides/Slides.qmd"))
   file.copy(from = paste0(pkg_loc, "/extdata/_extensions/zewwwwslides_qmd/skeleton/zewwwwSlidesTemplate.tex"),
             to = paste0(path, "/Slides/zewwwwSlidesTemplate.tex"))
-  file.copy(from = paste0(pkg_loc, "/extdata/_extensions/zewslides_qmd/skeleton/zewwwwImages/bg.png"),
-            to = paste0(path, "/Slides/zewwwwImages/bg.png"))
-  file.copy(from = paste0(pkg_loc, "/extdata/_extensions/zewslides_qmd/skeleton/zewwwwImages/bgmain.pdf"),
-            to = paste0(path, "/Slides/zewwwwImages/bgmain.pdf"))
-  file.copy(from = paste0(pkg_loc, "/extdata/_extensions/zewslides_qmd/skeleton/zewwwwImages/betitle.png"),
-            to = paste0(path, "/Slides/zewwwwImages/bgtitle.png"))
-  file.copy(from = paste0(pkg_loc, "/extdata/_extensions/zewslides_qmd/skeleton/zewwwwImages/empty.png"),
-            to = paste0(path, "/Slides/zewwwwImages/empty.ong"))
-  file.copy(from = paste0(pkg_loc, "/extdata/_extensions/zewslides_qmd/skeleton/zewwwwImages/yourlogo.png"),
-            to = paste0(path, "/Slides/zewwwwImages/yourlogo.png"))
+  file.copy(from = paste0(pkg_loc, "/extdata/_extensions/zewwwwslides_qmd/skeleton/zewwwImages/bg.png"),
+            to = paste0(path, "/Slides/zewwwImages/bg.png"))
+  file.copy(from = paste0(pkg_loc, "/extdata/_extensions/zewwwwslides_qmd/skeleton/zewwwImages/bgmain.pdf"),
+            to = paste0(path, "/Slides/zewwwImages/bgmain.pdf"))
+  file.copy(from = paste0(pkg_loc, "/extdata/_extensions/zewwwwslides_qmd/skeleton/zewwwImages/bgtitle.png"),
+            to = paste0(path, "/Slides/zewwwImages/bgtitle.png"))
+  file.copy(from = paste0(pkg_loc, "/extdata/_extensions/zewwwwslides_qmd/skeleton/zewwwImages/empty.png"),
+            to = paste0(path, "/Slides/zewwwImages/empty.png"))
+  file.copy(from = paste0(pkg_loc, "/extdata/_extensions/zewwwwslides_qmd/skeleton/zewwwImages/yourlogo.png"),
+            to = paste0(path, "/Slides/zewwwImages/yourlogo.png"))
 
 
   dir.create(paste0(path, "/Paper"), recursive = TRUE, showWarnings = FALSE)
