@@ -14,7 +14,7 @@
 #' @export
 
 
-create_project <- function(path) {
+create_zewwww_project <- function(path) {
 
   
   # Create path if it does not exist
