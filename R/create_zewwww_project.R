@@ -76,9 +76,10 @@ create_zewwww_project <- function(path, check_example) {
             to = paste0(path, "/Slides/zewwwImages/yourlogo.png"))
   
   if (check_example == TRUE) {
-    file.copy(from = paste0(pkg_loc, "/examples/Makefile"),
+    file.copy(from = paste0(pkg_loc, "/examples/ComplexProject/Makefile"),
               to = paste0(path, "/Makefile"))
-    
+    #file.copy(from = paste0(pkg_loc, "/examples/Makefile"),
+     #         to = paste0(path, "/Makefile"))
   } 
 
   # Create directory for slides
