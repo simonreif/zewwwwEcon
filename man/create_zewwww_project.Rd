@@ -4,10 +4,12 @@
 \alias{create_zewwww_project}
 \title{Create zewwww project}
 \usage{
-create_zewwww_project(path)
+create_zewwww_project(path, check_example)
 }
 \arguments{
 \item{path}{Path automatically set by zewwww_project.dcf}
+
+\item{check_example}{Choose whether to have examples or not}
 }
 \value{
 Returns nothing.  See description above.
