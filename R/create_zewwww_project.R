@@ -5,6 +5,8 @@
 #'
 #' @param path Path automatically set by zewwww_project.dcf
 #'
+#' @param check_example Choose whether to have examples or not
+#'
 #' @details This function is employed behind the scenes when
 #' a user creates a new zewwww project.
 #'
@@ -14,7 +16,7 @@
 #' @export
 
 
-create_zewwww_project <- function(path) {
+create_zewwww_project <- function(path, check_example) {
 
   
   # Create path if it does not exist
@@ -55,6 +57,8 @@ create_zewwww_project <- function(path) {
   dir.create(paste0(path, "/Slides"), recursive = TRUE, showWarnings = FALSE)
 
   dir.create(paste0(path, "/Slides/zewwwImages"), recursive = TRUE, showWarnings = FALSE)
+  
+  # Copy the files
 
   file.copy(from = paste0(pkg_loc, "/extdata/_extensions/zewwwwslides_qmd/skeleton/skeleton.qmd"),
             to = paste0(path, "/Slides/Slides.qmd"))
@@ -70,9 +74,18 @@ create_zewwww_project <- function(path) {
             to = paste0(path, "/Slides/zewwwImages/empty.png"))
   file.copy(from = paste0(pkg_loc, "/extdata/_extensions/zewwwwslides_qmd/skeleton/zewwwImages/yourlogo.png"),
             to = paste0(path, "/Slides/zewwwImages/yourlogo.png"))
+  
+  if (check_example == TRUE) {
+    file.copy(from = paste0(pkg_loc, "/examples/Makefile"),
+              to = paste0(path, "/Makefile"))
+    
+  } 
 
+  # Create directory for slides
 
   dir.create(paste0(path, "/Paper"), recursive = TRUE, showWarnings = FALSE)
+  
+  # Copy the files
   
   file.copy(from = paste0(pkg_loc, "/extdata/_extensions/zewwwwwpaper_qmd/skeleton/0_master.R"),
               to = paste0(path, "/0_master.R"))

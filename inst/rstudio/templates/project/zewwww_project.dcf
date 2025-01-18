@@ -1,3 +1,7 @@
 Binding: create_project
 Title: zewwwwEcon
 Icon: rmarkdown_icon.png
+
+Parameter: check_example
+Widget: CheckboxInput
+Label: Include Makefile and detailed examples?
