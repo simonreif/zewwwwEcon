@@ -67,69 +67,69 @@ create_zewwww_project <- function(path) {
   ## Copy general files (not paper and slides)
   
   # Makefile
-  file.copy(from = paste0(pkg_loc, "/examples/ComplexProject/Makefile"),
+  file.copy(from = paste0(pkg_loc, "/ComplexProject/Makefile"),
             to = paste0(path, "/Makefile"), recursive = TRUE)
   
   # Original Data
-  file.copy(from = paste0(pkg_loc, "/examples/ComplexProject/A_Orig"),
+  file.copy(from = paste0(pkg_loc, "/ComplexProject/A_Orig"),
             to = paste0(path), recursive = TRUE)
   
   # Analysis Code
-  file.copy(from = paste0(pkg_loc, "/examples/ComplexProject/B_Prog"),
+  file.copy(from = paste0(pkg_loc, "/ComplexProject/B_Prog"),
             to = paste0(path), recursive = TRUE)
   
   # Temporary file
-  file.copy(from = paste0(pkg_loc, "/examples/ComplexProject/C_Temp"),
+  file.copy(from = paste0(pkg_loc, "/ComplexProject/C_Temp"),
             to = paste0(path), recursive = TRUE)
   
   # Output
-  file.copy(from = paste0(pkg_loc, "/examples/ComplexProject/D_Out"),
+  file.copy(from = paste0(pkg_loc, "/ComplexProject/D_Out"),
             to = paste0(path), recursive = TRUE)
   
   # References
-  file.copy(from = paste0(pkg_loc, "/examples/ComplexProject/references.bib"),
+  file.copy(from = paste0(pkg_loc, "/ComplexProject/references.bib"),
             to = paste0(path, "/references.bib"))
   
   
   ## Copy files for paper
 
   # Quarto file
-  file.copy(from = paste0(pkg_loc, "/examples/ComplexProject/Paper/example_paper.qmd"),
+  file.copy(from = paste0(pkg_loc, "/ComplexProject/Paper/example_paper.qmd"),
             to = paste0(path, "/Paper/paper.qmd"))
   
   # Font normal
-  file.copy(from = paste0(pkg_loc, "/examples/ComplexProject/Paper/LinLibertine_R.ttf"),
+  file.copy(from = paste0(pkg_loc, "/ComplexProject/Paper/LinLibertine_R.ttf"),
             to = paste0(path, "/Paper/LinLibertine_R.ttf"))
   
   # Font bold
-  file.copy(from = paste0(pkg_loc, "/examples/ComplexProject/Paper/LinLibertine_RB.ttf"),
+  file.copy(from = paste0(pkg_loc, "/ComplexProject/Paper/LinLibertine_RB.ttf"),
             to = paste0(path, "/Paper/LinLibertine_RB.ttf"))
   
   # Font italic
-  file.copy(from = paste0(pkg_loc, "/examples/ComplexProject/Paper/LinLibertine_RI.ttf"),
+  file.copy(from = paste0(pkg_loc, "/ComplexProject/Paper/LinLibertine_RI.ttf"),
             to = paste0(path, "/Paper/LinLibertine_RI.ttf"))
   
   # Template
-  file.copy(from = paste0(pkg_loc, "/examples/ComplexProject/Paper/zewwwwPaperTemplate.tex"),
+  file.copy(from = paste0(pkg_loc, "/ComplexProject/Paper/zewwwwPaperTemplate.tex"),
             to = paste0(path, "/Paper/zewwwwPaperTemplate.tex"))
   
   
   ## Copy files for slides
   
   # Quarto file
-  file.copy(from = paste0(pkg_loc, "/examples/ComplexProject/Slides/example_slides.qmd"),
+  file.copy(from = paste0(pkg_loc, "/ComplexProject/Slides/example_slides.qmd"),
             to = paste0(path, "/Slides/slides.qmd"))
   
   # Example pirctures
-  file.copy(from = paste0(pkg_loc, "/examples/ComplexProject/Slides/pictures"),
+  file.copy(from = paste0(pkg_loc, "/ComplexProject/Slides/pictures"),
             to = paste0(path, "/Slides"), recursive = TRUE)
   
   # Template images
-  file.copy(from = paste0(pkg_loc, "/examples/ComplexProject/Slides/zewwwwImages"),
+  file.copy(from = paste0(pkg_loc, "/ComplexProject/Slides/zewwwwImages"),
             to = paste0(path, "/Slides"), recursive = TRUE)
   
   # Template
-  file.copy(from = paste0(pkg_loc, "/examples/ComplexProject/Slides/zewwwwSlidesTemplate.tex"),
+  file.copy(from = paste0(pkg_loc, "/ComplexProject/Slides/zewwwwSlidesTemplate.tex"),
             to = paste0(path, "/Paper/zewwwwSlidesTemplate.tex"))
   
   
