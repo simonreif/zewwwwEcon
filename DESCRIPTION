@@ -1,6 +1,6 @@
 Package: zewwwwEcontemplates
 Type: Package
-Title: Create papers and presentations with 'Quarto' 
+Title: Create research projects using 'Quarto' 
 Version: 1.0.0
 Authors@R: c(
     person("Simon", "Reif", email = "simon.reif@zew.de", role = c("aut", "cre")),
@@ -14,4 +14,4 @@ Suggests:
     quarto
 License: MIT + file LICENSE
 Imports: 
-    rlang
+    tidyverse, gt, gtsummary, ggpubr, broom, estimatr, modelsummary, sf, readr

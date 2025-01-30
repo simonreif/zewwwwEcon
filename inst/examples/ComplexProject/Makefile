@@ -3,11 +3,11 @@
 
 ## Define Variables 
 # Output
-PAPER_SRC = Paper/example_paper.qmd
-PAPER_OUT = Paper/example_paper.pdf
+PAPER_SRC = Paper/paper.qmd
+PAPER_OUT = Paper/paper.pdf
 PAPER_TEMPLATE = Paper/zewwwwPaperTemplate.tex
-SLIDES_SRC = Slides/example_slides.qmd
-SLIDES_OUT = Slides/example_slides.pdf
+SLIDES_SRC = Slides/slides.qmd
+SLIDES_OUT = Slides/slides.pdf
 SLDIES_TEMPLATE = Slides/zewwwwSlidesTemplate.tex
 REFS = references.bib
 
