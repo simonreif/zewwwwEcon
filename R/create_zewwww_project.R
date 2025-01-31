@@ -54,7 +54,7 @@ create_zewwww_project <- function(path) {
 
   dir.create(paste0(path, "/Slides"), recursive = TRUE, showWarnings = FALSE)
 
-  dir.create(paste0(path, "/Slides/zewwwImages"), recursive = TRUE, showWarnings = FALSE)
+  dir.create(paste0(path, "/Slides/zewwwwImages"), recursive = TRUE, showWarnings = FALSE)
   
   dir.create(paste0(path, "/Slides/pictures"), recursive = TRUE, showWarnings = FALSE)
   
@@ -130,7 +130,7 @@ create_zewwww_project <- function(path) {
   
   # Template
   file.copy(from = paste0(pkg_loc, "/ComplexProject/Slides/zewwwwSlidesTemplate.tex"),
-            to = paste0(path, "/Paper/zewwwwSlidesTemplate.tex"))
+            to = paste0(path, "/Slides/zewwwwSlidesTemplate.tex"))
   
   
 }
