@@ -1,0 +1,153 @@
+%***********************************************************
+% zewwww Slides Template
+% Simon Reif & Benedikt Stelter, 19 September 2024
+%
+% Preamble
+% This tex code is use to be run together with the
+% corresponding Quarto file.
+%***********************************************************
+
+% Packages
+\documentclass[11pt, aspectratio=169, t]{beamer}
+\def\tightlist{}
+
+\RequirePackage{beamerbaserequires}
+\usepackage[style=$biblio-style$]{biblatex}
+\addbibresource{$bibliography$}
+\AtBeginBibliography{\footnotesize}
+
+\usepackage[labelfont={color=black,bf}]{caption}
+\usepackage{booktabs, longtable, colortbl, array}
+\usepackage{threeparttable}
+\usepackage{subcaption}
+
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx, tikz, color,framed, xcolor}
+\usetikzlibrary{decorations.pathreplacing,calc}
+
+\usepackage{amsmath,amssymb, lmodern, array, multirow}
+\usepackage{iftex}
+
+
+% Use packages from YMAL header:
+$add-tex$
+
+\definecolor{zewwwwRed}{RGB}{139, 0, 0}
+\definecolor{zewwwwGrey}{RGB}{167, 179, 205}
+
+\setbeamercolor{itemize item}{fg=zewwwwGrey}
+\setbeamercolor{itemize subitem}{fg=zewwwwGrey}
+\setbeamercolor{itemize subsubitem}{fg=zewwwwGrey}
+
+\captionsetup[figure]{labelformat=empty, font=bf}% redefines the caption setup of the figures environment in the beamer class.
+\captionsetup[table]{labelformat=empty, font=bf}% redefines the caption setup of the tables environment in the beamer class.
+
+\setbeamertemplate{itemize item}[square]
+\setbeamertemplate{itemize subitem}[circle]
+\setbeamertemplate{itemize subsubitem}[circle]
+\setbeamertemplate{frametitle continuation}{}
+
+\setbeamercolor{bibliography item}{fg=black}
+\setbeamercolor{bibliography entry author}{fg=black}
+\setbeamercolor{bibliography entry title}{fg=black}
+\setbeamercolor{bibliography entry location}{fg=black}
+\setbeamercolor{bibliography entry note}{fg=black}
+\setbeamertemplate{bibliography item}{}
+
+\setbeamertemplate{blocks}[rounded][shadow=false]
+\addtobeamertemplate{block begin}{\pgfsetfillopacity{0.8}}{\pgfsetfillopacity{1}}
+\setbeamercolor{structure}{fg=zewwwwRed}
+\setbeamercolor*{block title example}{fg=white,
+bg= zewwwwRed}
+\setbeamercolor*{block body example}{fg= black,
+bg= zewwwwGrey!30}
+
+% Allow shaded environment for code display
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
+
+% Add new pandocbounced command to comply with pandoc update 3.5
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+\makeatother
+
+% Make font size of minipage scriptsize by default s.t. table notes are small
+\AtBeginEnvironment{minipage}{\scriptsize}
+
+% Insert invers color Section Title Slide
+\AtBeginSection{
+\addtocounter{framenumber}{0} %Ignore Black Headline Pages for slide count
+\usebackgroundtemplate{\includegraphics[width=\paperwidth,height=\paperheight]{zewwwwImages/bg.png}}
+\begin{frame}[c, noframenumbering, plain]
+\begin{minipage}{300pt}
+\textcolor{white}{\huge\secname}
+\end{minipage}
+\end{frame}
+
+\usebackgroundtemplate{\includegraphics[width=\paperwidth,height=\paperheight]{zewwwwImages/bgmain.pdf}}
+
+\setbeamertemplate{footline}{%
+\raisebox{10pt}{\makebox[\paperwidth]{\hfill{\tiny $presenter$ \textcolor{zewwwwRed}{\bfseries{|}} \insertframenumber$if(totalnumber)$-\inserttotalframenumber$endif$ \makebox[10pt]{} }}}}
+}
+
+\makeatletter
+\patchcmd\beamer@@tmpl@frametitle{sep=0.8cm}{sep=2cm}{}{}
+\makeatother
+
+\beamertemplatenavigationsymbolsempty
+\setbeamertemplate{frametitle}{\textcolor{black}{\insertframetitle}}
+\addtobeamertemplate{frametitle}{\vskip3ex}{}
+\providecommand{\tightlist}{%
+	\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\begin{document}
+% Title page
+{
+\addtocounter{framenumber}{-1} %Ignore Titlepage for slide count
+\usebackgroundtemplate{\includegraphics[width=\paperwidth,height=\paperheight]{zewwwwImages/bgtitle.png}}
+\begin{frame}[c]
+
+\begin{tikzpicture}[remember picture,overlay]
+  \node[anchor=south west,inner sep=0pt] at (-0.2,2.5) {
+   \includegraphics[height=0.7cm]{zewwwwImages/yourlogo.png}
+  };
+  \node[anchor=south west,inner sep=0pt] at (-0.2,1.8) {
+   \includegraphics[height=0.7cm]{zewwwwImages/$partner-logo$}
+  };
+\end{tikzpicture}
+\begin{tikzpicture}
+\node[overlay, anchor=south west, align=left, text width=0.54\linewidth] at (-0.4,-1.2) {\baselineskip=16pt\textcolor{white}{\textbf{\Large $title$}} \par};
+\node[overlay, anchor=north west, align=left, text width=9.8cm] at (-0.4,-1.2) { $for(by-author)$
+	\textcolor{white}{$it.name.literal$} $if(it.affiliations)$\textcolor{zewwwwGrey}{\bfseries{|}}$endif$	$for(it.affiliations)$$if(it.name)$\textcolor{white}{$it.name$}$endif$ \\
+	$endfor$$endfor$ \vspace{10pt} \textcolor{white}{\textbf{$event$}}$if(event)$ \textcolor{zewwwwGrey}{\bfseries{|}} $endif$\textbf{\textcolor{white}{$date$}}}
+;
+\end{tikzpicture}
+\end{frame}
+}
+
+% Main page
+\setbeamertemplate{footline}{%
+  \raisebox{10pt}{\makebox[\paperwidth]{\hfill{\tiny $presenter$ \textcolor{zewwwwRed}{\bfseries{|}} \insertframenumber$if(totalnumber)$-\inserttotalframenumber$endif$ \makebox[10pt]{} }}}}
+
+% Define background
+\usebackgroundtemplate{\includegraphics[width=\paperwidth,height=\paperheight]{zewwwwImages/bgmain.pdf}}
+
+$body$
+$if(references)$
+\begin{frame}[allowframebreaks]{$if(english)$References$else$Literaturverzeichnis$endif$}
+\small
+\printbibliography[heading=none]
+\end{frame}
+$endif$
+\end{document}

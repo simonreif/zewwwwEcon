@@ -1,0 +1,644 @@
+---
+title: "zewwwwEcon: A Template for Econ Articles with Quarto"
+pdf-engine: xelatex
+author:
+  - name: First Name
+    affiliations:
+      - name: Affiliation A which is very long
+  - name: Second Author
+    acknowledgements: | 
+      Corrseponding author: Adress, Place. 
+    affiliations:
+      - name: Affiliation B
+  - name: Third Author
+    affiliations:
+      - name: Affiliation B
+      - name: Affiliation C
+  - name: Fourth Author
+    affiliations:
+      - name: Affiliation B
+      - name: Affiliation C
+
+thanks: |
+   We would like to thank ....  
+   
+prelim-note: "Preliminary draft - please do not distribute"
+  
+abstract: |
+  O, never Shall sun that morrow see! Your face, my thane, is as a book where men May read strange matters. To beguile the time, Look like the time; bear welcome in your eye, Your hand, your tongue: look like the innocent flower, But be the serpent under't. He that's coming Must be provided for: and you shall put This night's great business into my dispatch; Which shall to all our nights and days to come Give solely sovereign sway and masterdom.
+  
+jel: "These are the JEL codes"
+ 
+keywords: "These are the keywords"
+
+date: today # Alternatively, enter a date as "1 May 2024"
+date-format: "D MMMM YYYY"
+
+number: "Version 0.1"
+repohash: "#`r substr(system('git rev-parse HEAD', intern= TRUE),1,8)`" 
+# To include hash from another repository use system('git ls-remote ../your_git_repository_folder | grep HEAD', intern=TRUE)[1]" 
+  
+format:
+  pdf: 
+    template: zewwwwPaperTemplate.tex
+    keep-tex: true
+    cite-method: biblatex
+
+cap-location: top
+editor: source
+color-links: "82,125,164" # This the color for internal links and footnotes 
+# You can set an arbitrary RGB code here. When leaving empty, black is chosen as standard color
+bibliography: references.bib
+biblio-style: apa #Select from https://www.overleaf.com/learn/latex/Biblatex_bibliography_styles
+
+add-tex: |
+   \usepackage{bm}
+   \usepackage{setspace}
+   \usepackage{lipsum} 
+---
+
+```{r Setup}
+#| echo: false 
+#| warning: false
+#| message: false
+
+# Load packages
+# Load packages
+library(tidyverse)
+library(gt)
+library(gtsummary)
+library(broom)
+
+# ggplot2 Settings
+theme_set(theme_classic())
+
+# ggplot2 Settings
+theme_set(theme_classic())
+
+# Define default colors
+options(ggplot2.discrete.colour = c("#900000FF",
+                                    "#A7B3CDFF",
+                                    "#CCD7ADFF",
+                                    "#676155FF",
+                                    "#D4A76AFF"))
+
+options(ggplot2.discrete.fill = c("#900000FF",
+                                  "#A7B3CDFF",
+                                  "#CCD7ADFF",
+                                  "#676155FF",
+                                  "#D4A76AFF"))
+
+
+ggplot2::update_geom_defaults("point", aes(color = "#900000FF"))
+ggplot2::update_geom_defaults("errorbar", aes(color = "#A7B3CDFF"))
+
+# Define custom scale functions
+scale_fill_gradient_custom <- function(...) {
+  scale_fill_gradient(low = "#F9E0E0", high = "#2B1D1D", ...)
+}
+
+scale_colour_gradient_custom <- function(...) {
+  scale_colour_gradient(low = "#F9E0E0", high = "#2B1D1D", ...)
+}
+```
+
+# Introduction
+
+Quarto enables you to weave together content and executable code. @abadieSemiparametric2005 have not used this to put their thoughts into a finished document, since Quarto did not exist back then. To learn more about Quarto see <https://quarto.org>.[^1] You can easily refer to parts of the paper such as @fig-eventstudy or @tbl-regression2. Sometimes one might need equations. Just use \LaTeX\ for this in the text to show that $2^{2} > 3$. You can do it like this:
+
+[^1]: Here, we have an excellent example of a footnote.
+
+```{=tex}
+\begin{equation}
+\frac{\partial S(\beta)}{\partial \beta} = -2X^\top (y - X\beta) = 0
+\end{equation}
+
+\begin{equation}
+X^\top X \hat{\beta} = X^\top y
+\end{equation}
+
+\begin{equation}
+\hat{\bm{\beta}} = (X^\top X)^{-1} X^\top y
+\end{equation}
+```
+```{=tex}
+\lipsum[2-4]
+\clearpage
+```
+# Figures
+
+::: {#fig-hist}
+```{r Histogram}
+#| echo: false 
+#| warning: false
+#| message: false
+#| fig-width: 3.5
+#| fig-asp: 0.5
+#| fig-align: center
+#| fig-pos: H
+
+# Generate random data
+set.seed(1234)
+df <- data.frame(
+  sex=factor(rep(c("F", "M"), each=200)),
+  height=round(c(rnorm(200, mean=160, sd=9), rnorm(200, mean=175, sd=10)))
+)
+
+# Make plot 
+ggplot(df) + geom_histogram(mapping = aes(x=height, fill=sex), color= "white", binwidth=2) + labs(
+    x = "Height",
+    y = "Count",
+    fill = "Sex"
+  ) 
+```
+
+```{=tex}
+\vspace{-5pt}
+\begin{minipage}{0.9\textwidth}
+\scriptsize
+\singlespacing
+\textbf{Notes:} You can use this text to provide further information about the table. \lipsum[66]
+\end{minipage}
+\vspace{15pt}
+```
+Distribution of height (in cm) in random data
+:::
+
+\lipsum[2-4]
+
+::: {#fig-barchart}
+```{r Barchart}
+#| echo: false 
+#| warning: false
+#| message: false
+#| fig-width: 3.5
+#| fig-asp: 0.5
+#| fig-align: center
+#| fig-pos: H
+
+# Get data
+States <- data.frame(
+  Country=c("Germany","USA","Brazil","Austria") ,  
+  value=c(16,50,26,9)
+)
+
+# Make plot
+ggplot(States) + 
+  geom_bar(mapping=aes(x = Country, y = value, fill = Country), 
+           color= "white", stat = "identity" ) +
+  labs(y = " ") +
+  scale_y_continuous(expand = expansion(mult = c(0, .1))) + 
+  scale_x_discrete(expand = c(0, 0)) +
+theme(axis.title.x=element_blank(), axis.ticks.x = element_blank(), axis.ticks.y = element_blank(), legend.position = "none")
+
+  
+```
+
+```{=tex}
+\vspace{-5pt}
+\begin{minipage}{0.9\textwidth}
+\scriptsize
+\singlespacing
+\textbf{Notes:} You can use this text to provide further information about the table. \lipsum[66]
+\end{minipage}
+\vspace{15pt}
+```
+Number of Federal States by Country
+:::
+
+\lipsum[1-2]
+
+::: {#fig-ts1}
+```{r tsplot1}
+#| echo: false 
+#| warning: false
+#| message: false
+#| fig-width: 3
+#| fig-asp: 0.5
+#| fig-align: center
+#| fig-pos: H
+
+# Generate data
+set.seed(123)
+time <- seq(as.Date("2023-01-01"), by = "month", length.out = 12)
+series1 <- cumsum(rnorm(12, 0, 1))
+series2 <- cumsum(rnorm(12, 0, 1))
+
+df <- data.frame(
+  time = rep(time, 2),
+  value = c(series1, series2),
+  series = rep(c("Series 1", "Series 2"), each = 12)
+)
+
+#Plot1 
+ggplot(df, aes(x = time, y = value, color = series)) +
+  geom_line() +
+  labs(x = "", y = "") + 
+  theme(legend.position = "none")
+```
+
+```{=tex}
+\vspace{-5pt}
+\begin{minipage}{0.9\textwidth}
+\scriptsize
+\singlespacing
+\textbf{Notes:} You can use this text to provide further information about the table. \lipsum[66]
+\end{minipage}
+\vspace{15pt}
+```
+Displaying how things evolve over time
+:::
+
+\lipsum[1-2]
+
+::: {#fig-scatterplot}
+```{r scatterplot}
+#| echo: false 
+#| warning: false
+#| message: false
+#| fig-width: 3.5
+#| fig-asp: 0.5
+#| fig-align: center
+#| fig-pos: H
+
+set.seed(123)
+data <- data.frame(
+  x = c(rnorm(50, mean = 5), rnorm(50, mean = 10)),
+  y = c(rnorm(50, mean = 5), rnorm(50, mean = 10)),
+  group = factor(c(rep("Group A", 50), rep("Group B", 50))),
+  count = sample(1:10, 100, replace = TRUE)  # count for dot size
+)
+
+# Plot
+ggplot(data, aes(x = x, y = y, color = group, size = count)) +
+  geom_point() +
+  labs(x = "X Axis",
+       y = "Y Axis",
+       color = NULL) +
+  guides(size = "none") +
+  theme(legend.position = "right")
+```
+
+```{=tex}
+\vspace{-5pt}
+\begin{minipage}{0.9\textwidth}
+\scriptsize
+\singlespacing
+\textbf{Notes:} You can use this text to provide further information about the table. \lipsum[66]
+\end{minipage}
+\vspace{15pt}
+```
+Two groups have very different values
+:::
+
+\lipsum[1]
+
+::: {#fig-dotplot}
+```{r dotplot}
+#| echo: false 
+#| warning: false
+#| message: false
+#| fig-width: 3.5
+#| fig-asp: 0.5
+#| fig-align: center
+#| fig-pos: H
+
+# Create a simple data frame
+set.seed(123)
+data <- data.frame(
+  group = rep(c("Group A", "Group B", "Group C"), each = 20),
+  value = c(round(rnorm(20, mean = 5)), round(rnorm(20, mean = 7)), round(rnorm(20, mean = 9)))
+)
+
+# Create the dot plot
+ggplot(data, aes(x = group, y = value, fill = group)) +
+  geom_dotplot(binaxis='y', stackdir='center',
+               stackratio=1.1) + 
+  labs(x = " ", y = "Value", fill = NULL)
+```
+
+```{=tex}
+\vspace{-10pt}
+\begin{minipage}{0.9\textwidth}
+\scriptsize
+\singlespacing
+\textbf{Notes:} You can use this text to provide further information about the plot. \lipsum[66]
+\end{minipage}
+\vspace{15pt}
+```
+Visualizing distributions with few observations
+:::
+
+\lipsum[1-2]
+
+::: {#fig-eventstudy}
+```{r eventstudy}
+#| echo: false 
+#| warning: false
+#| message: false
+#| fig-width: 3.5
+#| fig-asp: 0.6
+#| fig-align: center
+#| fig-pos: H
+
+# Create a simple data frame
+set.seed(42)
+
+# Create rel_time from -5 to 5
+rel_time <- -5:5
+
+# Generate random coefficients
+# Coefficients increase sharply at rel_time == 1 and stay elevated, with 0 at rel_time == -1
+coefficients <- c(rnorm(5, mean = 0, sd = 0.1), 0, rnorm(5, mean = 1, sd = 0.2))
+
+# Generate random standard errors for each time point, with 0 at rel_time == -1
+std_errors <- c(rnorm(5, mean = 0.1, sd = 0.05), 0, rnorm(5, mean = 0.1, sd = 0.05))
+
+# Compute confidence intervals (95%)
+conf_min <- coefficients - 1.96 * std_errors
+conf_max <- coefficients + 1.96 * std_errors
+
+# Create the data frame
+event_study_df <- data.frame(
+  rel_time = rel_time,
+  coefficient = coefficients,
+  std_error = std_errors,
+  conf_min = conf_min,
+  conf_max = conf_max
+)
+
+# Plot
+ggplot(event_study_df, aes(x = rel_time, y = coefficient)) +
+  geom_errorbar(aes(ymin = conf_min, ymax = conf_max), width = 0.2) +
+  geom_point(size = 2) +
+  labs(
+    x = "",
+    y = ""
+  ) +
+  scale_x_continuous(labels = scales::number_format(accuracy = 1)) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  geom_vline(xintercept = 0, linetype = "dashed")
+```
+
+```{=tex}
+\vspace{-7pt}\begin{minipage}{0.9\textwidth}\scriptsize\singlespacing\textbf{Notes:} You can use this text to provide further information about the plot. \lipsum[66]\end{minipage}\vspace{15pt}
+```
+Coefficients relative to treatment time
+:::
+
+# Tables
+
+```{=tex}
+\lipsum[1-2]
+\clearpage
+```
+::: {#tbl-descriptives}
+```{r descriptives}
+#| echo: false 
+#| warning: false
+#| message: false
+#| tbl-align: center
+#| tbl-pos: T
+
+set.seed(123)
+
+# Generate randm rada
+n <- 500
+treatment <- rbinom(n, 1, 0.5) 
+female <- rbinom(n, 1, 0.5)    
+severity <- rbinom(n, 1, 0.4)   
+age <- runif(n, min = 20, max = 80)
+logit_survival <- -1 + 1.5 * treatment - 2 * severity + 0.01 * (age - 50)
+prob_survival <- 1 / (1 + exp(-logit_survival))
+survival <- rbinom(n, 1, prob_survival)
+
+df <- data.frame(
+  treatment = treatment,
+  survival = survival,
+  age = age,
+  female = female,
+  severity = severity
+)
+
+# Make table
+tbl_summary(df,
+            type = everything() ~ "continuous",
+            by = treatment,
+            statistic = list(all_continuous()  ~ "{mean} ({sd})"), 
+            label = list(
+  survival = "Survival",
+  age = "Age in years",
+  female = "Female",
+  severity = "Severity Score"),
+              digits = all_continuous() ~ 2) %>% as_gt() %>%
+  rm_footnotes() %>%
+     tab_source_note(source_note = md(
+    "­")) %>%
+   tab_source_note(source_note = md(
+    "**Notes:** Here is additional information on the table, which can be lengthy. It does not have to be but in order to check for line breaks, it makes sense to have it this way. It does not have to be but in order to check for line breaks, it makes sense to have it this way."
+  ))
+```
+
+Descriptive statistics by group
+:::
+
+```{=tex}
+\lipsum[1-2]
+\clearpage
+```
+::: {#tbl-regression}
+```{r regressions}
+#| echo: false 
+#| warning: false
+#| message: false
+#| tbl-align: center
+#| tbl-pos: T
+
+library(estimatr) # OLS with robust SE's
+library(modelsummary) # Combine regression tables
+
+# Generate randm rada
+set.seed(123)
+n <- 500
+treatment <- rbinom(n, 1, 0.5) 
+female <- rbinom(n, 1, 0.5)    
+severity <- rbinom(n, 1, 0.4)   
+age <- runif(n, min = 20, max = 80)
+logit_survival <- -1 + 1.5 * treatment - 2 * severity + 0.01 * (age - 50)
+prob_survival <- 1 / (1 + exp(-logit_survival))
+survival <- rbinom(n, 1, prob_survival)
+
+df <- data.frame(
+  treatment = treatment,
+  survival = survival,
+  age = age,
+  female = female,
+  severity = severity
+)
+
+# Make table
+models<-list(
+ "(I)"= lm_robust(survival ~ treatment,
+             data = df),
+ "(II)"= lm_robust(survival ~ treatment + female + age + severity,
+             data = df),
+ "(III)"= lm_robust(survival ~ treatment,
+             data = df %>% filter(female==0)),
+ "(IV)"= lm_robust(survival ~ treatment + female + age + severity,
+             data = df %>% filter(female==0)),
+ "(V)"= lm_robust(survival ~ treatment,
+             data = df %>% filter(female==1)),
+ "(VI)"= lm_robust(survival ~ treatment + female + age + severity,
+             data = df %>% filter(female==1))
+)
+
+# Format summary statistics
+gm <- tibble::tribble(
+  ~raw,        ~clean,          ~fmt,
+  "nobs",      "N",             0,
+  "r.squared", "R²",            2)
+
+# Format coefficients
+ cm <- c(treatment="Treatment")
+
+modelsummary(models, 
+             stars = c('*' = .1, '**' = .05, '***' = 0.01),
+             coef_rename = c(),
+             statistic = "std.error",
+             gof_map = gm,
+             coef_map = cm,
+             escape = FALSE,
+             output = "gt") %>% 
+  tab_spanner(
+    label = "Full Sample",
+    columns = c(2, 3)
+  ) %>%
+  tab_spanner(
+    label = "Men",
+    columns = c(4,5)
+   ) %>%
+  tab_spanner(
+    label = "Women",
+    columns = c(6,7)) %>% 
+  rm_source_notes() %>% 
+     tab_source_note(source_note = md(
+    "­")) %>%
+   tab_source_note(source_note = md(
+    "**Notes:** Here is additional information on the table, which can be lengthy. It does not have to be but in order to check for line breaks, it makes sense to have it this way. It does not have to be but in order to check for line breaks, it makes sense to have it this way."
+  )) %>%
+  tab_style(style = cell_borders(sides = c("bottom"), color="red", weight = px(1.5)),
+            locations = cells_body(rows = c(2))) #ATM tab_style not converted to TeX!
+```
+
+Linear Regression Models
+:::
+
+\lipsum[1-2]
+
+# References {.unnumbered}
+
+::: {#refs}
+:::
+
+\clearpage
+
+{{< pagebreak >}}
+
+# Appendix {.unnumbered}
+
+```{=tex}
+% Always keep this code if you want to use an appendix
+
+\renewcommand{\thetable}{A.\arabic{table}}
+\renewcommand{\thefigure}{A.\arabic{figure}}
+\setcounter{table}{0}
+\setcounter{figure}{0}
+\FloatBarrier
+```
+
+::: {#tbl-regression2}
+```{r regression2}
+#| echo: false 
+#| warning: false
+#| message: false
+#| tbl-align: center
+#| tbl-pos: T
+
+library(estimatr) # OLS with robust SE's
+library(modelsummary) # Combine regression tables
+
+# Generate randm rada
+set.seed(123)
+n <- 500
+treatment <- rbinom(n, 1, 0.5) 
+female <- rbinom(n, 1, 0.5)    
+severity <- rbinom(n, 1, 0.4)   
+age <- runif(n, min = 20, max = 80)
+logit_survival <- -1 + 1.5 * treatment - 2 * severity + 0.01 * (age - 50)
+prob_survival <- 1 / (1 + exp(-logit_survival))
+survival <- rbinom(n, 1, prob_survival)
+
+df <- data.frame(
+  treatment = treatment,
+  survival = survival,
+  age = age,
+  female = female,
+  severity = severity
+)
+
+# Make table
+models<-list(
+ "(I)"= lm_robust(survival ~ treatment,
+             data = df),
+ "(II)"= lm_robust(survival ~ treatment + female + age + severity,
+             data = df),
+ "(III)"= lm_robust(survival ~ treatment,
+             data = df %>% filter(female==0)),
+ "(IV)"= lm_robust(survival ~ treatment + female + age + severity,
+             data = df %>% filter(female==0)),
+ "(V)"= lm_robust(survival ~ treatment,
+             data = df %>% filter(female==1)),
+ "(VI)"= lm_robust(survival ~ treatment + female + age + severity,
+             data = df %>% filter(female==1))
+)
+
+# Format summary statistics
+gm <- tibble::tribble(
+  ~raw,        ~clean,          ~fmt,
+  "nobs",      "N",             0,
+  "r.squared", "R²",            2)
+
+# Format coefficients
+ cm <- c(treatment="Treatment")
+
+modelsummary(models, 
+             stars = c('*' = .1, '**' = .05, '***' = 0.01),
+             coef_rename = c(),
+             statistic = "std.error",
+             gof_map = gm,
+             coef_map = cm,
+             escape = FALSE,
+             output = "gt") %>% 
+  tab_spanner(
+    label = "Full Sample",
+    columns = c(2, 3)
+  ) %>%
+  tab_spanner(
+    label = "Men",
+    columns = c(4,5)
+   ) %>%
+  tab_spanner(
+    label = "Women",
+    columns = c(6,7)) %>% 
+  rm_source_notes() %>% 
+     tab_source_note(source_note = md(
+    "­")) %>%
+   tab_source_note(source_note = md(
+    "**Notes:** Here is additional information on the table, which can be lengthy. It does not have to be but in order to check for line breaks, it makes sense to have it this way. It does not have to be but in order to check for line breaks, it makes sense to have it this way."
+  )) %>%
+  tab_style(style = cell_borders(sides = c("bottom"), color="red", weight = px(1.5)),
+            locations = cells_body(rows = c(2))) #ATM tab_style not converted to TeX!
+```
+
+Linear Regression Models for the Appendix
+:::

@@ -1,0 +1,166 @@
+%***********************************************************
+% zewwww Paper Template
+% Simon Reif & Benedikt Stelter, 19 September 2024
+%
+% Preamble
+% This tex code is use to be run together with the
+% corresponding Quarto file.
+%***********************************************************
+
+% Packages
+\documentclass[12pt,a4paper,oneside]{article} % Layout
+\usepackage[utf8]{inputenc}
+\usepackage[british]{babel}
+\usepackage{graphicx,txfonts} % Even more symbols
+\usepackage[T1]{fontenc}
+\usepackage[onehalfspacing]{setspace}
+\usepackage[strict=true, style=american]{csquotes}
+\usepackage[lmargin=1.2in,rmargin=1.2in,tmargin=1.2in,bmargin=1.2in]{geometry}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage{colortbl}
+\usepackage{booktabs}
+\usepackage{threeparttable}
+\usepackage{subcaption}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{fontspec}
+\usepackage{amssymb} % Extra symbols
+\usepackage{titling}
+\usepackage[style=$biblio-style$]{biblatex}
+\usepackage[linktoc=all, colorlinks=true]{hyperref}
+\usepackage{placeins}
+
+
+% Use packages from YMAL header:
+$add-tex$
+
+% Set text format
+\setmainfont[BoldFont=LinLibertine_RB.ttf,
+ItalicFont=LinLibertine_RI.ttf]{LinLibertine_R.ttf}
+\definecolor{footnotecolor}{RGB}{$if(color-links)$$color-links$$else$0, 0, 0$endif$}
+
+% Add new pandocbounced command to comply with pandoc update 3.5
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+\makeatother
+
+% Unnecessary but nice: change symbols for title page notes
+\makeatletter
+\def\@fnsymbol#1{\ensuremath{\ifcase#1\or \varheartsuit \or \bigstar \or \dagger\or \ddagger\or
+\mathsection\or \mathparagraph\or \|\or **\or \dagger\dagger
+\or \ddagger\ddagger \else\@ctrerr\fi}}
+\makeatother
+
+\settowidth{\thanksmarkwidth}{*}
+\setlength{\thanksmargin}{-\thanksmarkwidth}
+
+
+% Add Bib file from YMAL Header
+\addbibresource{$bibliography$}
+
+% Print references
+ $if(csl-refs)$
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newenvironment{CSLReferences}%
+{$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
+	\everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
+{\par}
+ $endif$
+
+\makeatletter
+\@ifundefined{date}{}{\date{}}
+\setcounter{page}{1}
+
+\makeatletter
+\renewcommand\@makefnmark{\hbox{\@textsuperscript{\normalfont\color{footnotecolor}\@thefnmark}}}
+\renewcommand\@makefntext[1]{%
+  \parindent 1em\noindent
+            \hb@xt@1.8em{%
+                \hss\@textsuperscript{\normalfont\@thefnmark}}#1}
+\makeatother
+
+% Make font size of minipage scriptsize by default s.t. table notes are small
+\AtBeginEnvironment{minipage}{\scriptsize}
+
+\hypersetup{
+	$if(title-meta)$
+	pdftitle={$title-meta$},
+	$endif$
+	$if(author-meta)$
+	pdfauthor={$author-meta$},
+	$endif$
+	$if(lang)$
+	pdflang={$lang$},
+	$endif$
+	$if(subject)$
+	pdfsubject={$subject$},
+	$endif$
+	$if(keywords)$
+	pdfkeywords={$for(keywords)$$keywords$$sep$, $endfor$},
+	$endif$
+	colorlinks=true,
+	linkcolor={[RGB]{$if(color-links)$$color-links$$else$0, 0, 0$endif$}},
+	filecolor={[RGB]{$if(color-links)$$color-links$$else$0, 0, 0$endif$}},
+	citecolor={[RGB]{$if(color-links)$$color-links$$else$0, 0, 0$endif$}},
+	urlcolor={[RGB]{$if(color-links)$$color-links$$else$0, 0, 0$endif$}},
+	pdfcreator={LaTeX via pandoc}}
+
+\begin{document}
+
+%***********************************************************
+% Title page
+%***********************************************************
+
+\setlength{\droptitle}{-8em}  % Change whitespace above title
+	\title{	\rule{\linewidth}{0.5mm} \textbf{
+		{\LARGE $title$ \vspace{-15pt} }}\thanks{\noindent { }$thanks$}  \rule{\linewidth}{0.5mm}  }
+\date{\hspace{87pt}\scriptsize{\textbf{$number$ $repohash$}} \vspace{-5pt} \newline  \normalsize $date$} 
+
+\author{
+	$for(by-author)$
+	\textbf{$it.name.literal$}$if(it.acknowledgements)$\thanks{ { }$it.acknowledgements$}$endif$\\
+	$for(it.affiliations)$$if(it.name)$\small{$it.name$}$endif$$if(it.department)$\\$elseif(it.name)$\vspace{-1.5ex}\\$endif$
+	$endfor$$sep$\and$endfor$\vspace{10pt}}
+
+\maketitle
+\thispagestyle{empty}
+
+\begin{center}
+\vspace{-25pt}	\noindent \textit{$prelim-note$}
+\end{center}
+
+\begin{abstract}
+	\vspace{-15pt}	\singlespacing{
+		\noindent $abstract$
+
+		\bigskip
+
+	\noindent \textbf{Keywords}: $keywords$  \newline
+		\noindent	\textbf{JEL codes}: $jel$
+}
+\end{abstract}
+\thispagestyle{empty}
+
+%***********************************************************
+% Main Text
+%***********************************************************
+\clearpage
+\setcounter{page}{1}
+\interfootnotelinepenalty=10000
+\clearpage
+\newpage{}
+
+% Start the main text
+$body$
+\end{document}
