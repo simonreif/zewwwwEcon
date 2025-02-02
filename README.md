@@ -1,17 +1,17 @@
 
 <!-- README.md is generated from README.Rmd. Please edit the Rmd file -->
 
-# zewwww_econ Quarto Templates
+# zewwwwEcon Quarto Templates
 
-The `zewwww_econ` package allows to start a new project in
+The `zewwwwEcon` package allows to start a new project in
 <a href="https://posit.co/download/rstudio-desktop/"
 target="_blank">RStudio</a> that contains the basic setup for an
 empirical research project. It features
 <a href="https://quarto.org/" target="_blank">Quarto</a> templates and
 some `ggplot2` style adjustments to generate nice looking PDFs for
 Slides and Paper in an environment that makes reproducibility easy. This
-is an unbranded version to be shared on the `www` based on the
-`zew_econ` package developed for internal use at the
+is an unbranded version to be shared on the `www` based on the `zewEcon`
+package developed for internal use at the
 <a href="https://www.zew.de/en/" target="_blank">ZEW - Leibniz Centre
 for European Economic Research</a> in Mannheim, Germany. For a preview
 of the PDF versions, have a lookt at the
@@ -56,7 +56,7 @@ need to install, in case you have not yet).
 Option 1: Install from github
 
 ``` r
-devtools::install_git("https://github.com/simonreif/zewwww_econ")
+devtools::install_git("https://github.com/simonreif/zewwwwEcon")
 ```
 
 Option 2: Install a local `.zip` copy of the repository. This is useful
