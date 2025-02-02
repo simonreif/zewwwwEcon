@@ -1,13 +1,7 @@
 # Load packages
-library(tidyverse)
-library(gt)
-library(gtsummary)
-library(ggpubr)
-library(broom)
-library(estimatr) # OLS with robust SE's
-library(modelsummary) # Combine regression tables
-library(sf) # Plot Maps
-library(readr) # Read CSV
+pacman::p_load(tidyverse, readr, sf) # Data wrangling 
+pacman::p_load(estimatr) # Estimating things
+pacman::p_load(gt, gtsummary, modelsummary, ggpubr, broom) # Format output
 
 # ggplot2 Settings
 theme_set(theme_classic())

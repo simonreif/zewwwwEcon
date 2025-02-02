@@ -73,7 +73,7 @@ source("../B_Prog/0setup.R")
 
 # Introduction
 
-Quarto enables you to weave together content and executable code. @abadieSemiparametric2005 have not used this to put their thoughts into a finished document, since Quarto did not exist back then. To learn more about Quarto see <https://quarto.org>.
+Quarto enables you to weave together content and executable code. @reifSettingIncentivesRight2025 is a nice example for referencing. To learn more about Quarto see <https://quarto.org>.
 
 # References {.unnumbered}
 

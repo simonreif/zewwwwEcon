@@ -6,25 +6,25 @@ output: github_document
 
 # zewwww_econ Quarto Templates
 
-The `zewwww_econ` package allows to start a new project in [RStudio](https://posit.co/download/rstudio-desktop/) that contains the basic setup for an empirical research project. It features [Quarto](https://quarto.org/) templates and some `ggplot2` style adjustments to generate nice looking PDFs for Slides and Paper in an environment that makes reproducibility easy. This is an unbranded version to be shared on the `www` based on the `zew_econ` package developed for internal use at the [ZEW - Leibniz Centre for European Economic Research](https://www.zew.de/en/) in Mannheim, Germany. Click on the previews to get to the example PDF files.
+The `zewwww_econ` package allows to start a new project in [RStudio](https://posit.co/download/rstudio-desktop/){target="_blank"} that contains the basic setup for an empirical research project. It features [Quarto](https://quarto.org/){target="_blank"} templates and some `ggplot2` style adjustments to generate nice looking PDFs for Slides and Paper in an environment that makes reproducibility easy. This is an unbranded version to be shared on the `www` based on the `zew_econ` package developed for internal use at the [ZEW - Leibniz Centre for European Economic Research](https://www.zew.de/en/){target="_blank"} in Mannheim, Germany. For a preview, here are PDF versions of the [Paper](../../blob/main/examples/FullProject/Paper/example_paper.pdf){target="_blank"} and [Slides](../../blob/main/examples/FullProject/Slides/example_slides.pdf){target="_blank"}.
 
 ::: {layout-ncol="2"}
-[![Paper](pics/paper_zewwww.png){width="20%"}](../../examples/FullProject/Paper/example_paper.pdf) [![Slides](pics/slides_zewwww.png){width="20%"}](../../examples/FullProject/Slides/example_slides.pdf)
+![Paper](pics/paper_zewwww.png){width="5%"} ![Slides](pics/slides_zewwww.png){width="5%"}
 :::
 
 ## Motivation
 
 While there are a lot of examples out there of how people use Quarto for their empirical research projects we found no solution out there that contains all the details required for the idiosyncrasies of applied economics research output.[^1]
 
-[^1]: Examples are the [Journal templates](https://quarto.org/docs/journals/formats.html) maintained by Quarto, the [Hikmah templates](https://github.com/andrewheiss/hikmah-academic-quarto) by Andrew Heiss, the [research template](https://github.com/AaronGullickson/research-template/) by Aaron Gullickson or the [froggeR](http://azimuth-project.tech/froggeR/index.html) package by Kyle Grealis.
+[^1]: Examples are the [Journal templates](https://quarto.org/docs/journals/formats.html){target="_blank"} maintained by Quarto, the [Hikmah templates](https://github.com/andrewheiss/hikmah-academic-quarto){target="_blank"} by Andrew Heiss, the [research template](https://github.com/AaronGullickson/research-template/){target="_blank"} by Aaron Gullickson or the [froggeR](http://azimuth-project.tech/froggeR/index.html){target="_blank"} package by Kyle Grealis.
 
 ## Requirements and intended use
 
-For the package to work properly, [R](https://cran.r-project.org/) (≥ 4.0), [Rstudio](https://posit.co/download/rstudio-desktop/), [Quarto](https://quarto.org/docs/get-started/) (≥ 1.6) and [LaTeX](https://quarto.org/docs/output-formats/pdf-engine.html) (e.g. TeX Live or tinytex, but definitely a distribution that features XeLaTex) need to be installed.
+For the package to work properly, [R](https://cran.r-project.org/){target="_blank"} (≥ 4.0), [Rstudio](https://posit.co/download/rstudio-desktop/){target="_blank"}, [Quarto](https://quarto.org/docs/get-started/){target="_blank"} (≥ 1.6) and [LaTeX](https://quarto.org/docs/output-formats/pdf-engine.html){target="_blank"} (e.g. TeX Live or tinytex, but definitely a distribution that features XeLaTex) need to be installed.
 
 ## Installation
 
-For those only interested in the details of our implementation, the `examples` folder in this repository contains standalone documents for [Paper](../../examples/Paper), [Slides](../../examples/Slides) and the [FullProject](../../examples/FullProject) setup. To have the full setup automatically produced in the RStudio project wizard, please install the package. The package can be installed in R using `devtools` (which you need to install, in case you have not yet).
+For those only interested in the details of our implementation, the `examples` folder in this repository contains standalone documents for [Paper](../../blob/main/examples/Paper){target="_blank"}, [Slides](../../blob/main/examples/Slides){target="_blank"} and the [FullProject](../../blob/main/examples/FullProject){target="_blank"} setup. To have the full setup automatically produced in the RStudio project wizard, please install the package. The package can be installed in R using `devtools` (which you need to install, in case you have not yet).
 
 Option 1: Install from github
 
@@ -52,7 +52,7 @@ The `zewwwwEcon` template should be somewhere down there.
 
 ![](pics/wizz3.png){width="50%"}
 
-You can then add the folder to GitHub by creating a [local git repository](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github#initializing-a-git-repository) and then adding the [local repository to GitHub](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github#adding-a-local-repository-to-github-using-git).
+You can then add the folder to GitHub by creating a [local git repository](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github#initializing-a-git-repository){target="_blank"} and then adding the [local repository to GitHub](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github#adding-a-local-repository-to-github-using-git){target="_blank"}.
 
 ## Project structure
 
@@ -102,7 +102,7 @@ The YAML header at the beginning of the `.qmd` document contains information tha
 
 -   `pdf-engine:` Which LaTeX distribution to use. Everything works fine with `XeLaTeX` while other engines have caused problems.
 -   `cap-location:` While Quarto allows for figure and table captions to be at the bottom of the output, the very sensible default here is `top` since we have notes to write at the bottom.
--   `add-tex:` We do automatically load the most common `TeX` packages in the template files. However, if you need something in addition or want to input some raw `TeX` in the document preambel, this is the space to do it.
+-   `add-tex:` We do automatically load the most common `TeX` packages in the template files. However, if you need something in addition or want to input some raw `TeX` in the document preamble, this is the space to do it.
 -   `editor:` Quarto has a `visual` editor that can be helpful. It can however also mess around with your code, so the default is `source`.
 
 #### Options for Paper
@@ -122,11 +122,11 @@ The YAML header at the beginning of the `.qmd` document contains information tha
 
 ### References
 
-You can use the [pandoc syntax](https://pandoc.org/MANUAL.html#citation-syntax) for referencing, so `@key` is for text cites and `[@key]` is for indirect references. [Zotero](https://www.zotero.org/) is well [integrated in Quarto](https://quarto.org/docs/visual-editor/technical.html#citations-from-zotero).
+You can use the [pandoc syntax](https://pandoc.org/MANUAL.html#citation-syntax){target="_blank"} for referencing, so `@key` is for text cites and `[@key]` is for indirect references. [Zotero](https://www.zotero.org/){target="_blank"} is well [integrated in Quarto](https://quarto.org/docs/visual-editor/technical.html#citations-from-zotero){target="_blank"}.
 
 ### Lintr
 
-To produce consistent code, [lintr](https://lintr.r-lib.org/) and [styler](https://github.com/r-lib/styler) can be a great tool. The package includes a `.lintr` file that takes the [default tidyverse linter](https://style.tidyverse.org/) but loosens the line length restriction to 120.
+To produce consistent code, [lintr](https://lintr.r-lib.org/){target="_blank"} and [styler](https://github.com/r-lib/styler){target="_blank"} can be a great tool. The package includes a `.lintr` file that takes the [default tidyverse linter](https://style.tidyverse.org/){target="_blank"} but loosens the line length restriction to 120.
 
 ### gitignore
 
@@ -134,7 +134,7 @@ We have tried to come up with a sensible default for the `.gitignore` file. When
 
 ### Makefile
 
-A makefile automates the execution of the full project. In the file, the full flow from raw data to final output is specified. `make` checks parts have changed and only executes those files and the files that depend on them. When correctly specified, you can just type `make` in the terminal and wait for the output to get updated. For a good introduction to makefiles, see [here](https://third-bit.com/py-rse/automate.html). On Windows, you need to install [GNU Make](https://www.gnu.org/software/make/) for the makefile to run.
+A makefile automates the execution of the full project. In the file, the full flow from raw data to final output is specified. `make` checks parts have changed and only executes those files and the files that depend on them. When correctly specified, you can just type `make` in the terminal and wait for the output to get updated. For a good introduction to makefiles, see [here](https://third-bit.com/py-rse/automate.html){target="_blank"}. On Windows, you need to install [GNU Make](https://www.gnu.org/software/make/){target="_blank"} for the makefile to run.
 
 ## Implementation details
 
@@ -170,13 +170,13 @@ All programs used in this template are still being developed and therefore some 
 
 **Problem:** When notes are added as a `minipage` (directly via `LaTeX` or indirectly via `gt`) then they appear directly with no space below the output.
 
-**Solution:** For the `LaTeX` code for the minipage below Figures, we can just add `\vspace{}` to solve this. For table notes from `gt`, we need to add an additional source note with an empty unicode character. This empty source code then is displayed as some space below the Table (<https://github.com/rstudio/gt/issues/1508>). As output from `gt` is automatically put into a minipage and there is no way to change the style there, the template defines the font size of all minipage content to scriptsize. This means that if you want to use a normal size minipage, you have to set normalsize in the beginning of your minipage!
+**Solution:** For the `LaTeX` code for the minipage below Figures, we can just add `\vspace{}` to solve this. For table notes from `gt`, we need to add an additional source note with an empty unicode character. This empty source code then is displayed as some space below the Table (<https://github.com/rstudio/gt/issues/1508>){target="\_blank"}. As output from `gt` is automatically put into a minipage and there is no way to change the style there, the template defines the font size of all minipage content to scriptsize. This means that if you want to use a normal size minipage, you have to set normalsize in the beginning of your minipage!
 
 #### Caching in Quarto chunks
 
 **Problem:** Caching in Quarto does not realize when a file that is loaded into a chunk has changed. Since we normally create tables and graphs in dedicated scripts and import the script output as `.rds` files into the chunk, a change to the RDS file as a result of a code change in the script will not get realized by the default caching option.
 
-**Solution:** We cache the input `.rds` file in the chunk using its MD5 hash as `cache.extra=tools::md5sum('name_of_output.rds')`. This means when the underlying file changes, the chunk is run. If the code is unchanged the chunk is not re-run. An alternative would be to use `file.mtime()`(<https://yihui.org/en/2018/06/cache-invalidation/>).
+**Solution:** We cache the input `.rds` file in the chunk using its MD5 hash as `cache.extra=tools::md5sum('name_of_output.rds')`. This means when the underlying file changes, the chunk is run. If the code is unchanged the chunk is not re-run. An alternative would be to use `file.mtime()`(<https://yihui.org/en/2018/06/cache-invalidation/>){target="\_blank"}.
 
 ## Package development
 

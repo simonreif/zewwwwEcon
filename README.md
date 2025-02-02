@@ -4,20 +4,26 @@
 # zewwww_econ Quarto Templates
 
 The `zewwww_econ` package allows to start a new project in
-[RStudio](https://posit.co/download/rstudio-desktop/) that contains the
-basic setup for an empirical research project. It features
-[Quarto](https://quarto.org/) templates and some `ggplot2` style
-adjustments to generate nice looking PDFs for Slides and Paper in an
-environment that makes reproducibility easy. This is an unbranded
-version to be shared on the `www` based on the `zew_econ` package
-developed for internal use at the [ZEW - Leibniz Centre for European
-Economic Research](https://www.zew.de/en/) in Mannheim, Germany. Click
-on the previews to get to the example PDF files.
+<a href="https://posit.co/download/rstudio-desktop/"
+target="_blank">RStudio</a> that contains the basic setup for an
+empirical research project. It features
+<a href="https://quarto.org/" target="_blank">Quarto</a> templates and
+some `ggplot2` style adjustments to generate nice looking PDFs for
+Slides and Paper in an environment that makes reproducibility easy. This
+is an unbranded version to be shared on the `www` based on the
+`zew_econ` package developed for internal use at the
+<a href="https://www.zew.de/en/" target="_blank">ZEW - Leibniz Centre
+for European Economic Research</a> in Mannheim, Germany. For a preview,
+here are PDF versions of the
+<a href="../../blob/main/examples/FullProject/Paper/example_paper.pdf"
+target="_blank">Paper</a> and
+<a href="../../blob/main/examples/FullProject/Slides/example_slides.pdf"
+target="_blank">Slides</a>.
 
 <div layout-ncol="2">
 
-[<img src="pics/paper_zewwww.png" style="width:20.0%" alt="Paper" />](../../examples/FullProject/Paper/example_paper.pdf)
-[<img src="pics/slides_zewwww.png" style="width:20.0%" alt="Slides" />](../../examples/FullProject/Slides/example_slides.pdf)
+<img src="pics/paper_zewwww.png" style="width:5.0%" alt="Paper" />
+<img src="pics/slides_zewwww.png" style="width:5.0%" alt="Slides" />
 
 </div>
 
@@ -30,18 +36,24 @@ economics research output.[^1]
 
 ## Requirements and intended use
 
-For the package to work properly, [R](https://cran.r-project.org/) (≥
-4.0), [Rstudio](https://posit.co/download/rstudio-desktop/),
-[Quarto](https://quarto.org/docs/get-started/) (≥ 1.6) and
-[LaTeX](https://quarto.org/docs/output-formats/pdf-engine.html)
-(e.g. TeX Live or tinytex, but definitely a distribution that features
-XeLaTex) need to be installed.
+For the package to work properly,
+<a href="https://cran.r-project.org/" target="_blank">R</a> (≥ 4.0),
+<a href="https://posit.co/download/rstudio-desktop/"
+target="_blank">Rstudio</a>,
+<a href="https://quarto.org/docs/get-started/"
+target="_blank">Quarto</a> (≥ 1.6) and
+<a href="https://quarto.org/docs/output-formats/pdf-engine.html"
+target="_blank">LaTeX</a> (e.g. TeX Live or tinytex, but definitely a
+distribution that features XeLaTex) need to be installed.
 
 ## Installation
 
 For those only interested in the details of our implementation, the
 `examples` folder in this repository contains standalone documents for
-`Paper`, `Slides` and the `FullProject` setup. To have the full setup
+<a href="../../blob/main/examples/Paper" target="_blank">Paper</a>,
+<a href="../../blob/main/examples/Slides" target="_blank">Slides</a> and
+the <a href="../../blob/main/examples/FullProject"
+target="_blank">FullProject</a> setup. To have the full setup
 automatically produced in the RStudio project wizard, please install the
 package. The package can be installed in R using `devtools` (which you
 need to install, in case you have not yet).
@@ -74,10 +86,11 @@ The `zewwwwEcon` template should be somewhere down there.
 
 <img src="pics/wizz3.png" style="width:50.0%" />
 
-You can then add the folder to GitHub by creating a [local git
-repository](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github#initializing-a-git-repository)
-and then adding the [local repository to
-GitHub](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github#adding-a-local-repository-to-github-using-git).
+You can then add the folder to GitHub by creating a <a
+href="https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github#initializing-a-git-repository"
+target="_blank">local git repository</a> and then adding the <a
+href="https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github#adding-a-local-repository-to-github-using-git"
+target="_blank">local repository to GitHub</a>.
 
 ## Project structure
 
@@ -154,7 +167,7 @@ of the entries are self-explanatory.
   `top` since we have notes to write at the bottom.
 - `add-tex:` We do automatically load the most common `TeX` packages in
   the template files. However, if you need something in addition or want
-  to input some raw `TeX` in the document preambel, this is the space to
+  to input some raw `TeX` in the document preamble, this is the space to
   do it.
 - `editor:` Quarto has a `visual` editor that can be helpful. It can
   however also mess around with your code, so the default is `source`.
@@ -189,19 +202,21 @@ of the entries are self-explanatory.
 
 ### References
 
-You can use the [pandoc
-syntax](https://pandoc.org/MANUAL.html#citation-syntax) for referencing,
-so `@key` is for text cites and `[@key]` is for indirect references.
-[Zotero](https://www.zotero.org/) is well [integrated in
-Quarto](https://quarto.org/docs/visual-editor/technical.html#citations-from-zotero).
+You can use the <a href="https://pandoc.org/MANUAL.html#citation-syntax"
+target="_blank">pandoc syntax</a> for referencing, so `@key` is for text
+cites and `[@key]` is for indirect references.
+<a href="https://www.zotero.org/" target="_blank">Zotero</a> is well <a
+href="https://quarto.org/docs/visual-editor/technical.html#citations-from-zotero"
+target="_blank">integrated in Quarto</a>.
 
 ### Lintr
 
-To produce consistent code, [lintr](https://lintr.r-lib.org/) and
-[styler](https://github.com/r-lib/styler) can be a great tool. The
-package includes a `.lintr` file that takes the [default tidyverse
-linter](https://style.tidyverse.org/) but loosens the line length
-restriction to 120.
+To produce consistent code,
+<a href="https://lintr.r-lib.org/" target="_blank">lintr</a> and
+<a href="https://github.com/r-lib/styler" target="_blank">styler</a> can
+be a great tool. The package includes a `.lintr` file that takes the
+<a href="https://style.tidyverse.org/" target="_blank">default tidyverse
+linter</a> but loosens the line length restriction to 120.
 
 ### gitignore
 
@@ -218,7 +233,10 @@ parts have changed and only executes those files and the files that
 depend on them. When correctly specified, you can just type `make` in
 the terminal and wait for the output to get updated. For a good
 introduction to makefiles, see
-[here](https://third-bit.com/py-rse/automate.html).
+<a href="https://third-bit.com/py-rse/automate.html"
+target="_blank">here</a>. On Windows, you need to install
+<a href="https://www.gnu.org/software/make/" target="_blank">GNU
+Make</a> for the makefile to run.
 
 ## Implementation details
 
@@ -284,11 +302,12 @@ the output.
 can just add `\vspace{}` to solve this. For table notes from `gt`, we
 need to add an additional source note with an empty unicode character.
 This empty source code then is displayed as some space below the Table
-(<https://github.com/rstudio/gt/issues/1508>). As output from `gt` is
-automatically put into a minipage and there is no way to change the
-style there, the template defines the font size of all minipage content
-to scriptsize. This means that if you want to use a normal size
-minipage, you have to set normalsize in the beginning of your minipage!
+(<https://github.com/rstudio/gt/issues/1508>){target=“\_blank”}. As
+output from `gt` is automatically put into a minipage and there is no
+way to change the style there, the template defines the font size of all
+minipage content to scriptsize. This means that if you want to use a
+normal size minipage, you have to set normalsize in the beginning of
+your minipage!
 
 #### Caching in Quarto chunks
 
@@ -302,7 +321,7 @@ the script will not get realized by the default caching option.
 hash as `cache.extra=tools::md5sum('name_of_output.rds')`. This means
 when the underlying file changes, the chunk is run. If the code is
 unchanged the chunk is not re-run. An alternative would be to use
-`file.mtime()`(<https://yihui.org/en/2018/06/cache-invalidation/>).
+`file.mtime()`(<https://yihui.org/en/2018/06/cache-invalidation/>){target=“\_blank”}.
 
 ## Package development
 
@@ -325,12 +344,12 @@ These add-ons will require some work and coming up with specific lua
 filters. So this will take some time. If you have cool ideas or want to
 contribute, let us know!
 
-[^1]: Examples are the [Journal
-    templates](https://quarto.org/docs/journals/formats.html) maintained
-    by Quarto, the [Hikmah
-    templates](https://github.com/andrewheiss/hikmah-academic-quarto) by
-    Andrew Heiss, the [research
-    template](https://github.com/AaronGullickson/research-template/) by
-    Aaron Gullickson or the
-    [froggeR](http://azimuth-project.tech/froggeR/index.html) package by
-    Kyle Grealis.
+[^1]: Examples are the
+    <a href="https://quarto.org/docs/journals/formats.html"
+    target="_blank">Journal templates</a> maintained by Quarto, the
+    <a href="https://github.com/andrewheiss/hikmah-academic-quarto"
+    target="_blank">Hikmah templates</a> by Andrew Heiss, the
+    <a href="https://github.com/AaronGullickson/research-template/"
+    target="_blank">research template</a> by Aaron Gullickson or the
+    <a href="http://azimuth-project.tech/froggeR/index.html"
+    target="_blank">froggeR</a> package by Kyle Grealis.
