@@ -1,0 +1,480 @@
+---
+title: "Introducing the zewwwwEcon Presentation Template"
+pdf-engine: xelatex
+authors:
+  - name: "Lord Macbeth"
+    affiliation: Thane of Glamis
+  - name: "Lady Macbeth"
+    affiliation: Queen of Scotland
+event: "Dunsinane Hill"
+presenter: "Simon" # Write name if it should appear on the bottom of every slide
+date: today
+date-format: "D MMM YYYY"
+partner-logo: "empty.png" #Change or override file to include another logo
+totalnumber: false # Make true if total number of slides should be shown on bottom
+format:
+  beamer: 
+    template: zewwwwSlidesTemplate.tex
+    keep-tex: true
+    cite-method: biblatex
+
+english: yes
+references: yes
+cap-location: top    
+bibliography: ../references.bib
+biblio-style: apa #Select from https://www.overleaf.com/learn/latex/Biblatex_bibliography_styles  
+
+add-tex: |
+   \usepackage{setspace}
+   \usepackage{bm}
+   \usepackage{lipsum} 
+   
+editor: source
+---
+
+```{r Setup}
+#| echo: false
+#| warning: false
+#| message: false
+
+# Reload Setup s.t. everything renders as intended
+source("../B_Prog/0setup.R")
+```
+
+## Introduction
+
+This Quarto template is supposed to make writing and presenting economic research easy. Since everything from data to publication is happening in the same environment, everything is easily reproducible and output can be modified for the paper and the presentation at the same time.
+
+You can for example
+
+-   Displaying text in different forms
+-   Handling images
+-   Graphs that fit the aesthetic of the slides
+-   Tables 1 to 3 of a standard econ project
+
+# The various forms of displaying text in a presentation
+
+## Different text inputs
+
+You can make bullet lists with different levels
+
+-   This looks nice and helps separate thoughts
+-   But you should always have two bullets, otherwise it looks a bit weired
+    -   Which to be fair one can argue about
+        -   At least on the third level
+-   And going back to the first level
+
+Sometimes one might need equations. Just use \LaTeX for this in the text to show that $2^{2} > 3$. You can also have your equation stand out like this:
+
+$$\hat{\beta} = (X'X)^{-1} X'Y$$
+
+## Text and picture side by side using columns
+
+There is a very small (0.4%) column on the left that aligns the first context column with the headline. These type of slides are in general not much fun to produce.
+
+::: columns
+::: {.column width="0.4%"}
+:::
+
+::: {.column width="44.6%"}
+![](pictures/OLSpic.png){width="130pt," height="130pt"} \newline \scriptsize\textbf{Source:} Dall-E drawing a Bauhaus style representation of the OLS mechanism.
+:::
+
+::: {.column width="55%"}
+\normalsize
+
+```{=tex}
+\begin{equation}
+\frac{\partial S(\beta)}{\partial \beta} = -2X^\top (y - X\beta) = 0
+\end{equation}
+
+\begin{equation}
+X^\top X \hat{\beta} = X^\top y
+\end{equation}
+
+\begin{equation}
+\hat{\bm{\beta}} = (X^\top X)^{-1} X^\top y
+\end{equation}
+```
+These equations minimize the sum of squared residuals $S$. While this seems promising, others argue that this has been done before. It is even used to health insurance risk adjustment [@reifSettingIncentivesRight2025, EJHE].
+:::
+:::
+
+## Highlighting and References
+
+Sometimes it seems that not only are people putting books from boxes but also like boxes around some highlight text. An example would be something you (can not) find in @reifSettingIncentivesRight2025 [EJHE]:
+
+```{=tex}
+\begin{exampleblock}{Defining an example}
+\normalsize A lot could be in here. A definition. An equation.  A reference to \textcite[EJHE]{reifSettingIncentivesRight2025}. Not that since this is pure \LaTeX, you need to also use the respective cite styles \autocites[EJHE]{reifSettingIncentivesRight2025}. 
+\end{exampleblock}
+```
+
+## Show code and Output
+```{r program}
+#| echo: true 
+#| warning: false
+#| message: false
+
+# We can use code that is displayed in the output
+2^2
+2^2 > 3
+```
+
+# Graphs
+
+## Histogram
+
+::: {#fig-hist}
+```{r Histogram, cache=TRUE, cache.extra=tools::md5sum("../D_Out/g_hist.rds")}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-width: 3.5
+#| fig-asp: 0.5
+#| fig-align: center
+#| fig-pos: H
+
+g_hist <- readRDS("../D_Out/g_hist.rds")
+g_hist
+rm(g_hist)
+```
+
+```{=tex}
+\vspace{-5pt}
+\begin{minipage}{0.9\textwidth}
+\scriptsize
+\singlespacing
+\textbf{Notes:} You can use this text to provide further information about the table. \lipsum[66]
+\end{minipage}
+\vspace{15pt}
+```
+Distribution of height (in cm) in random data
+:::
+
+## Barchart
+
+::: {#fig-barchart}
+```{r Barchart, cache=TRUE, cache.extra=tools::md5sum("../D_Out/g_bar.rds")}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-width: 3.5
+#| fig-asp: 0.5
+#| fig-align: center
+#| fig-pos: H
+
+g_bar <- readRDS("../D_Out/g_bar.rds")
+g_bar
+rm(g_bar)
+```
+
+```{=tex}
+\vspace{-5pt}
+\begin{minipage}{0.9\textwidth}
+\scriptsize
+\singlespacing
+\textbf{Notes:} You can use this text to provide further information about the table. \lipsum[66]
+\end{minipage}
+\vspace{15pt}
+```
+Number of Federal States by Country
+:::
+
+## Time Series
+
+::: {#fig-ts1}
+```{r tsplot1, cache=TRUE, cache.extra=tools::md5sum("../D_Out/g_tsplot.rds")}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-width: 3
+#| fig-asp: 0.5
+#| fig-align: center
+#| fig-pos: H
+
+g_tsplot <- readRDS("../D_Out/g_tsplot.rds")
+g_tsplot
+rm(g_tsplot)
+```
+
+```{=tex}
+\vspace{-5pt}
+\begin{minipage}{0.9\textwidth}
+\scriptsize
+\singlespacing
+\textbf{Notes:} You can use this text to provide further information about the table. \lipsum[66]
+\end{minipage}
+\vspace{15pt}
+```
+Displaying how things evolve over time
+:::
+
+## Scatterplot
+
+::: {#fig-scatterplot}
+```{r scatterplot, cache=TRUE, cache.extra=tools::md5sum("../D_Out/g_scatterplot.rds")}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-width: 3.5
+#| fig-asp: 0.5
+#| fig-align: center
+#| fig-pos: H
+
+g_scatterplot <- readRDS("../D_Out/g_scatterplot.rds")
+g_scatterplot
+rm(g_scatterplot)
+```
+
+```{=tex}
+\vspace{-5pt}
+\begin{minipage}{0.9\textwidth}
+\scriptsize
+\singlespacing
+\textbf{Notes:} You can use this text to provide further information about the table. \lipsum[66]
+\end{minipage}
+\vspace{15pt}
+```
+Two groups have very different values
+:::
+
+## Dotplot
+
+::: {#fig-dotplot}
+```{r dotplot, cache=TRUE, cache.extra=tools::md5sum("../D_Out/g_dotplot.rds")}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-width: 3.5
+#| fig-asp: 0.5
+#| fig-align: center
+#| fig-pos: H
+
+g_dotplot <- readRDS("../D_Out/g_dotplot.rds")
+g_dotplot
+rm(g_dotplot)
+```
+
+```{=tex}
+\vspace{-10pt}
+\begin{minipage}{0.9\textwidth}
+\scriptsize
+\singlespacing
+\textbf{Notes:} You can use this text to provide further information about the table. \lipsum[66]
+\end{minipage}
+\vspace{15pt}
+```
+Visualizing distributions with few observations
+:::
+
+## Event Study
+
+::: {#fig-eventstudy}
+```{r eventstudy, cache.extra=tools::md5sum("../D_Out/g_eventstudy.rds")}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-width: 3.5
+#| fig-asp: 0.6
+#| fig-align: center
+#| fig-pos: H
+
+g_eventstudy <- readRDS("../D_Out/g_eventstudy.rds")
+g_eventstudy
+rm(g_eventstudy)
+```
+
+```{=tex}
+\vspace{-10pt}
+\begin{minipage}{0.9\textwidth}
+\scriptsize
+\singlespacing
+\textbf{Notes:} You can use this text to provide further information about the table. \lipsum[66]
+\end{minipage}
+\vspace{15pt}
+```
+Coefficients relative to treatment time
+:::
+
+## Tourism overnight stays in southern Germany in 2023
+
+::: {#fig-choro}
+```{r choro, cache.extra=tools::md5sum("../D_Out/g_choro.rds")}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-width: 3.5
+#| fig-asp: 0.6
+#| fig-align: center
+#| fig-pos: H
+
+g_choro <- readRDS("../D_Out/g_choro.rds")
+g_choro
+rm(g_choro)
+```
+
+```{=tex}
+\vspace{-10pt}
+\begin{minipage}{0.9\textwidth}
+\scriptsize
+\singlespacing
+\textbf{Notes:} You can use this text to provide further information about the table. \lipsum[66]
+\end{minipage}
+\vspace{15pt}
+```
+This is a choropleth map
+:::
+
+## Counties with University Hospitals in southern Germany in 2023
+
+::: {#fig-indic}
+```{r indic, cache.extra=tools::md5sum("../D_Out/g_indic.rds")}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-width: 3.5
+#| fig-asp: 0.5
+#| fig-align: center
+#| fig-pos: H
+
+g_indic <- readRDS("../D_Out/g_indic.rds")
+g_indic
+rm(g_indic)
+```
+
+```{=tex}
+\vspace{-10pt}
+\begin{minipage}{0.9\textwidth}
+\scriptsize
+\singlespacing
+\textbf{Notes:} You can use this text to provide further information about the table. \lipsum[66]
+\end{minipage}
+\vspace{15pt}
+```
+This is an indicator map
+:::
+
+# Tables
+
+## Descriptives Table
+
+::: {#tbl-descriptives}
+```{r descriptives}
+#| echo: false
+#| warning: false
+#| message: false
+#| tbl-align: center
+#| tbl-pos: T
+
+t_descriptives <- readRDS("../D_Out/t_descriptives.rds")
+t_descriptives
+rm(t_descriptives)
+```
+
+Descriptive statistics by group
+:::
+
+## Regression Tables
+
+::: {#tbl-regression}
+```{r regressions}
+#| echo: false
+#| warning: false
+#| message: false
+#| tbl-align: center
+#| tbl-pos: T
+
+t_regression <- readRDS("../D_Out/t_regression.rds")
+t_regression
+rm(t_regression)
+```
+
+Linear Regression Models
+:::
+
+# What we have learned
+
+## Last Slide
+
+This slide will most likely be the one that the audience sees the longest. Take this into account when designing it. We could for example point out the following things: 
+
+-   A literature slide can be at the end of your presentation, but not to show it while the audience is discussing your paper (ok, maybe if you conducted a literature review...).
+-   If you present a table and say: "*Oh, this is probably a bit small*", then 1) you are probably right and 2) you could have changed it in advance. 
+
+
+# Appendix
+
+## Regression in the Appendix
+
+```{=tex}
+% Always keep this code if you want to use an appendix
+
+\renewcommand{\thetable}{A.\arabic{table}}
+\renewcommand{\thefigure}{A.\arabic{figure}}
+\setcounter{table}{0}
+\setcounter{figure}{0}
+```
+::: {#tbl-regression2}
+```{r regression2}
+#| echo: false
+#| warning: false
+#| message: false
+#| tbl-align: center
+#| tbl-pos: T
+
+t_regression <- readRDS("../D_Out/t_regression.rds")
+t_regression
+rm(t_regression)
+```
+
+Linear Regression Models for the Appendix
+:::
+
+## Figures in the Appendix
+
+::: {#fig-two}
+```{r jointplot, cache=TRUE, cache.extra=tools::md5sum("../D_Out/g_tsplot.rds")}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-align: center
+#| fig-pos: T
+#| fig-subcap:
+#|   - "Time Series"
+#|   - "Scatterplot"
+#| layout: [[-5, 35,-20, 35, -5]]
+
+g_tsplot <- readRDS("../D_Out/g_tsplot.rds")
+g_tsplot + theme(axis.title.x = element_text(size = 26), 
+                 axis.title.y = element_text(size = 26),
+                 axis.text.x = element_text(size = 26),
+                 axis.text.y = element_text(size = 26),
+                 legend.text = element_text(size = 26),
+                 legend.title = element_text(size = 26)
+)
+
+g_scatterplot <- readRDS("../D_Out/g_scatterplot.rds")
+g_scatterplot + theme(axis.title.x = element_text(size = 26), 
+                 axis.title.y = element_text(size = 26),
+                 axis.text.x = element_text(size = 26),
+                 axis.text.y = element_text(size = 26),
+                 legend.text = element_text(size = 26),
+                 legend.title = element_text(size = 26)
+)
+
+rm(g_scatterplot)
+rm(g_tsplot)
+```
+
+```{=tex}
+\vspace{-5pt}
+\begin{minipage}{0.9\textwidth}
+\scriptsize
+\singlespacing
+\textbf{Notes:} You can use this text to provide further information about the table. \lipsum[66]
+\end{minipage}
+\vspace{15pt}
+```
+Complex figure with two parts
+:::

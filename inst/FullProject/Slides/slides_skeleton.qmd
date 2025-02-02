@@ -1,0 +1,64 @@
+---
+title: "Introducing the zewwwwEcon Presentation Template"
+pdf-engine: xelatex
+authors:
+  - name: "Lord Macbeth"
+    affiliation: Thane of Glamis
+  - name: "Lady Macbeth"
+    affiliation: Queen of Scotland
+event: "Dunsinane Hill"
+presenter: "" # Write name if it should appear on the bottom of every slide
+date: today
+date-format: "D MMM YYYY"
+partner-logo: "empty.png" #Change or override file to include another logo
+totalnumber: false # Make true if total number of slides should be shown on bottom
+format:
+  beamer: 
+    template: zewwwwSlidesTemplate.tex
+    keep-tex: true
+    cite-method: biblatex
+
+english: yes
+references: # make yes to print bibliography
+cap-location: top    
+bibliography: ../references.bib
+biblio-style: apa #Select from https://www.overleaf.com/learn/latex/Biblatex_bibliography_styles  
+
+add-tex: |
+   \usepackage{setspace}
+   \usepackage{bm}
+   
+editor: source
+---
+
+```{r Setup}
+#| echo: false
+#| warning: false
+#| message: false
+
+# Reload Setup s.t. everything renders as intended
+source("../B_Prog/0setup.R")
+```
+
+## Introduction
+
+This Quarto template is supposed to make writing and presenting economic research easy. Since everything from data to publication is happening in the same environment, everything is easily reproducible and output can be modified for the paper and the presentation at the same time.
+
+You can for example
+
+-   Displaying text in different forms
+-   Handling images
+-   Graphs that fit the aesthetic of the slides
+-   Tables 1 to 3 of a standard econ project
+
+
+# Act IV
+
+## Visiting the three witches
+
+Important assumption regarding Great Birnam Wood
+
+-   It will not move towards Dunsinane Hill
+-   If assumption is violated, results might change
+
+

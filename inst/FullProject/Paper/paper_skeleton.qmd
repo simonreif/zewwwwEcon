@@ -1,0 +1,99 @@
+---
+title: "zewwwwEcon: A Template for Econ Articles with Quarto"
+pdf-engine: xelatex
+author:
+  - name: Lord Macbeth
+    affiliations:
+      - name: Thane of Glamis
+  - name: Lady Macbeth
+    acknowledgements: | 
+      Corrseponding author: Adress, Place. 
+    affiliations:
+      - name: Queen of Scotland
+  - name: First Witch
+    affiliations:
+      - name: Posters of the Sea
+      - name: Posters of the Land
+  - name: Second Witch
+    affiliations:
+      - name: Posters of the Sea
+      - name: Posters of the Land
+  - name: Third Witch
+    affiliations:
+      - name: Posters of the Sea
+      - name: Posters of the Land
+      
+thanks: |
+   We would like to thank ....  
+   
+prelim-note: "Preliminary draft - please do not distribute"
+  
+abstract: |
+  O, never Shall sun that morrow see! Your face, my thane, is as a book where men May read strange matters. To beguile the time, Look like the time; bear welcome in your eye, Your hand, your tongue: look like the innocent flower, But be the serpent under't. He that's coming Must be provided for: and you shall put This night's great business into my dispatch; Which shall to all our nights and days to come Give solely sovereign sway and masterdom.
+  
+jel: "These are the JEL codes"
+ 
+keywords: "These are the keywords"
+
+date: today # Alternatively, enter a date as "1 May 2024"
+date-format: "D MMMM YYYY"
+
+number: "Version 0.1"
+repohash: "#`r substr(system('git rev-parse HEAD', intern= TRUE),1,8)`" 
+# To include hash from another repository use system('git ls-remote ../your_git_repository_folder | grep HEAD', intern=TRUE)[1]" 
+  
+format:
+  pdf: 
+    template: zewwwwPaperTemplate.tex
+    keep-tex: true
+    cite-method: biblatex
+
+cap-location: top
+
+color-links: "82,125,164" # This the color for internal links and footnotes 
+# You can set an arbitrary RGB code here. When leaving empty, black is chosen as standard color
+bibliography: ../references.bib
+biblio-style: apa #Select from https://www.overleaf.com/learn/latex/Biblatex_bibliography_styles
+
+add-tex: |
+   \usepackage{bm}
+   \usepackage{setspace}
+   
+editor: source
+---
+
+```{r Setup}
+#| echo: false
+#| warning: false
+#| message: false
+
+# Reload Setup s.t. everything renders as intended
+source("../B_Prog/0setup.R")
+```
+
+# Introduction
+
+Quarto enables you to weave together content and executable code. @abadieSemiparametric2005 have not used this to put their thoughts into a finished document, since Quarto did not exist back then. To learn more about Quarto see <https://quarto.org>.
+
+# References {.unnumbered}
+
+::: {#refs}
+:::
+
+\clearpage
+
+{{< pagebreak >}}
+
+# Appendix {.unnumbered}
+
+```{=tex}
+% Always keep this code if you want to use an appendix
+
+\renewcommand{\thetable}{A.\arabic{table}}
+\renewcommand{\thefigure}{A.\arabic{figure}}
+\setcounter{table}{0}
+\setcounter{figure}{0}
+\FloatBarrier
+```
+
+Here is the Appendix content

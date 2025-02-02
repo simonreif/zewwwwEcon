@@ -1,0 +1,13 @@
+.Rproj.user
+.Rproj.user/
+.Rhistory
+.Rapp.history
+.RData
+*.RData
+.RDataTmp
+.Ruserdata
+.DS_Store
+A_Orig
+C_Temp
+*_cache/
+/cache/

@@ -1,241 +1,336 @@
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
+<!-- README.md is generated from README.Rmd. Please edit the Rmd file -->
 
-# zewtemplates
+# zewwww_econ Quarto Templates
 
-The package `zewtemplates` implements document templates, a distinct
-ggplot2 style for plots and coloring according to ZEW style guidelines
-in RStudio.
+The `zewwww_econ` package allows to start a new project in
+[RStudio](https://posit.co/download/rstudio-desktop/) that contains the
+basic setup for an empirical research project. It features
+[Quarto](https://quarto.org/) templates and some `ggplot2` style
+adjustments to generate nice looking PDFs for Slides and Paper in an
+environment that makes reproducibility easy. This is an unbranded
+version to be shared on the `www` based on the `zew_econ` package
+developed for internal use at the [ZEW - Leibniz Centre for European
+Economic Research](https://www.zew.de/en/) in Mannheim, Germany. Click
+on the previews to get to the example PDF files.
+
+<div layout-ncol="2">
+
+[<img src="pics/paper_zewwww.png" style="width:20.0%" alt="Paper" />](../../examples/FullProject/Paper/example_paper.pdf)
+[<img src="pics/slides_zewwww.png" style="width:20.0%" alt="Slides" />](../../examples/FullProject/Slides/example_slides.pdf)
+
+</div>
+
+## Motivation
+
+While there are a lot of examples out there of how people use Quarto for
+their empirical research projects we found no solution out there that
+contains all the details required for the idiosyncrasies of applied
+economics research output.[^1]
+
+## Requirements and intended use
+
+For the package to work properly, [R](https://cran.r-project.org/) (≥
+4.0), [Rstudio](https://posit.co/download/rstudio-desktop/),
+[Quarto](https://quarto.org/docs/get-started/) (≥ 1.6) and
+[LaTeX](https://quarto.org/docs/output-formats/pdf-engine.html)
+(e.g. TeX Live or tinytex, but definitely a distribution that features
+XeLaTex) need to be installed.
 
 ## Installation
 
-It is necessary to install the `devtools` package. Then, `zewtemplates`
-can be installed either directly from git or locally from a downloaded
-version of the package
+For those only interested in the details of our implementation, the
+`examples` folder in this repository contains standalone documents for
+`Paper`, `Slides` and the `FullProject` setup. To have the full setup
+automatically produced in the RStudio project wizard, please install the
+package. The package can be installed in R using `devtools` (which you
+need to install, in case you have not yet).
+
+Option 1: Install from github
 
 ``` r
-install.packages('devtools')
-library(devtools)
-
-# Option 1: Install directly from "git.zew.de" (you will have to log in)
-install_git("https://git.zew.de/F-STELTE/zewtemplates")
-
-# Option 2: Install locally
-install_local("insert path to file here")
+devtools::install_git("https://github.com/simonreif/zewwww_econ")
 ```
 
-To use the pdf templates, you will need to **download Quarto and
-TinyTex**. No other things are required. Information on the installation
-can be found here:  
-<https://quarto.org/docs/get-started/>  
-<https://quarto.org/docs/output-formats/pdf-engine.html>  
-If you experience problems with the automatic installation of the
-necessary LaTeX packages during the render process, reinstalling both
-Quarto and TinyTex should fix the problem.
+Option 2: Install a local `.zip` copy of the repository. This is useful
+if you want to make changes to the package for yourself.
 
-## Project development
+``` r
+devtools::install_local("/Users/YOURPATH/thename.zip")
+```
 
-If you want to make “global” improvements or bugfixes for the templates:
-All the templates are stored in the directory
-“inst/extdata/\_extensions”. The files can be found in the respective
-subdirectories “skeleton”.
+## Initiate a new project
 
-## Document templates
+After installing the package and restarting R Studio new projects can be
+created in the project wizard. First select `New Project`.
 
-`zewtemplates` includes three pdf document templates in ZEW style:
-Project report, paper and presentation slides. You have the choice
-between project report and paper, **presentation slides are always
-included**.
+<img src="pics/wizz1.png" style="width:50.0%" />
 
-To use the templates, access the **New Project…** wizard. In the **New
-Project…** wizard, choose **New Directory**. Then, select **ZEW
-Template**:
+You probably want to initiate the Project in a new directory.
 
-![](examples/screenshots/open_proj.gif)
+<img src="pics/wizz2.png" style="width:50.0%" />
 
-When creating the project, a specific directory structure is created by
-default, which is shown below:
+The `zewwwwEcon` template should be somewhere down there.
 
-![](examples/screenshots/directory_structure.jpg)
+<img src="pics/wizz3.png" style="width:50.0%" />
 
-Plots might be created in folder B and output into folder D. The plots
-are then imported into the Quarto files. It is also possible to directly
-render the Quarto files to pdf using the “0_master.R” script.
-
-There is however no need do this! It is also possible to just use the
-directory “Report” or “Slides” and create the plots directly in the
-Quarto file.
-
-Specific information on the use of each one of the templates can be
-found in the respective Quarto files.
-
-The quarto files in the folder “examples” provide further guidance.
-
-## Setting up Git with new project
-
-To use git with the new project: make a [local git
+You can then add the folder to GitHub by creating a [local git
 repository](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github#initializing-a-git-repository)
-and add the [local repository to
+and then adding the [local repository to
 GitHub](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github#adding-a-local-repository-to-github-using-git).
 
-## Plot style and coloring
+## Project structure
 
-### Description
+When you initiate a project under the name `Project_Title` you get the
+following folder structure:
 
-#### `theme_zew`
+    /Project_Title
+    ├── A_Orig
+    ├── B_Prog
+    │   └── 0setup.R
+    ├── C_Temp
+    ├── D_Out
+    ├── Paper
+    │   └── Paper_TITLE.qmd
+    │   └── zewwwwPaperTemplate.tex
+    ├── Slides
+    │   └── Slides_TITLE.qmd
+    │   └── zewwwwSlidesTemplate.tex
+    │   └── zewwwwImages
+    ├── .lintr
+    ├── .gitignore
+    ├── Project_Title.Rproj
+    ├── references.bib
+    ├── Makefile
 
-`theme_zew()` is a custom ggplot2 theme. The function takes four
-arguments:
+In the Paper and Slides folder, the `.qmd` files are the Quarto
+documents to produce the respective output (you might want to replace
+`TITLE` with some better name for your project). After you open a `.qmd`
+file, it can be rendered to generate the output `.pdf` documents either
+by using the `Render` button or by `CMD + Shift + k`. Under the hood,
+Quarto uses `knitr` to turn code output into formats that can be used
+for the final document (e.g. PDF files for graphs). Then an intermediate
+markdown file is generated and taken up by `pandoc` which in turn uses
+the intermediate markdown file and the respective `*template.tex` file
+to produce a `LaTeX` document. This `LaTeX` document is then compiled to
+the final PDF. The cool thing is: you do not need to worry about these
+details since Quarto is taking care of everything.
 
-- `font`: Using this argument, a custom font can be selected (otherwise
-  the default ggplot2 font will be used). The font has to be loaded
-  using other packages first.
-- `font_size`: Custom font size can be specified, default is
-  `font_size = 11`.
-- `flipped`: Boolean value that can be used to flip the axis design (see
-  example), default is `flipped = FALSE`.
-- `map`: Boolean value that indicates whether a “choropleth” map is
-  plotted (only use `TRUE` in that case, otherwise not), default is
-  `map = FALSE`.
+<img src="pics/quarto_flow_current.png" style="width:50.0%" />
 
-Of course it is also possible to add custom theme elements and replace
-theme elements from `theme_zew()`, by using the `theme()` function (see
-<https://ggplot2.tidyverse.org/reference/theme.html> for details). When
-the package `zewtemplates` is loaded, theme_zew becomes the default
-theme, see the first plot as an example.
+### Intended flow of things
 
-#### `scale_fill_zew` and `scale_color_zew`
+For a full working example of the project setup and codes, see the
+`examples/FullProject` folder in this repository. The idea is:
 
-`scale_fill_zew()` and `scale_color_zew()` bring the ZEW color palette
-to ggplot2, based on `scale_fill_manual()` and `scale_color_manual()`.
-The two functions take three arguments each:
+- Raw data from `A_Orig` is used for data wrangling and estimations
+  through scripts in `B_Prog`.
+- Intermediate files are stored in `C_Temp` and the final output goes
+  into `D_Out` as `.rds` files.
+- The `.qmd` documents in `Paper` and `Slides` take the results from
+  `D_Out` and integrate them in the final documents. Using `.rds` files
+  here allows for final adjustments if outputs need to be different
+  between slides and paper.
+- `0setup.R` loads all packages needed in the project and defines the
+  ggplot2 style.
+- Each script sources the setup, but does not load any additional
+  packages.
+- Each script starts with a fresh environment and ends with an empty
+  environment.
 
-- `palette`: Specifies the number of colors (minimum two, maximum eight
-  colors) that are needed, e.g. when four colors are needed:
-  `palette = "four"`; when six colors are needed: `palette = "six"`.
-  Default is `palette = "two"`. In the case that a color gradient is
-  needed (e.g. for choropleth maps), there are four options. Firstly,
-  there is a specific `"gradient"` palette over four different ZEW
-  colors. Use `palette = "gradient"` if you want to use this.
-  Additionally, there are also three gradients over single colors
-  (`"greens"`, `"blues"`, `"reds"`). To use them, e.g. set
-  `palette = "greens"`.
-- `discrete`: Boolean value that specifies whether the variable is
-  discrete or whether a color gradient is required. Default is
-  `discrete = TRUE`.
-- `reverse`: Boolean value that can be used to change the order of the
-  colors. Default value is `reverse = FALSE`.
+### YAML headers
 
-#### Global color variables
+The YAML header at the beginning of the `.qmd` document contains
+information that is used either by Quarto to render the document or
+pasted into the `tex` file from which the final PDF is generated. Most
+of the entries are self-explanatory.
 
-On top of the palette function, the template defines the ZEW colors as
-global variables. When plotting without a color palette (e.g. a line
-plot with only one line), the hex codes of the colors therefore do not
-have to be looked up when using the defined variables. The eight colors
-have the following names:
+#### Options for Slides and Paper
 
-- `zew_lightgreen`
-- `zew_lightblue`
-- `zew_red`
-- `zew_darkblue`
-- `zew_brown`
-- `zew_yellow`
-- `zew_grey`
-- `zew_darkgreen`
+- `pdf-engine:` Which LaTeX distribution to use. Everything works fine
+  with `XeLaTeX` while other engines have caused problems.
+- `cap-location:` While Quarto allows for figure and table captions to
+  be at the bottom of the output, the very sensible default here is
+  `top` since we have notes to write at the bottom.
+- `add-tex:` We do automatically load the most common `TeX` packages in
+  the template files. However, if you need something in addition or want
+  to input some raw `TeX` in the document preambel, this is the space to
+  do it.
+- `editor:` Quarto has a `visual` editor that can be helpful. It can
+  however also mess around with your code, so the default is `source`.
 
-See the following examples as well as the plots in the document
-templates for clarification.
+#### Options for Paper
 
-### Examples
+- `affiliation:` This input is used to identify the corresponding
+  author.
+- `thanks:` Is for the acknowledgement note. We have separated this from
+  the corresponding author note since usually all authors share the
+  acknowledgement.
+- `prelim-note:` Papers are often distributed at very early stages
+  (e.g. for internal workshops) and you can print on the title page that
+  you do not wish this version to get redistributed
+- `number:` Usually the paper is not finished after the first release.
+  You can use this to indicate the current iteration.
+- `repohash:` When using git, you can print the last digits of the hash
+  code for the current commit of the repository to be able to see how
+  your code looked like for the specific version of the paper.
 
-``` r
-library(zewtemplates)
-#Plot
-example_plot <- ggplot(df, aes(x = date, y = value)) + 
-  geom_line(aes(color = variable), size = 1) +
-  scale_color_zew()
-```
+#### Options for Slides
 
-<img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
+- `presenter:` If you want your name to appear on every slide at the
+  bottom right, add it here.
+- `partner-logo:` This is a placeholder in case you want to add more
+  logos on the title page.
+- `totalnumber:` If `true` then the total number of slides in the
+  presentation is printed next to the current slide number at the bottom
+  right.
+- `references:` If `yes` then a bibliography will get printed as the
+  last slide(s).
 
-It is also possible to select a custom font and change the font size
-(default font size is 11) through the arguments `font` and `font_size`:
+### References
 
-``` r
-#Load custom font (e.g. Latin Modern Roman 10: "LaTeX Font")
-library(showtext)
-font_add(family = "Latin Modern Roman 10", regular = "Examples/lmroman10-regular-webfont.ttf")
-showtext_auto()
+You can use the [pandoc
+syntax](https://pandoc.org/MANUAL.html#citation-syntax) for referencing,
+so `@key` is for text cites and `[@key]` is for indirect references.
+[Zotero](https://www.zotero.org/) is well [integrated in
+Quarto](https://quarto.org/docs/visual-editor/technical.html#citations-from-zotero).
 
-#Plot
-toogro <- ggplot(ToothGrowth, aes(x=dose, y=len, fill = dose)) +
-  geom_dotplot(binaxis='y', stackdir='center',
-               stackratio=1.5, dotsize=1.2) +
-  labs(
-    y = "Length of odontoblasts",
-    fill = "Dose (mg/day)"
-  ) +
-  scale_fill_zew(palette = "three") +
-  theme_zew(font = "Latin Modern Roman 10", font_size = 28) +
-  theme(axis.title.x = element_blank(), axis.text.x = element_blank(), axis.ticks.x = element_blank())
-```
+### Lintr
 
-<img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
+To produce consistent code, [lintr](https://lintr.r-lib.org/) and
+[styler](https://github.com/r-lib/styler) can be a great tool. The
+package includes a `.lintr` file that takes the [default tidyverse
+linter](https://style.tidyverse.org/) but loosens the line length
+restriction to 120.
 
-You could also load the MetaPro font, which is the standard font of
-ZEW’s corporate design:
+### gitignore
 
-``` r
-#Load custom font (e.g. MetaPro)
-font_add(family = "MetaPro", regular = "Examples/METAPRO-NORMAL.OTF")
-showtext_auto()
+We have tried to come up with a sensible default for the `.gitignore`
+file. When working with sensitive data, it might be useful to add
+`A_Orig` and `C_Temp` to `.gitignore` so that raw data is not
+accidentally made public.
 
-#Plot
-histo <- ggplot(df) + geom_histogram(mapping = aes(x=weight, fill=sex), color= "white", binwidth=1) + labs(
-  x = "Weight",
-  y = "Count",
-  fill = "Sex") + scale_y_continuous(expand = expansion(mult = c(0, .1))) +
-  theme_zew(font = "MetaPro", font_size = 28) + scale_fill_zew()
-```
+### Makefile
 
-<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
+A makefile automates the execution of the full project. In the file, the
+full flow from raw data to final output is specified. `make` checks
+parts have changed and only executes those files and the files that
+depend on them. When correctly specified, you can just type `make` in
+the terminal and wait for the output to get updated. For a good
+introduction to makefiles, see
+[here](https://third-bit.com/py-rse/automate.html).
 
-The following example shows a map with a color gradient. Let’s first use
-the `gradient` palette:
+## Implementation details
 
-``` r
-#Plot
-mapall2019 <- doc_visits_2019 %>%
-  ggplot(aes(colour="", fill = nr_doctor_visits)) +
-  geom_sf() +
-  scale_x_continuous(limits = c(-10, 35)) +
-  scale_y_continuous(limits = c(35, 65)) +
-  theme_zew(map = TRUE, font_size = 25) + scale_fill_zew(palette = "gradient", discrete = FALSE) + labs(fill='Average Doctor Visits, 2019') +
-  scale_colour_manual(values=NA) +
-  guides(colour=guide_legend("No Data", order = 2, override.aes=list(fill="#7f7f7f")),
-         fill = guide_colorbar(order = 1))
-```
+In designing the templates we made some decisions that we believe are
+sensible but might cause problems.
 
-<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
+### Template and Tex Files directly in project folder
 
-Let’s plot the same map using the `greens` palette:
+Technically, Quarto allows for a way less cluttered project folder than
+what we implement here. The template files could be stored at a central
+place and the temporary `.tex` output could be deleted automatically by
+Quarto. Our implementation has the advantages that 1) it is simple to
+twist and 2) it is easier to debug things since everything is in one
+place.
 
-``` r
-#Plot
-mapall2019_greens <- doc_visits_2019 %>%
-  ggplot(aes(colour="", fill = nr_doctor_visits)) +
-  geom_sf() +
-  scale_x_continuous(limits = c(-10, 35)) +
-  scale_y_continuous(limits = c(35, 65)) +
-  theme_zew(map = TRUE, font_size = 25) + scale_fill_zew(palette = "greens", discrete = FALSE) + labs(fill='Average Doctor Visits, 2019') +
-  scale_colour_manual(values=NA) +
-  guides(colour=guide_legend("No Data", order = 2, override.aes=list(fill="#7f7f7f")),
-         fill = guide_colorbar(order = 1))
-```
+### TeX-Templates from scratch
 
-<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
+- The workflow probably intended by the Quarto developers is to work on
+  the baseline implementation that comes with Quarto and adjust the
+  *parts* as needed
+- Up to now it feels easier to twist everything from scratch (just
+  change `template.tex`)
+- **Caveats:** 1) There are things that generally work in Quarto that do
+  not work with the templates (e.g. Callout Blocks). 2) When something
+  changes for Quarto or R under the hood, the templates need to get
+  updated manually.
 
-For more examples of the usage of `theme_zew()`, `scale_color_zew()` and
-`scale_fill_zew()`, see the plots in the respective example slides,
-paper and report in the folder “examples”. The code is stored in the
-respective quarto files.
+### Use TeX fragments in markdown
+
+- The beauty of Quarto via pandoc is that you can render any document
+  into any format. This does not work if you use raw TeX.
+- But: Arriving at desired PDF outputs is however often simpler using
+  TeX
+- **Future solution:** Use lua filters (e.g. figure notes)
+
+### Clunky Fixes
+
+All programs used in this template are still being developed and
+therefore some things do not work as we wish by default. Therefore some
+workarounds were implemented. They should not (but may) cause other
+problems:
+
+#### Notes for Figures and Tables
+
+**Problem:** When notes are added as a minipage (directly via `LaTeX` or
+indirectly via `gt`) then we must force `LaTeX` to run them next to each
+other. Just adding a minipage below an output can lead to a series of
+graphs followed by a series of graph notes.
+
+**Solution:** All output is generated in a dedicated `:::` environment.
+At the beginning, we define the label (`fig` / `tbl`) s.t. internal
+referencing works in Quarto. Then comes the main output. For reasons…
+then the very last text line in the `:::` environment is used as the
+title of the Table or Figure.
+
+#### Spacing between Notes and Figures or Tables
+
+**Problem:** When notes are added as a `minipage` (directly via `LaTeX`
+or indirectly via `gt`) then they appear directly with no space below
+the output.
+
+**Solution:** For the `LaTeX` code for the minipage below Figures, we
+can just add `\vspace{}` to solve this. For table notes from `gt`, we
+need to add an additional source note with an empty unicode character.
+This empty source code then is displayed as some space below the Table
+(<https://github.com/rstudio/gt/issues/1508>). As output from `gt` is
+automatically put into a minipage and there is no way to change the
+style there, the template defines the font size of all minipage content
+to scriptsize. This means that if you want to use a normal size
+minipage, you have to set normalsize in the beginning of your minipage!
+
+#### Caching in Quarto chunks
+
+**Problem:** Caching in Quarto does not realize when a file that is
+loaded into a chunk has changed. Since we normally create tables and
+graphs in dedicated scripts and import the script output as `.rds` files
+into the chunk, a change to the RDS file as a result of a code change in
+the script will not get realized by the default caching option.
+
+**Solution:** We cache the input `.rds` file in the chunk using its MD5
+hash as `cache.extra=tools::md5sum('name_of_output.rds')`. This means
+when the underlying file changes, the chunk is run. If the code is
+unchanged the chunk is not re-run. An alternative would be to use
+`file.mtime()`(<https://yihui.org/en/2018/06/cache-invalidation/>).
+
+## Package development
+
+This package is developed and maintained by Simon Reif and Benedikt
+Stelter. We are grateful for the feedback from the early test users
+Sabrina Schubert, Yasemin Karamik, Jan Köhler, Paul Peters and Theresa
+Bolz. If you experience bugs, or have ideas on how to improve the
+templates (functionality, examples, …), let us know via Email, Issues or
+pull-request.
+
+Our current plans for future development are:
+
+- typst implementation
+
+- Revealjs slides
+
+- Word output for paper
+
+These add-ons will require some work and coming up with specific lua
+filters. So this will take some time. If you have cool ideas or want to
+contribute, let us know!
+
+[^1]: Examples are the [Journal
+    templates](https://quarto.org/docs/journals/formats.html) maintained
+    by Quarto, the [Hikmah
+    templates](https://github.com/andrewheiss/hikmah-academic-quarto) by
+    Andrew Heiss, the [research
+    template](https://github.com/AaronGullickson/research-template/) by
+    Aaron Gullickson or the
+    [froggeR](http://azimuth-project.tech/froggeR/index.html) package by
+    Kyle Grealis.

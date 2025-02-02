@@ -1,0 +1,514 @@
+---
+title: "zewwwwEcon: A Template for Econ Articles with Quarto"
+pdf-engine: xelatex
+author:
+  - name: Lord Macbeth
+    affiliations:
+      - name: Thane of Glamis
+  - name: Lady Macbeth
+    acknowledgements: | 
+      Corrseponding author: Adress, Place. 
+    affiliations:
+      - name: Queen of Scotland
+  - name: First Witch
+    affiliations:
+      - name: Posters of the Sea
+      - name: Posters of the Land
+  - name: Second Witch
+    affiliations:
+      - name: Posters of the Sea
+      - name: Posters of the Land
+  - name: Third Witch
+    affiliations:
+      - name: Posters of the Sea
+      - name: Posters of the Land
+      
+thanks: |
+   We would like to thank ....  
+   
+prelim-note: "Preliminary draft - please do not distribute"
+  
+abstract: |
+  O, never Shall sun that morrow see! Your face, my thane, is as a book where men May read strange matters. To beguile the time, Look like the time; bear welcome in your eye, Your hand, your tongue: look like the innocent flower, But be the serpent under't. He that's coming Must be provided for: and you shall put This night's great business into my dispatch; Which shall to all our nights and days to come Give solely sovereign sway and masterdom.
+  
+jel: "These are the JEL codes"
+ 
+keywords: "These are the keywords"
+
+date: today # Alternatively, enter a date as "1 May 2024"
+date-format: "D MMMM YYYY"
+
+number: "Version 0.1"
+repohash: "#`r substr(system('git rev-parse HEAD', intern= TRUE),1,8)`" 
+# To include hash from another repository use system('git ls-remote ../your_git_repository_folder | grep HEAD', intern=TRUE)[1]" 
+  
+format:
+  pdf: 
+    template: zewwwwPaperTemplate.tex
+    keep-tex: true
+    cite-method: biblatex
+
+cap-location: top
+
+color-links: "82,125,164" # This the color for internal links and footnotes 
+# You can set an arbitrary RGB code here. When leaving empty, black is chosen as standard color
+bibliography: ../references.bib
+biblio-style: apa #Select from https://www.overleaf.com/learn/latex/Biblatex_bibliography_styles
+
+add-tex: |
+   \usepackage{bm}
+   \usepackage{setspace}
+   \usepackage{lipsum} 
+   
+editor: source
+---
+
+```{r Setup}
+#| echo: false
+#| warning: false
+#| message: false
+
+# Reload Setup s.t. everything renders as intended
+source("../B_Prog/0setup.R")
+```
+
+# Introduction
+
+Quarto enables you to weave together content and executable code. To learn more about Quarto see <https://quarto.org>.[^1] If you are interested in incentives in health insurance risk adjustment schemes, check out @reifSettingIncentivesRight2025. You can easily refer to parts of the paper such as @fig-eventstudy or @tbl-regression2. Sometimes one might need equations. Just use \LaTeX\ for this in the text to show that $2^{2} > 3$. You can do it like this:
+
+[^1]: Here, we have an excellent example of a footnote.
+
+```{=tex}
+\begin{equation}
+\frac{\partial S(\beta)}{\partial \beta} = -2X^\top (y - X\beta) = 0
+\end{equation}
+
+\begin{equation}
+X^\top X \hat{\beta} = X^\top y
+\end{equation}
+
+\begin{equation}
+\hat{\bm{\beta}} = (X^\top X)^{-1} X^\top y
+\end{equation}
+```
+```{=tex}
+\lipsum[2-4]
+\clearpage
+```
+# Figures
+
+::: {#fig-hist}
+```{r Histogram, cache=TRUE, cache.extra=tools::md5sum("../D_Out/g_hist.rds")}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-width: 3.5
+#| fig-asp: 0.5
+#| fig-align: center
+#| fig-pos: H
+
+g_hist <- readRDS("../D_Out/g_hist.rds")
+g_hist
+rm(g_hist)
+```
+
+```{=tex}
+\vspace{-5pt}
+\begin{minipage}{0.9\textwidth}
+\scriptsize
+\singlespacing
+\textbf{Notes:} You can use this text to provide further information about the table. \lipsum[66]
+\end{minipage}
+\vspace{15pt}
+```
+Distribution of height (in cm) in random data
+:::
+
+\lipsum[2-4]
+
+::: {#fig-barchart fig-pos="H"}
+```{r Barchart, cache=TRUE, cache.extra=tools::md5sum("../D_Out/g_bar.rds")}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-width: 3.5
+#| fig-asp: 0.5
+#| fig-align: center
+
+g_bar <- readRDS("../D_Out/g_bar.rds")
+g_bar
+rm(g_bar)
+```
+
+```{=tex}
+\vspace{-5pt}
+\begin{minipage}{0.9\textwidth}
+\scriptsize
+\singlespacing
+\textbf{Notes:} You can use this text to provide further information about the table. \lipsum[66]
+\end{minipage}
+\vspace{15pt}
+```
+Number of Federal States by Country
+:::
+
+\lipsum[1-2]
+
+::: {#fig-ts1 fig-pos="H"}
+```{r tsplot1, cache=TRUE, cache.extra=tools::md5sum("../D_Out/g_tsplot.rds")}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-width: 3
+#| fig-asp: 0.5
+#| fig-align: center
+
+g_tsplot <- readRDS("../D_Out/g_tsplot.rds")
+g_tsplot
+rm(g_tsplot)
+```
+
+```{=tex}
+\vspace{-5pt}
+\begin{minipage}{0.9\textwidth}
+\scriptsize
+\singlespacing
+\textbf{Notes:} You can use this text to provide further information about the table. \lipsum[66]
+\end{minipage}
+\vspace{15pt}
+```
+Displaying how things evolve over time
+:::
+
+\lipsum[1-2]
+
+::: {#fig-scatterplot fig-pos="H"}
+```{r scatterplot, cache=TRUE, cache.extra=tools::md5sum("../D_Out/g_scatterplot.rds")}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-width: 3.5
+#| fig-asp: 0.5
+#| fig-align: center
+
+g_scatterplot <- readRDS("../D_Out/g_scatterplot.rds")
+g_scatterplot
+rm(g_scatterplot)
+```
+
+```{=tex}
+\vspace{-5pt}
+\begin{minipage}{0.9\textwidth}
+\scriptsize
+\singlespacing
+\textbf{Notes:} You can use this text to provide further information about the table. \lipsum[66]
+\end{minipage}
+\vspace{15pt}
+```
+Two groups have very different values
+:::
+
+\lipsum[1]
+
+::: {#fig-dotplot fig-pos="H"}
+```{r dotplot, cache=TRUE, cache.extra=tools::md5sum("../D_Out/g_dotplot.rds")}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-width: 3.5
+#| fig-asp: 0.5
+#| fig-align: center
+#| fig-pos: H
+
+g_dotplot <- readRDS("../D_Out/g_dotplot.rds")
+g_dotplot
+```
+
+```{=tex}
+\vspace{-10pt}
+\begin{minipage}{0.9\textwidth}
+\scriptsize
+\singlespacing
+\textbf{Notes:} You can use this text to provide further information about the plot. \lipsum[66]
+\end{minipage}
+\vspace{15pt}
+```
+Visualizing distributions with few observations
+:::
+
+\lipsum[1-2]
+
+::: {#fig-eventstudy fig-pos="H"}
+```{r eventstudy, cache.extra=tools::md5sum("../D_Out/g_eventstudy.rds")}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-width: 3.5
+#| fig-asp: 0.6
+#| fig-align: center
+
+g_eventstudy <- readRDS("../D_Out/g_eventstudy.rds")
+g_eventstudy
+rm(g_eventstudy)
+```
+
+```{=tex}
+\vspace{-7pt}\begin{minipage}{0.9\textwidth}\scriptsize\singlespacing\textbf{Notes:} You can use this text to provide further information about the plot. \lipsum[66]\end{minipage}\vspace{15pt}
+```
+Coefficients relative to treatment time
+:::
+
+
+::: {#fig-choro fig-pos="H"}
+```{r choro, cache.extra=tools::md5sum("../D_Out/g_choro.rds")}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-width: 3.5
+#| fig-asp: 0.6
+#| fig-align: center
+
+g_choro <- readRDS("../D_Out/g_choro.rds")
+g_choro
+rm(g_choro)
+```
+
+```{=tex}
+\vspace{-10pt}
+\begin{minipage}{0.9\textwidth}
+\scriptsize
+\singlespacing
+\textbf{Notes:} You can use this text to provide further information about the table. \lipsum[66]
+\end{minipage}
+\vspace{15pt}
+```
+This is a choropleth map
+:::
+
+
+::: {#fig-indic fig-pos="H"}
+```{r indic, cache.extra=tools::md5sum("../D_Out/g_indic.rds")}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-width: 3.5
+#| fig-asp: 0.5
+#| fig-align: center
+
+g_indic <- readRDS("../D_Out/g_indic.rds")
+g_indic
+rm(g_indic)
+```
+
+```{=tex}
+\vspace{-10pt}
+\begin{minipage}{0.9\textwidth}
+\scriptsize
+\singlespacing
+\textbf{Notes:} You can use this text to provide further information about the table. \lipsum[66]
+\end{minipage}
+\vspace{15pt}
+```
+This is an indicator map
+:::
+
+
+# Tables
+
+```{=tex}
+\lipsum[1-2]
+\clearpage
+```
+::: {#tbl-descriptives tbl-pos="H"}
+```{r descriptives}
+#| echo: false
+#| warning: false
+#| message: false
+#| tbl-align: center
+
+t_descriptives <- readRDS("../D_Out/t_descriptives.rds")
+t_descriptives
+rm(t_descriptives)
+```
+
+Descriptive statistics by group
+:::
+
+```{=tex}
+\lipsum[1-2]
+\clearpage
+```
+
+::: {#tbl-regression tbl-pos="H"}
+```{r regressions}
+#| echo: false
+#| warning: false
+#| message: false
+#| tbl-align: center
+
+t_regression <- readRDS("../D_Out/t_regression.rds")
+t_regression
+rm(t_regression)
+```
+
+Linear Regression Models
+:::
+
+\lipsum[1-2]
+
+# References {.unnumbered}
+
+::: {#refs}
+:::
+
+\clearpage
+
+{{< pagebreak >}}
+
+# Appendix {.unnumbered}
+
+```{=tex}
+% Always keep this code if you want to use an appendix
+
+\renewcommand{\thetable}{A.\arabic{table}}
+\renewcommand{\thefigure}{A.\arabic{figure}}
+\setcounter{table}{0}
+\setcounter{figure}{0}
+\FloatBarrier
+```
+
+::: {#tbl-regression2 tbl-pos="H"}
+```{r regression2}
+#| echo: false
+#| warning: false
+#| message: false
+#| tbl-align: center
+#| tbl-pos: H
+
+t_regression <- readRDS("../D_Out/t_regression.rds")
+t_regression
+rm(t_regression)
+```
+
+Linear Regression Models for the Appendix
+:::
+
+::: {#fig-two fig-pos="H"}
+```{r jointplot, cache=TRUE, cache.extra=tools::md5sum("../D_Out/g_tsplot.rds")}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-align: center
+#| fig-pos: T
+#| fig-subcap:
+#|   - "Time Series"
+#|   - "Scatterplot"
+#| layout-ncol: 2
+
+g_tsplot <- readRDS("../D_Out/g_tsplot.rds")
+g_tsplot + theme(axis.title.x = element_text(size = 16), 
+                 axis.title.y = element_text(size = 16),
+                 axis.text.x = element_text(size = 16),
+                 axis.text.y = element_text(size = 16),
+                 legend.text = element_text(size = 16),
+                 legend.title = element_text(size = 16))
+
+g_scatterplot <- readRDS("../D_Out/g_scatterplot.rds")
+g_scatterplot + theme(axis.title.x = element_text(size = 16), 
+                 axis.title.y = element_text(size = 16),
+                 axis.text.x = element_text(size = 16),
+                 axis.text.y = element_text(size = 16),
+                 legend.text = element_text(size = 16),
+                 legend.title = element_text(size = 16))
+
+rm(g_scatterplot)
+rm(g_tsplot)
+```
+
+```{=tex}
+\vspace{-5pt}
+\begin{minipage}{0.9\textwidth}
+\scriptsize
+\singlespacing
+\textbf{Notes:} You can use this text to provide further information about the table. \lipsum[66]
+\end{minipage}
+\vspace{15pt}
+```
+Complex figure with two parts
+:::
+
+::: {#fig-complex fig-pos="H"}
+```{r complexplot, cache=TRUE, cache.extra=tools::md5sum("../D_Out/g_tsplot.rds")}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-align: center
+#| fig-pos: T
+#| fig-subcap:
+#|   - "Time Series"
+#|   - "Scatterplot"
+#|   - "Histogram"
+#|   - " "
+#| layout: [[45,-10, 45], [100], [-35,30,-35]]
+
+g_tsplot <- readRDS("../D_Out/g_tsplot.rds")
+g_tsplot + theme(legend.position = "none",
+                 axis.title.x = element_text(size = 16), 
+                 axis.title.y = element_text(size = 16),
+                 axis.text.x = element_text(size = 16),
+                 axis.text.y = element_text(size = 16),
+                 legend.text = element_text(size = 16),
+                 legend.title = element_text(size = 16))
+
+g_scatterplot <- readRDS("../D_Out/g_scatterplot.rds")
+g_scatterplot + theme(legend.position = "none",
+                      axis.title.x = element_text(size = 16),
+                      axis.title.y = element_text(size = 16),
+                      axis.text.x = element_text(size = 16),
+                      axis.text.y = element_text(size = 16),
+                      legend.text = element_text(size = 16),
+                      legend.title = element_text(size = 16))
+
+g_hist <- readRDS("../D_Out/g_hist.rds")
+g_hist + coord_fixed(ratio = 0.5) + theme(legend.position = "none")
+
+as_ggplot(get_legend(g_hist + theme(legend.direction = "horizontal", legend.title = element_blank())))
+
+rm(g_scatterplot)
+rm(g_tsplot)
+rm(g_hist)
+```
+
+```{=tex}
+\vspace{-5pt}
+\begin{minipage}{0.9\textwidth}
+\scriptsize
+\singlespacing
+\textbf{Notes:} You can use this text to provide further information about the table. \lipsum[66]
+\end{minipage}
+\vspace{15pt}
+```
+Complex figure with three parts
+:::
+
+````{=tex}
+\begin{landscape}
+````
+::: {#tbl-regression3 tbl-pos="H"}
+```{r regression3}
+#| echo: false
+#| warning: false
+#| message: false
+#| tbl-align: center
+#| tbl-pos: H
+
+t_regression <- readRDS("../D_Out/t_regression.rds")
+t_regression
+rm(t_regression)
+```
+
+Linear Regression Model as Sideways Table
+:::
+````{=tex}
+\end{landscape}
+````

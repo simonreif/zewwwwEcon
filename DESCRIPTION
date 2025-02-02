@@ -1,12 +1,12 @@
 Package: zewwwwEcontemplates
 Type: Package
-Title: Quarto Template for Economic Research Projects
+Title: Create research projects using 'Quarto' 
 Version: 1.0.0
 Authors@R: c(
     person("Simon", "Reif", email = "simon.reif@zew.de", role = c("aut", "cre")),
     person("Benedikt", "Stelter", email = "benedikt.stelter@outlook.com", role = "aut"))
 Description: This package includes templates for papers and
-    presentations in Quarto. 
+    presentations in a nice layout. 
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.3.2

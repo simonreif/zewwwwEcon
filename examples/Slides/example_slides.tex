@@ -1,6 +1,6 @@
 %***********************************************************
 % zewwww Slides Template
-% Simon Reif & Benedikt Stelter, 19 September 2024
+% Simon Reif & Benedikt Stelter, 31 January 2025
 %
 % Preamble
 % This tex code is use to be run together with the
@@ -167,15 +167,15 @@ bg= zewwwwGrey!30}
 \begin{tikzpicture}
 \node[overlay, anchor=south west, align=left, text width=0.54\linewidth] at (-0.4,-1.2) {\baselineskip=16pt\textcolor{white}{\textbf{\Large Introducing
 the zewwwwEcon Presentation Template}} \par};
-\node[overlay, anchor=north west, align=left, text width=9.8cm] at (-0.4,-1.2) { 	\textcolor{white}{Max
-Mustermann} \textcolor{zewwwwGrey}{\bfseries{|}}	\textcolor{white}{Institute
-X, University ABC} \\
-		\textcolor{white}{Erika
-Musterfrau} \textcolor{zewwwwGrey}{\bfseries{|}}	\textcolor{white}{Institute
-X} \\
-	 \vspace{10pt} \textcolor{white}{\textbf{Important
-Conference}} \textcolor{zewwwwGrey}{\bfseries{|}} \textbf{\textcolor{white}{10
-Nov 2024}}}
+\node[overlay, anchor=north west, align=left, text width=9.8cm] at (-0.4,-1.2) { 	\textcolor{white}{Lord
+Macbeth} \textcolor{zewwwwGrey}{\bfseries{|}}	\textcolor{white}{Thane of
+Glamis} \\
+		\textcolor{white}{Lady
+Macbeth} \textcolor{zewwwwGrey}{\bfseries{|}}	\textcolor{white}{Queen of
+Scotland} \\
+	 \vspace{10pt} \textcolor{white}{\textbf{Dunsinane
+Hill}} \textcolor{zewwwwGrey}{\bfseries{|}} \textbf{\textcolor{white}{1
+Feb 2025}}}
 ;
 \end{tikzpicture}
 \end{frame}
@@ -195,8 +195,7 @@ research easy. Since everything from data to publication is happening in
 the same environment, everything is easily reproducible and output can
 be modified for the paper and the presentation at the same time.
 
-This example slide covers all aspects necessary for the standard
-(economic) researcher:
+You can for example
 
 \begin{itemize}
 \tightlist
@@ -209,9 +208,6 @@ This example slide covers all aspects necessary for the standard
 \item
   Tables 1 to 3 of a standard econ project
 \end{itemize}
-
-If you have other useful examples, we can include them in this
-presentation so others can benefit as well.
 \end{frame}
 
 \section{The various forms of displaying text in a
@@ -283,9 +279,9 @@ X^\top X \hat{\beta} = X^\top y
 \end{equation}
 
 These equations minimize the sum of squared residuals \(S\). While this
-seems promising, others argue that this has been done before. It might
-even work with real-world data
-\autocites[LancetDH]{stern2022}[REStud]{abadieSemiparametric2005}.
+seems promising, others argue that this has been done before. It is even
+used to health insurance risk adjustment
+\autocite[EJHE]{reifSettingIncentivesRight2025}.
 \end{column}
 \end{columns}
 \end{frame}
@@ -294,10 +290,11 @@ even work with real-world data
 \phantomsection\label{highlighting-and-references}
 Sometimes it seems that not only are people putting books from boxes but
 also like boxes around some highlight text. An example would be
-something you (can not) find in \textcite[LancetDH]{stern2022}:
+something you (can not) find in
+\textcite[EJHE]{reifSettingIncentivesRight2025}:
 
 \begin{exampleblock}{Defining an example}
-\normalsize A lot could be in here. A definition. An equation.  A reference to \textcite[REStud]{abadieSemiparametric2005}. Literally there is so much that one would want to get framed with a highlighted headline \autocites[LancetDH]{stern2022}[REStud]{abadieSemiparametric2005}. 
+\normalsize A lot could be in here. A definition. An equation.  A reference to \textcite[EJHE]{reifSettingIncentivesRight2025}. Not that since this is pure \LaTeX, you need to also use the respective cite styles \autocites[EJHE]{reifSettingIncentivesRight2025}. 
 \end{exampleblock}
 \end{frame}
 
@@ -534,12 +531,18 @@ R² & 0.11 & 0.20 & 0.13 & 0.25 & 0.10 & 0.17 \\
 \phantomsection\label{last-slide}
 This slide will most likely be the one that the audience sees the
 longest. Take this into account when designing it. We could for example
-point to some things not really working well here until now:
+point out the following things:
 
 \begin{itemize}
 \tightlist
 \item
-  Descriptives tables: For some reason there is no easy solution.
+  A literature slide can be at the end of your presentation, but not to
+  show it while the audience is discussing your paper (ok, maybe if you
+  conducted a literature review\ldots).
+\item
+  If you present a table and say: ``\emph{Oh, this is probably a bit
+  small}'', then 1) you are probably right and 2) you could have changed
+  it in advance.
 \end{itemize}
 \end{frame}
 \end{document}

@@ -2,22 +2,26 @@
 title: "zewwwwEcon: A Template for Econ Articles with Quarto"
 pdf-engine: xelatex
 author:
-  - name: First Name
+  - name: Lord Macbeth
     affiliations:
-      - name: Affiliation A which is very long
-  - name: Second Author
+      - name: Thane of Glamis
+  - name: Lady Macbeth
     acknowledgements: | 
       Corrseponding author: Adress, Place. 
     affiliations:
-      - name: Affiliation B
-  - name: Third Author
+      - name: Queen of Scotland
+  - name: First Witch
     affiliations:
-      - name: Affiliation B
-      - name: Affiliation C
-  - name: Fourth Author
+      - name: Posters of the Sea
+      - name: Posters of the Land
+  - name: Second Witch
     affiliations:
-      - name: Affiliation B
-      - name: Affiliation C
+      - name: Posters of the Sea
+      - name: Posters of the Land
+  - name: Third Witch
+    affiliations:
+      - name: Posters of the Sea
+      - name: Posters of the Land
 
 thanks: |
    We would like to thank ....  
@@ -63,11 +67,12 @@ add-tex: |
 #| message: false
 
 # Load packages
-# Load packages
 library(tidyverse)
 library(gt)
 library(gtsummary)
 library(broom)
+library(estimatr) 
+library(modelsummary) 
 
 # ggplot2 Settings
 theme_set(theme_classic())
@@ -104,7 +109,7 @@ scale_colour_gradient_custom <- function(...) {
 
 # Introduction
 
-Quarto enables you to weave together content and executable code. @abadieSemiparametric2005 have not used this to put their thoughts into a finished document, since Quarto did not exist back then. To learn more about Quarto see <https://quarto.org>.[^1] You can easily refer to parts of the paper such as @fig-eventstudy or @tbl-regression2. Sometimes one might need equations. Just use \LaTeX\ for this in the text to show that $2^{2} > 3$. You can do it like this:
+Quarto enables you to weave together content and executable code. To learn more about Quarto see <https://quarto.org>.[^1] If you are interested in incentives in health insurance risk adjustment schemes, check out @reifSettingIncentivesRight2025. You can easily refer to parts of the paper such as @fig-eventstudy or @tbl-regression2. Sometimes one might need equations. Just use \LaTeX\ for this in the text to show that $2^{2} > 3$. You can do it like this:
 
 [^1]: Here, we have an excellent example of a footnote.
 
@@ -127,7 +132,7 @@ X^\top X \hat{\beta} = X^\top y
 ```
 # Figures
 
-::: {#fig-hist}
+::: {#fig-hist fig-pos="H"}
 ```{r Histogram}
 #| echo: false 
 #| warning: false
@@ -166,7 +171,7 @@ Distribution of height (in cm) in random data
 
 \lipsum[2-4]
 
-::: {#fig-barchart}
+::: {#fig-barchart fig-pos="H"}
 ```{r Barchart}
 #| echo: false 
 #| warning: false
@@ -174,7 +179,6 @@ Distribution of height (in cm) in random data
 #| fig-width: 3.5
 #| fig-asp: 0.5
 #| fig-align: center
-#| fig-pos: H
 
 # Get data
 States <- data.frame(
@@ -190,8 +194,6 @@ ggplot(States) +
   scale_y_continuous(expand = expansion(mult = c(0, .1))) + 
   scale_x_discrete(expand = c(0, 0)) +
 theme(axis.title.x=element_blank(), axis.ticks.x = element_blank(), axis.ticks.y = element_blank(), legend.position = "none")
-
-  
 ```
 
 ```{=tex}
@@ -208,7 +210,7 @@ Number of Federal States by Country
 
 \lipsum[1-2]
 
-::: {#fig-ts1}
+::: {#fig-ts1 fig-pos="H"}
 ```{r tsplot1}
 #| echo: false 
 #| warning: false
@@ -216,7 +218,6 @@ Number of Federal States by Country
 #| fig-width: 3
 #| fig-asp: 0.5
 #| fig-align: center
-#| fig-pos: H
 
 # Generate data
 set.seed(123)
@@ -230,7 +231,7 @@ df <- data.frame(
   series = rep(c("Series 1", "Series 2"), each = 12)
 )
 
-#Plot1 
+# Make plot
 ggplot(df, aes(x = time, y = value, color = series)) +
   geom_line() +
   labs(x = "", y = "") + 
@@ -251,7 +252,7 @@ Displaying how things evolve over time
 
 \lipsum[1-2]
 
-::: {#fig-scatterplot}
+::: {#fig-scatterplot fig-pos="H"}
 ```{r scatterplot}
 #| echo: false 
 #| warning: false
@@ -259,17 +260,17 @@ Displaying how things evolve over time
 #| fig-width: 3.5
 #| fig-asp: 0.5
 #| fig-align: center
-#| fig-pos: H
 
+# Generate data
 set.seed(123)
 data <- data.frame(
   x = c(rnorm(50, mean = 5), rnorm(50, mean = 10)),
   y = c(rnorm(50, mean = 5), rnorm(50, mean = 10)),
   group = factor(c(rep("Group A", 50), rep("Group B", 50))),
-  count = sample(1:10, 100, replace = TRUE)  # count for dot size
+  count = sample(1:10, 100, replace = TRUE)
 )
 
-# Plot
+# Make plot
 ggplot(data, aes(x = x, y = y, color = group, size = count)) +
   geom_point() +
   labs(x = "X Axis",
@@ -293,7 +294,7 @@ Two groups have very different values
 
 \lipsum[1]
 
-::: {#fig-dotplot}
+::: {#fig-dotplot fig-pos="H"}
 ```{r dotplot}
 #| echo: false 
 #| warning: false
@@ -301,16 +302,15 @@ Two groups have very different values
 #| fig-width: 3.5
 #| fig-asp: 0.5
 #| fig-align: center
-#| fig-pos: H
 
-# Create a simple data frame
+# Generate data
 set.seed(123)
 data <- data.frame(
   group = rep(c("Group A", "Group B", "Group C"), each = 20),
   value = c(round(rnorm(20, mean = 5)), round(rnorm(20, mean = 7)), round(rnorm(20, mean = 9)))
 )
 
-# Create the dot plot
+# Make plot
 ggplot(data, aes(x = group, y = value, fill = group)) +
   geom_dotplot(binaxis='y', stackdir='center',
                stackratio=1.1) + 
@@ -331,7 +331,7 @@ Visualizing distributions with few observations
 
 \lipsum[1-2]
 
-::: {#fig-eventstudy}
+::: {#fig-eventstudy fig-pos="H"}
 ```{r eventstudy}
 #| echo: false 
 #| warning: false
@@ -339,26 +339,15 @@ Visualizing distributions with few observations
 #| fig-width: 3.5
 #| fig-asp: 0.6
 #| fig-align: center
-#| fig-pos: H
 
-# Create a simple data frame
+# Generate data
 set.seed(42)
-
-# Create rel_time from -5 to 5
 rel_time <- -5:5
-
-# Generate random coefficients
-# Coefficients increase sharply at rel_time == 1 and stay elevated, with 0 at rel_time == -1
 coefficients <- c(rnorm(5, mean = 0, sd = 0.1), 0, rnorm(5, mean = 1, sd = 0.2))
-
-# Generate random standard errors for each time point, with 0 at rel_time == -1
 std_errors <- c(rnorm(5, mean = 0.1, sd = 0.05), 0, rnorm(5, mean = 0.1, sd = 0.05))
-
-# Compute confidence intervals (95%)
 conf_min <- coefficients - 1.96 * std_errors
 conf_max <- coefficients + 1.96 * std_errors
 
-# Create the data frame
 event_study_df <- data.frame(
   rel_time = rel_time,
   coefficient = coefficients,
@@ -367,7 +356,7 @@ event_study_df <- data.frame(
   conf_max = conf_max
 )
 
-# Plot
+# Make plot
 ggplot(event_study_df, aes(x = rel_time, y = coefficient)) +
   geom_errorbar(aes(ymin = conf_min, ymax = conf_max), width = 0.2) +
   geom_point(size = 2) +
@@ -392,17 +381,16 @@ Coefficients relative to treatment time
 \lipsum[1-2]
 \clearpage
 ```
-::: {#tbl-descriptives}
+
+::: {#tbl-descriptives tbl-pos="H"}
 ```{r descriptives}
 #| echo: false 
 #| warning: false
 #| message: false
 #| tbl-align: center
-#| tbl-pos: T
 
+# Generate data
 set.seed(123)
-
-# Generate randm rada
 n <- 500
 treatment <- rbinom(n, 1, 0.5) 
 female <- rbinom(n, 1, 0.5)    
@@ -446,18 +434,14 @@ Descriptive statistics by group
 \lipsum[1-2]
 \clearpage
 ```
-::: {#tbl-regression}
+::: {#tbl-regression tbl-pos="H"}
 ```{r regressions}
 #| echo: false 
 #| warning: false
 #| message: false
 #| tbl-align: center
-#| tbl-pos: T
 
-library(estimatr) # OLS with robust SE's
-library(modelsummary) # Combine regression tables
-
-# Generate randm rada
+# Generate rada
 set.seed(123)
 n <- 500
 treatment <- rbinom(n, 1, 0.5) 
@@ -525,9 +509,7 @@ modelsummary(models,
     "­")) %>%
    tab_source_note(source_note = md(
     "**Notes:** Here is additional information on the table, which can be lengthy. It does not have to be but in order to check for line breaks, it makes sense to have it this way. It does not have to be but in order to check for line breaks, it makes sense to have it this way."
-  )) %>%
-  tab_style(style = cell_borders(sides = c("bottom"), color="red", weight = px(1.5)),
-            locations = cells_body(rows = c(2))) #ATM tab_style not converted to TeX!
+  )) 
 ```
 
 Linear Regression Models
@@ -556,18 +538,58 @@ Linear Regression Models
 \FloatBarrier
 ```
 
-::: {#tbl-regression2}
+::: {#fig-eventstudy2 fig-pos="H"}
+```{r eventstudy2}
+#| echo: false 
+#| warning: false
+#| message: false
+#| fig-width: 3.5
+#| fig-asp: 0.6
+#| fig-align: center
+
+# Generate data
+set.seed(42)
+rel_time <- -5:5
+coefficients <- c(rnorm(5, mean = 0, sd = 0.1), 0, rnorm(5, mean = 1, sd = 0.2))
+std_errors <- c(rnorm(5, mean = 0.1, sd = 0.05), 0, rnorm(5, mean = 0.1, sd = 0.05))
+conf_min <- coefficients - 1.96 * std_errors
+conf_max <- coefficients + 1.96 * std_errors
+
+event_study_df <- data.frame(
+  rel_time = rel_time,
+  coefficient = coefficients,
+  std_error = std_errors,
+  conf_min = conf_min,
+  conf_max = conf_max
+)
+
+# Make plot
+ggplot(event_study_df, aes(x = rel_time, y = coefficient)) +
+  geom_errorbar(aes(ymin = conf_min, ymax = conf_max), width = 0.2) +
+  geom_point(size = 2) +
+  labs(
+    x = "",
+    y = ""
+  ) +
+  scale_x_continuous(labels = scales::number_format(accuracy = 1)) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  geom_vline(xintercept = 0, linetype = "dashed")
+```
+
+```{=tex}
+\vspace{-7pt}\begin{minipage}{0.9\textwidth}\scriptsize\singlespacing\textbf{Notes:} You can use this text to provide further information about the plot. \lipsum[66]\end{minipage}\vspace{15pt}
+```
+An event-study plot in the Appendix
+:::
+
+::: {#tbl-regression2 tbl-pos="H"}
 ```{r regression2}
 #| echo: false 
 #| warning: false
 #| message: false
 #| tbl-align: center
-#| tbl-pos: T
 
-library(estimatr) # OLS with robust SE's
-library(modelsummary) # Combine regression tables
-
-# Generate randm rada
+# Generate rada
 set.seed(123)
 n <- 500
 treatment <- rbinom(n, 1, 0.5) 
@@ -635,9 +657,7 @@ modelsummary(models,
     "­")) %>%
    tab_source_note(source_note = md(
     "**Notes:** Here is additional information on the table, which can be lengthy. It does not have to be but in order to check for line breaks, it makes sense to have it this way. It does not have to be but in order to check for line breaks, it makes sense to have it this way."
-  )) %>%
-  tab_style(style = cell_borders(sides = c("bottom"), color="red", weight = px(1.5)),
-            locations = cells_body(rows = c(2))) #ATM tab_style not converted to TeX!
+  )) 
 ```
 
 Linear Regression Models for the Appendix

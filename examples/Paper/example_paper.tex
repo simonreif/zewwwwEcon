@@ -1,6 +1,6 @@
 %***********************************************************
 % zewwww Paper Template
-% Simon Reif & Benedikt Stelter, 19 September 2024
+% Simon Reif & Benedikt Stelter, 31 January 2025
 %
 % Preamble
 % This tex code is use to be run together with the
@@ -10,7 +10,6 @@
 % Packages
 \documentclass[12pt,a4paper,oneside]{article} % Layout
 \usepackage[utf8]{inputenc}
-\usepackage[british]{babel}
 \usepackage{graphicx,txfonts} % Even more symbols
 \usepackage[T1]{fontenc}
 \usepackage[onehalfspacing]{setspace}
@@ -89,7 +88,7 @@ ItalicFont=LinLibertine_RI.ttf]{LinLibertine_R.ttf}
 
 \hypersetup{
 		pdftitle={zewwwwEcon: A Template for Econ Articles with Quarto},
-			pdfauthor={First Name; Second Author; Third Author; Fourth Author},
+			pdfauthor={Lord Macbeth; Lady Macbeth; First Witch; Second Witch; Third Witch},
 					pdfkeywords={These are the keywords},
 		colorlinks=true,
 	linkcolor={[RGB]{82,125,164}},
@@ -110,20 +109,23 @@ ItalicFont=LinLibertine_RI.ttf]{LinLibertine_R.ttf}
 Quarto \vspace{-15pt} }}\thanks{\noindent { }We would like to thank
 \ldots.}  \rule{\linewidth}{0.5mm}  }
 \date{\hspace{87pt}\scriptsize{\textbf{Version
-0.1 \#8098b377}} \vspace{-5pt} \newline  \normalsize 4 November 2024} 
+0.1 \#7c0f48ab}} \vspace{-5pt} \newline  \normalsize 1 February 2025} 
 
 \author{
-		\textbf{First Name}\\
-	\small{Affiliation A which is very long}\vspace{-1.5ex}\\
-	\and	\textbf{Second Author}\thanks{ { }Corrseponding author: Adress,
+		\textbf{Lord Macbeth}\\
+	\small{Thane of Glamis}\vspace{-1.5ex}\\
+	\and	\textbf{Lady Macbeth}\thanks{ { }Corrseponding author: Adress,
 Place.}\\
-	\small{Affiliation B}\vspace{-1.5ex}\\
-	\and	\textbf{Third Author}\\
-	\small{Affiliation B}\vspace{-1.5ex}\\
-	\small{Affiliation C}\vspace{-1.5ex}\\
-	\and	\textbf{Fourth Author}\\
-	\small{Affiliation B}\vspace{-1.5ex}\\
-	\small{Affiliation C}\vspace{-1.5ex}\\
+	\small{Queen of Scotland}\vspace{-1.5ex}\\
+	\and	\textbf{First Witch}\\
+	\small{Posters of the Sea}\vspace{-1.5ex}\\
+	\small{Posters of the Land}\vspace{-1.5ex}\\
+	\and	\textbf{Second Witch}\\
+	\small{Posters of the Sea}\vspace{-1.5ex}\\
+	\small{Posters of the Land}\vspace{-1.5ex}\\
+	\and	\textbf{Third Witch}\\
+	\small{Posters of the Sea}\vspace{-1.5ex}\\
+	\small{Posters of the Land}\vspace{-1.5ex}\\
 	\vspace{10pt}}
 
 \maketitle
@@ -164,12 +166,12 @@ sovereign sway and masterdom.
 % Start the main text
 \section{Introduction}\label{introduction}
 
-Quarto enables you to weave together content and executable code.
-\textcite{abadieSemiparametric2005} have not used this to put their
-thoughts into a finished document, since Quarto did not exist back then.
-To learn more about Quarto see \url{https://quarto.org}.\footnote{Here,
-  we have an excellent example of a footnote.} You can easily refer to
-parts of the paper such as Figure~\ref{fig-eventstudy} or
+Quarto enables you to weave together content and executable code. To
+learn more about Quarto see \url{https://quarto.org}.\footnote{Here, we
+  have an excellent example of a footnote.} If you are interested in
+incentives in health insurance risk adjustment schemes, check out
+\textcite{reifSettingIncentivesRight2024}. You can easily refer to parts
+of the paper such as Figure~\ref{fig-eventstudy} or
 Table~\ref{tbl-regression2}. Sometimes one might need equations. Just
 use \LaTeX~for this in the text to show that \(2^{2} > 3\). You can do
 it like this:
@@ -191,7 +193,7 @@ X^\top X \hat{\beta} = X^\top y
 
 \section{Figures}\label{figures}
 
-\begin{figure}
+\begin{figure}[H]
 
 \caption{\label{fig-hist}Distribution of height (in cm) in random data}
 
@@ -213,7 +215,7 @@ X^\top X \hat{\beta} = X^\top y
 
 \lipsum[2-4]
 
-\begin{figure}
+\begin{figure}[H]
 
 \caption{\label{fig-barchart}Number of Federal States by Country}
 
@@ -235,7 +237,7 @@ X^\top X \hat{\beta} = X^\top y
 
 \lipsum[1-2]
 
-\begin{figure}
+\begin{figure}[H]
 
 \caption{\label{fig-ts1}Displaying how things evolve over time}
 
@@ -257,7 +259,7 @@ X^\top X \hat{\beta} = X^\top y
 
 \lipsum[1-2]
 
-\begin{figure}
+\begin{figure}[H]
 
 \caption{\label{fig-scatterplot}Two groups have very different values}
 
@@ -279,7 +281,7 @@ X^\top X \hat{\beta} = X^\top y
 
 \lipsum[1]
 
-\begin{figure}
+\begin{figure}[H]
 
 \caption{\label{fig-dotplot}Visualizing distributions with few
 observations}
@@ -302,7 +304,7 @@ observations}
 
 \lipsum[1-2]
 
-\begin{figure}
+\begin{figure}[H]
 
 \caption{\label{fig-eventstudy}Coefficients relative to treatment time}
 
@@ -321,7 +323,7 @@ observations}
 \lipsum[1-2]
 \clearpage
 
-\begin{table}
+\begin{table}[H]
 
 \caption{\label{tbl-descriptives}Descriptive statistics by group}
 
@@ -350,7 +352,7 @@ Severity Score & 0.39 (0.49) & 0.36 (0.48) \\
 \lipsum[1-2]
 \clearpage
 
-\begin{table}
+\begin{table}[H]
 
 \caption{\label{tbl-regression}Linear Regression Models}
 
@@ -400,7 +402,21 @@ R² & 0.11 & 0.20 & 0.13 & 0.25 & 0.10 & 0.17 \\
 \setcounter{figure}{0}
 \FloatBarrier
 
-\begin{table}
+\begin{figure}[H]
+
+\caption{\label{fig-eventstudy2}An event-study plot in the Appendix}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{example_paper_files/figure-pdf/eventstudy2-1.pdf}}
+
+\vspace{-7pt}\begin{minipage}{0.9\textwidth}\scriptsize\singlespacing\textbf{Notes:} You can use this text to provide further information about the plot. \lipsum[66]\end{minipage}\vspace{15pt}
+
+}
+
+\end{figure}%
+
+\begin{table}[H]
 
 \caption{\label{tbl-regression2}Linear Regression Models for the
 Appendix}
