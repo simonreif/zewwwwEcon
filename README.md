@@ -13,19 +13,17 @@ Slides and Paper in an environment that makes reproducibility easy. This
 is an unbranded version to be shared on the `www` based on the
 `zew_econ` package developed for internal use at the
 <a href="https://www.zew.de/en/" target="_blank">ZEW - Leibniz Centre
-for European Economic Research</a> in Mannheim, Germany. For a preview,
-here are PDF versions of the
+for European Economic Research</a> in Mannheim, Germany. For a preview
+of the PDF versions, have a lookt at the
 <a href="../../blob/main/examples/FullProject/Paper/example_paper.pdf"
 target="_blank">Paper</a> and
 <a href="../../blob/main/examples/FullProject/Slides/example_slides.pdf"
 target="_blank">Slides</a>.
 
-<div layout-ncol="2">
-
-<img src="pics/paper_zewwww.png" style="width:5.0%" alt="Paper" />
-<img src="pics/slides_zewwww.png" style="width:5.0%" alt="Slides" />
-
-</div>
+<figure>
+<img src="pics/preview.png" alt="Paper" />
+<figcaption aria-hidden="true">Paper</figcaption>
+</figure>
 
 ## Motivation
 
