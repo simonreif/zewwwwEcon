@@ -20,10 +20,7 @@ target="_blank">Paper</a> and
 <a href="../../blob/main/examples/FullProject/Slides/example_slides.pdf"
 target="_blank">Slides</a>.
 
-<figure>
-<img src="pics/preview.png" alt="Paper" />
-<figcaption aria-hidden="true">Paper</figcaption>
-</figure>
+![](pics/preview.png)
 
 ## Motivation
 
@@ -300,12 +297,11 @@ the output.
 can just add `\vspace{}` to solve this. For table notes from `gt`, we
 need to add an additional source note with an empty unicode character.
 This empty source code then is displayed as some space below the Table
-(<https://github.com/rstudio/gt/issues/1508>){target=“\_blank”}. As
-output from `gt` is automatically put into a minipage and there is no
-way to change the style there, the template defines the font size of all
-minipage content to scriptsize. This means that if you want to use a
-normal size minipage, you have to set normalsize in the beginning of
-your minipage!
+(<https://github.com/rstudio/gt/issues/1508>). As output from `gt` is
+automatically put into a minipage and there is no way to change the
+style there, the template defines the font size of all minipage content
+to scriptsize. This means that if you want to use a normal size
+minipage, you have to set normalsize in the beginning of your minipage!
 
 #### Caching in Quarto chunks
 
@@ -319,7 +315,7 @@ the script will not get realized by the default caching option.
 hash as `cache.extra=tools::md5sum('name_of_output.rds')`. This means
 when the underlying file changes, the chunk is run. If the code is
 unchanged the chunk is not re-run. An alternative would be to use
-`file.mtime()`(<https://yihui.org/en/2018/06/cache-invalidation/>){target=“\_blank”}.
+`file.mtime()`(<https://yihui.org/en/2018/06/cache-invalidation/>).
 
 ## Package development
 
