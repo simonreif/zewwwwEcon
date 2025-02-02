@@ -1,17 +1,17 @@
-Package: zewwwwEcontemplates
+Package: zewwww_econ
 Type: Package
-Title: Create research projects using 'Quarto' 
-Version: 1.0.0
+Title: Quarto Templates for Applied Economic Research Projects
+Version: 0.1.0
 Authors@R: c(
     person("Simon", "Reif", email = "simon.reif@zew.de", role = c("aut", "cre")),
     person("Benedikt", "Stelter", email = "benedikt.stelter@outlook.com", role = "aut"))
 Description: This package includes templates for papers and
-    presentations in a nice layout. 
+    presentations in Quarto. 
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.3.2
 Suggests: 
     quarto
-License: MIT + file LICENSE
+License: MIT
 Imports: 
     tidyverse, gt, gtsummary, ggpubr, broom, estimatr, modelsummary, sf, readr
