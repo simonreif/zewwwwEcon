@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit the Rmd file -->
 
-# zewwwwEcon Quarto Templates
+# zewwwwEcon Quarto Templates <img src='pics/hex_sticker.png' align="right" height="138" />
 
 The `zewwwwEcon` package allows to start a new project in
 <a href="https://posit.co/download/rstudio-desktop/"
@@ -14,7 +14,7 @@ is an unbranded version to be shared on the `www` based on the `zewEcon`
 package developed for internal use at the
 <a href="https://www.zew.de/en/" target="_blank">ZEW - Leibniz Centre
 for European Economic Research</a> in Mannheim, Germany. For a preview
-of the PDF versions, have a lookt at the
+of the PDF versions, have a look at the
 <a href="../../blob/main/examples/FullProject/Paper/example_paper.pdf"
 target="_blank">Paper</a> and
 <a href="../../blob/main/examples/FullProject/Slides/example_slides.pdf"
