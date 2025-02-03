@@ -16,7 +16,7 @@ While there are a lot of examples out there of how people use Quarto for their e
 
 [^1]: Examples are the [Journal templates](https://quarto.org/docs/journals/formats.html){target="_blank"} maintained by Quarto, the [Hikmah templates](https://github.com/andrewheiss/hikmah-academic-quarto){target="_blank"} by Andrew Heiss, the [research template](https://github.com/AaronGullickson/research-template/){target="_blank"} by Aaron Gullickson or the [froggeR](http://azimuth-project.tech/froggeR/index.html){target="_blank"} package by Kyle Grealis.
 
-## Requirements and intended use
+## Requirements
 
 For the package to work properly, [R](https://cran.r-project.org/){target="_blank"} (≥ 4.0), [Rstudio](https://posit.co/download/rstudio-desktop/){target="_blank"}, [Quarto](https://quarto.org/docs/get-started/){target="_blank"} (≥ 1.6) and [LaTeX](https://quarto.org/docs/output-formats/pdf-engine.html){target="_blank"} (e.g. TeX Live or tinytex, but definitely a distribution that features XeLaTex) need to be installed.
 

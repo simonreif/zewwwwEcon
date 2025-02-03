@@ -29,7 +29,7 @@ their empirical research projects we found no solution out there that
 contains all the details required for the idiosyncrasies of applied
 economics research output.[^1]
 
-## Requirements and intended use
+## Requirements
 
 For the package to work properly,
 <a href="https://cran.r-project.org/" target="_blank">R</a> (≥ 4.0),
