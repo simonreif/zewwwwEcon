@@ -4,9 +4,9 @@ output: github_document
 
 <!-- README.md is generated from README.Rmd. Please edit the Rmd file -->
 
-# zewwwwEcon Quarto Templates
+# zewwwwEcon Quarto Templates <img src='pics/hex_sticker.png' align="right" height="138" />
 
-The `zewwwwEcon` package allows to start a new project in [RStudio](https://posit.co/download/rstudio-desktop/){target="_blank"} that contains the basic setup for an empirical research project. It features [Quarto](https://quarto.org/){target="_blank"} templates and some `ggplot2` style adjustments to generate nice looking PDFs for Slides and Paper in an environment that makes reproducibility easy. This is an unbranded version to be shared on the `www` based on the `zewEcon` package developed for internal use at the [ZEW - Leibniz Centre for European Economic Research](https://www.zew.de/en/){target="_blank"} in Mannheim, Germany. For a preview of the PDF versions, have a lookt at the [Paper](../../blob/main/examples/FullProject/Paper/example_paper.pdf){target="_blank"} and [Slides](../../blob/main/examples/FullProject/Slides/example_slides.pdf){target="_blank"}.
+The `zewwwwEcon` package allows to start a new project in [RStudio](https://posit.co/download/rstudio-desktop/){target="_blank"} that contains the basic setup for an empirical research project. It features [Quarto](https://quarto.org/){target="_blank"} templates and some `ggplot2` style adjustments to generate nice looking PDFs for Slides and Paper in an environment that makes reproducibility easy. This is an unbranded version to be shared on the `www` based on the `zewEcon` package developed for internal use at the [ZEW - Leibniz Centre for European Economic Research](https://www.zew.de/en/){target="_blank"} in Mannheim, Germany. For a preview of the PDF versions, have a look at the [Paper](../../blob/main/examples/FullProject/Paper/example_paper.pdf){target="_blank"} and [Slides](../../blob/main/examples/FullProject/Slides/example_slides.pdf){target="_blank"}.
 
 ![](pics/preview.png)
 
