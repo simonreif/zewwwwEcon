@@ -19,7 +19,7 @@ create_zewwww_project <- function(path) {
   dir.create(path, recursive = TRUE, showWarnings = FALSE)
 
   # Find package location
-  pkg_loc <- find.package("zewwwwEcontemplates")
+  pkg_loc <- find.package("zewwwwEcon")
   
   # Create directory for original data
   dir.create(paste0(path, "/A_Orig"), recursive = TRUE, showWarnings = FALSE)
