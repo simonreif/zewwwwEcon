@@ -22,7 +22,7 @@ For the package to work properly, [R](https://cran.r-project.org/){target="_blan
 
 ## Installation
 
-For those only interested in the details of our implementation, the `examples` folder in this repository contains standalone documents for [Paper](../../blob/main/examples/Paper){target="_blank"}, [Slides](../../blob/main/examples/Slides){target="_blank"} and the [FullProject](../../blob/main/examples/FullProject){target="_blank"} setup. To have the full setup automatically produced in the RStudio project wizard, please install the package. The package can be installed in R using `devtools` (which you need to install, in case you have not yet).
+For those only interested in the details of our implementation, the `examples` folder in this repository contains standalone documents for [Paper](../../blob/main/examples/Paper){target="_blank"} and [Slides](../../blob/main/examples/Slides){target="_blank"}. If you download the folder, you can render the `.qmd` files. There is also an example for a [FullProject](../../blob/main/examples/FullProject){target="_blank"} setup which will be fully rendered by typing `make` to the terminal after pointing to the folder (this is automatically set correctly when `FullProject.Rproj` is opened). To have the full setup automatically produced in the RStudio project wizard, please install the package. The package can be installed in R using `devtools` (which you need to install, in case you have not yet).
 
 Option 1: Install from github
 

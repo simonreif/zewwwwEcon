@@ -45,13 +45,16 @@ distribution that features XeLaTex) need to be installed.
 
 For those only interested in the details of our implementation, the
 `examples` folder in this repository contains standalone documents for
-<a href="../../blob/main/examples/Paper" target="_blank">Paper</a>,
-<a href="../../blob/main/examples/Slides" target="_blank">Slides</a> and
-the <a href="../../blob/main/examples/FullProject"
-target="_blank">FullProject</a> setup. To have the full setup
-automatically produced in the RStudio project wizard, please install the
-package. The package can be installed in R using `devtools` (which you
-need to install, in case you have not yet).
+<a href="../../blob/main/examples/Paper" target="_blank">Paper</a> and
+<a href="../../blob/main/examples/Slides" target="_blank">Slides</a>. If
+you download the folder, you can render the `.qmd` files. There is also
+an example for a <a href="../../blob/main/examples/FullProject"
+target="_blank">FullProject</a> setup which will be fully rendered by
+typing `make` to the terminal after pointing to the folder (this is
+automatically set correctly when `FullProject.Rproj` is opened). To have
+the full setup automatically produced in the RStudio project wizard,
+please install the package. The package can be installed in R using
+`devtools` (which you need to install, in case you have not yet).
 
 Option 1: Install from github
 
