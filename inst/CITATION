@@ -1,7 +1,0 @@
-bibentry(
-  bibtype  = "Manual",
-  title    = "{zewwwwwEcon}: Quarto Templates for Applied Economic Research Projects",
-  author   = c(person("Simon", "Reif"), person("Benedikt", "Stelter")),
-  year     = 2025,
-  note     = "R package version 0.1.0"
-)

@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you want to cite this template, use the reference below."
+authors:
+- family-names: "Reif"
+  given-names: "Simon"
+  orcid: "https://orcid.org/0000-0001-6842-289X"
+- family-names: "Stelter"
+  given-names: "Benedikt"
+title: "zewwwwwEcon: Quarto Templates for Applied Economic Research Projects"
+version: 0.1.0
+doi: 10.5281/zenodo.14800284
+date-released: 2025-02-05
+url: "https://github.com/simonreif/zewwwwEcon"
