@@ -1,5 +1,5 @@
 bibentry(
-  bibtype  = "Manual",
+  bibtype  = "Software",
   title    = "{zewwwwwEcon}: Quarto Templates for Applied Economic Research Projects",
   author   = c(person("Simon", "Reif"), person("Benedikt", "Stelter")),
   year     = 2025,
