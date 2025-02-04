@@ -7,8 +7,6 @@
 .RDataTmp
 .Ruserdata
 .DS_Store
-C_Temp
-D_Out
 *_cache/
 /cache/
 examples/Paper/example_paper.tex
@@ -19,3 +17,7 @@ examples/FullProject/Paper/example_paper.tex
 examples/FullProject/Paper/example_paper_files
 examples/FullProject/Slides/example_slides.tex
 examples/FullProject/Slides/example_slides_files
+examples/FullProject/C_Temp/*
+!examples/FullProject/C_Temp/.gitkeep
+examples/FullProject/D_Out/*
+!examples/FullProject/D_Out/.gitkeep

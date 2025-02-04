@@ -40,6 +40,17 @@ create_zewwww_project <- function(path) {
   dir.create(paste0(path, "/Slides"), recursive = TRUE, showWarnings = FALSE)
   dir.create(paste0(path, "/Slides/zewwwwImages"), recursive = TRUE, showWarnings = FALSE)
   
+  ## Add .gitkeep for otherwise empty folders
+  file.copy(from = paste0(pkg_loc, "/FullProject/.gitkeep"),
+            to = paste0(path, "/A_Orig/.gitkeep"), recursive = TRUE)
+  
+  file.copy(from = paste0(pkg_loc, "/FullProject/.gitkeep"),
+            to = paste0(path, "/C_Temp/.gitkeep"), recursive = TRUE)
+  
+  file.copy(from = paste0(pkg_loc, "/FullProject/.gitkeep"),
+            to = paste0(path, "/D_Out/.gitkeep"), recursive = TRUE)
+  
+  
    ## Copy general files (not paper and slides)
   
   # Makefile
