@@ -9,8 +9,11 @@ target="_blank">RStudio</a> that contains the basic setup for an
 empirical research project. It features
 <a href="https://quarto.org/" target="_blank">Quarto</a> templates and
 some `ggplot2` style adjustments to generate nice looking PDFs for
-Slides and Paper in an environment that makes reproducibility easy. This
-is an unbranded version to be shared on the `www` based on the `zewEcon`
+Slides and Paper in an environment that makes reproducibility easy.
+While this setup uses R,
+<a href="https://quarto.org/docs/computations/python.html"
+target="_blank">Quarto also works well with Python</a>. This is an
+unbranded version to be shared on the `www` based on the `zewEcon`
 package developed for internal use at the
 <a href="https://www.zew.de/en/" target="_blank">ZEW - Leibniz Centre
 for European Economic Research</a> in Mannheim, Germany. For a preview
@@ -349,4 +352,10 @@ contribute, let us know!
     <a href="https://github.com/AaronGullickson/research-template/"
     target="_blank">research template</a> by Aaron Gullickson or the
     <a href="http://azimuth-project.tech/froggeR/index.html"
-    target="_blank">froggeR</a> package by Kyle Grealis.
+    target="_blank">froggeR</a> package by Kyle Grealis. There is also
+    the excellent
+    <a href="https://econ-project-templates.readthedocs.io/"
+    target="_blank">econ-project-template</a> by Hans-Martin von
+    Gaudecker, Tim Mensinger, Tobias Raabe and Max Jahn which provides a
+    full Python setup and a lot of cool features but has less focus on
+    the design of final outpu
