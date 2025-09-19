@@ -1,27 +1,27 @@
----
-toc-title: Table of contents
----
+
 
 <!-- README.md is generated from README.Rmd. Please edit the Rmd file -->
 
-# zewwwwEcon Quarto Templates `<img src='pics/hex_sticker.png' align="right" height="138" />`{=html}
+# zewwwwEcon Quarto Templates <img src='pics/hex_sticker.png' align="right" height="138" />
 
 The `zewwwwEcon` package allows to start a new project in
-[RStudio](https://posit.co/download/rstudio-desktop/){target="_blank"}
-that contains the basic setup for an empirical research project. It
-features [Quarto](https://quarto.org/){target="_blank"} templates and
+<a href="https://posit.co/download/rstudio-desktop/"
+target="_blank">RStudio</a> that contains the basic setup for an
+empirical research project. It features
+<a href="https://quarto.org/" target="_blank">Quarto</a> templates and
 some `ggplot2` style adjustments to generate nice looking PDFsfor Slides
 and Paper in an environment that makes reproducibility easy. While this
-setup uses R, [Quarto also works well with
-Python](https://quarto.org/docs/computations/python.html){target="_blank"}.
-This is an unbranded version to be shared on the `www` based on the
-`zewEcon` package developed for internal use at the [ZEW - Leibniz
-Centre for European Economic
-Research](https://www.zew.de/en/){target="_blank"} in Mannheim, Germany.
-For a preview of the PDF versions, have a look at the
-[Paper](../../blob/main/examples/FullProject/Paper/example_paper.pdf){target="_blank"}
-and
-[Slides](../../blob/main/examples/FullProject/Slides/example_slides.pdf){target="_blank"}.
+setup uses R, <a href="https://quarto.org/docs/computations/python.html"
+target="_blank">Quarto also works well with Python</a>. This is an
+unbranded version to be shared on the `www` based on the `zewEcon`
+package developed for internal use at the
+<a href="https://www.zew.de/en/" target="_blank">ZEW - Leibniz Centre
+for European Economic Research</a> in Mannheim, Germany. For a preview
+of the PDF versions, have a look at the
+<a href="../../blob/main/examples/FullProject/Paper/example_paper.pdf"
+target="_blank">Paper</a> and
+<a href="../../blob/main/examples/FullProject/Slides/example_slides.pdf"
+target="_blank">Slides</a>.
 
 ![](pics/preview.png)
 
@@ -35,29 +35,29 @@ economics research output.[^1]
 ## Requirements
 
 For the package to work properly,
-[R](https://cran.r-project.org/){target="_blank"} (≥ 4.0),
-[Rstudio](https://posit.co/download/rstudio-desktop/){target="_blank"},
-[Quarto](https://quarto.org/docs/get-started/){target="_blank"} (≥ 1.6)
-and
-[LaTeX](https://quarto.org/docs/output-formats/pdf-engine.html){target="_blank"}
-(e.g. TeX Live or tinytex, but definitely a distribution that features
-XeLaTex) need to be installed.
+<a href="https://cran.r-project.org/" target="_blank">R</a> (≥ 4.0),
+<a href="https://posit.co/download/rstudio-desktop/"
+target="_blank">Rstudio</a>,
+<a href="https://quarto.org/docs/get-started/"
+target="_blank">Quarto</a> (≥ 1.6) and
+<a href="https://quarto.org/docs/output-formats/pdf-engine.html"
+target="_blank">LaTeX</a> (e.g. TeX Live or tinytex, but definitely a
+distribution that features XeLaTex) need to be installed.
 
 ## Installation
 
 For those only interested in the details of our implementation, the
 `examples` folder in this repository contains standalone documents for
-[Paper](../../blob/main/examples/Paper){target="_blank"} and
-[Slides](../../blob/main/examples/Slides){target="_blank"}. If you
-download the folder, you can render the `.qmd` files. There is also an
-example for a
-[FullProject](../../blob/main/examples/FullProject){target="_blank"}
-setup which will be fully rendered by typing `make` to the terminal
-after pointing to the folder (this is automatically set correctly when
-`FullProject.Rproj` is opened). To have the full setup automatically
-produced in the RStudio project wizard, please install the package. The
-package can be installed in R using `devtools` (which you need to
-install, in case you have not yet).
+<a href="../../blob/main/examples/Paper" target="_blank">Paper</a> and
+<a href="../../blob/main/examples/Slides" target="_blank">Slides</a>. If
+you download the folder, you can render the `.qmd` files. There is also
+an example for a <a href="../../blob/main/examples/FullProject"
+target="_blank">FullProject</a> setup which will be fully rendered by
+typing `make` to the terminal after pointing to the folder (this is
+automatically set correctly when `FullProject.Rproj` is opened). To have
+the full setup automatically produced in the RStudio project wizard,
+please install the package. The package can be installed in R using
+`devtools` (which you need to install, in case you have not yet).
 
 Option 1: Install from github
 
@@ -77,20 +77,21 @@ devtools::install_local("/Users/YOURPATH/thename.zip")
 After installing the package and restarting R Studio new projects can be
 created in the project wizard. First select `New Project`.
 
-![](pics/wizz1.png){width="50%"}
+<img src="pics/wizz1.png" style="width:50.0%" />
 
 You probably want to initiate the Project in a new directory.
 
-![](pics/wizz2.png){width="50%"}
+<img src="pics/wizz2.png" style="width:50.0%" />
 
 The `zewwwwEcon` template should be somewhere down there.
 
-![](pics/wizz3.png){width="50%"}
+<img src="pics/wizz3.png" style="width:50.0%" />
 
-You can then add the folder to GitHub by creating a [local git
-repository](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github#initializing-a-git-repository){target="_blank"}
-and then adding the [local repository to
-GitHub](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github#adding-a-local-repository-to-github-using-git){target="_blank"}.
+You can then add the folder to GitHub by creating a <a
+href="https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github#initializing-a-git-repository"
+target="_blank">local git repository</a> and then adding the <a
+href="https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github#adding-a-local-repository-to-github-using-git"
+target="_blank">local repository to GitHub</a>.
 
 ## Project structure
 
@@ -129,27 +130,27 @@ to produce a `LaTeX` document. This `LaTeX` document is then compiled to
 the final PDF. The cool thing is: you do not need to worry about these
 details since Quarto is taking care of everything.
 
-![](pics/quarto_flow_current.png){width="50%"}
+<img src="pics/quarto_flow_current.png" style="width:50.0%" />
 
 ### Intended flow of things
 
 For a full working example of the project setup and codes, see the
 `examples/FullProject` folder in this repository. The idea is:
 
--   Raw data from `A_Orig` is used for data wrangling and estimations
-    through scripts in `B_Prog`.
--   Intermediate files are stored in `C_Temp` and the final output goes
-    into `D_Out` as `.rds` files.
--   The `.qmd` documents in `Paper` and `Slides` take the results from
-    `D_Out` and integrate them in the final documents. Using `.rds`
-    files here allows for final adjustments if outputs need to be
-    different between slides and paper.
--   `0setup.R` loads all packages needed in the project and defines the
-    ggplot2 style.
--   Each script sources the setup, but does not load any additional
-    packages.
--   Each script starts with a fresh environment and ends with an empty
-    environment.
+- Raw data from `A_Orig` is used for data wrangling and estimations
+  through scripts in `B_Prog`.
+- Intermediate files are stored in `C_Temp` and the final output goes
+  into `D_Out` as `.rds` files.
+- The `.qmd` documents in `Paper` and `Slides` take the results from
+  `D_Out` and integrate them in the final documents. Using `.rds` files
+  here allows for final adjustments if outputs need to be different
+  between slides and paper.
+- `0setup.R` loads all packages needed in the project and defines the
+  ggplot2 style.
+- Each script sources the setup, but does not load any additional
+  packages.
+- Each script starts with a fresh environment and ends with an empty
+  environment.
 
 ### YAML headers
 
@@ -160,63 +161,63 @@ of the entries are self-explanatory.
 
 #### Options for Slides and Paper
 
--   `pdf-engine:` Which LaTeX distribution to use. Everything works fine
-    with `XeLaTeX` while other engines have caused problems.
--   `cap-location:` While Quarto allows for figure and table captions to
-    be at the bottom of the output, the very sensible default here is
-    `top` since we have notes to write at the bottom.
--   `add-tex:` We do automatically load the most common `TeX` packages
-    in the template files. However, if you need something in addition or
-    want to input some raw `TeX` in the document preamble, this is the
-    space to do it.
--   `editor:` Quarto has a `visual` editor that can be helpful. It can
-    however also mess around with your code, so the default is `source`.
+- `pdf-engine:` Which LaTeX distribution to use. Everything works fine
+  with `XeLaTeX` while other engines have caused problems.
+- `cap-location:` While Quarto allows for figure and table captions to
+  be at the bottom of the output, the very sensible default here is
+  `top` since we have notes to write at the bottom.
+- `add-tex:` We do automatically load the most common `TeX` packages in
+  the template files. However, if you need something in addition or want
+  to input some raw `TeX` in the document preamble, this is the space to
+  do it.
+- `editor:` Quarto has a `visual` editor that can be helpful. It can
+  however also mess around with your code, so the default is `source`.
 
 #### Options for Paper
 
--   `affiliation:` This input is used to identify the corresponding
-    author.
--   `thanks:` Is for the acknowledgement note. We have separated this
-    from the corresponding author note since usually all authors share
-    the acknowledgement.
--   `prelim-note:` Papers are often distributed at very early stages
-    (e.g. for internal workshops) and you can print on the title page
-    that you do not wish this version to get redistributed
--   `number:` Usually the paper is not finished after the first release.
-    You can use this to indicate the current iteration.
--   `repohash:` When using git, you can print the last digits of the
-    hash code for the current commit of the repository to be able to see
-    how your code looked like for the specific version of the paper.
+- `affiliation:` This input is used to identify the corresponding
+  author.
+- `thanks:` Is for the acknowledgement note. We have separated this from
+  the corresponding author note since usually all authors share the
+  acknowledgement.
+- `prelim-note:` Papers are often distributed at very early stages
+  (e.g. for internal workshops) and you can print on the title page that
+  you do not wish this version to get redistributed
+- `number:` Usually the paper is not finished after the first release.
+  You can use this to indicate the current iteration.
+- `repohash:` When using git, you can print the last digits of the hash
+  code for the current commit of the repository to be able to see how
+  your code looked like for the specific version of the paper.
 
 #### Options for Slides
 
--   `presenter:` If you want your name to appear on every slide at the
-    bottom right, add it here.
--   `partner-logo:` This is a placeholder in case you want to add more
-    logos on the title page.
--   `totalnumber:` If `true` then the total number of slides in the
-    presentation is printed next to the current slide number at the
-    bottom right.
--   `references:` If `yes` then a bibliography will get printed as the
-    last slide(s).
+- `presenter:` If you want your name to appear on every slide at the
+  bottom right, add it here.
+- `partner-logo:` This is a placeholder in case you want to add more
+  logos on the title page.
+- `totalnumber:` If `true` then the total number of slides in the
+  presentation is printed next to the current slide number at the bottom
+  right.
+- `references:` If `yes` then a bibliography will get printed as the
+  last slide(s).
 
 ### References
 
-You can use the [pandoc
-syntax](https://pandoc.org/MANUAL.html#citation-syntax){target="_blank"}
-for referencing, so `@key` is for text cites and `[@key]` is for
-indirect references. [Zotero](https://www.zotero.org/){target="_blank"}
-is well [integrated in
-Quarto](https://quarto.org/docs/visual-editor/technical.html#citations-from-zotero){target="_blank"}.
+You can use the <a href="https://pandoc.org/MANUAL.html#citation-syntax"
+target="_blank">pandoc syntax</a> for referencing, so `@key` is for text
+cites and `[@key]` is for indirect references.
+<a href="https://www.zotero.org/" target="_blank">Zotero</a> is well <a
+href="https://quarto.org/docs/visual-editor/technical.html#citations-from-zotero"
+target="_blank">integrated in Quarto</a>.
 
 ### Lintr
 
 To produce consistent code,
-[lintr](https://lintr.r-lib.org/){target="_blank"} and
-[styler](https://github.com/r-lib/styler){target="_blank"} can be a
-great tool. The package includes a `.lintr` file that takes the [default
-tidyverse linter](https://style.tidyverse.org/){target="_blank"} but
-loosens the line length restriction to 120.
+<a href="https://lintr.r-lib.org/" target="_blank">lintr</a> and
+<a href="https://github.com/r-lib/styler" target="_blank">styler</a> can
+be a great tool. The package includes a `.lintr` file that takes the
+<a href="https://style.tidyverse.org/" target="_blank">default tidyverse
+linter</a> but loosens the line length restriction to 120.
 
 ### gitignore
 
@@ -233,10 +234,10 @@ parts have changed and only executes those files and the files that
 depend on them. When correctly specified, you can just type `make` in
 the terminal and wait for the output to get updated. For a good
 introduction to makefiles, see
-[here](https://third-bit.com/py-rse/automate.html){target="_blank"}. On
-Windows, you need to install [GNU
-Make](https://www.gnu.org/software/make/){target="_blank"} for the
-makefile to run.
+<a href="https://third-bit.com/py-rse/automate.html"
+target="_blank">here</a>. On Windows, you need to install
+<a href="https://www.gnu.org/software/make/" target="_blank">GNU
+Make</a> for the makefile to run.
 
 ## Implementation details
 
@@ -254,23 +255,23 @@ place.
 
 ### TeX-Templates from scratch
 
--   The workflow probably intended by the Quarto developers is to work
-    on the baseline implementation that comes with Quarto and adjust the
-    *parts* as needed
--   Up to now it feels easier to twist everything from scratch (just
-    change `template.tex`)
--   **Caveats:** 1) There are things that generally work in Quarto that
-    do not work with the templates (e.g. Callout Blocks). 2) When
-    something changes for Quarto or R under the hood, the templates need
-    to get updated manually.
+- The workflow probably intended by the Quarto developers is to work on
+  the baseline implementation that comes with Quarto and adjust the
+  *parts* as needed
+- Up to now it feels easier to twist everything from scratch (just
+  change `template.tex`)
+- **Caveats:** 1) There are things that generally work in Quarto that do
+  not work with the templates (e.g. Callout Blocks). 2) When something
+  changes for Quarto or R under the hood, the templates need to get
+  updated manually.
 
 ### Use TeX fragments in markdown
 
--   The beauty of Quarto via pandoc is that you can render any document
-    into any format. This does not work if you use raw TeX.
--   But: Arriving at desired PDF outputs is however often simpler using
-    TeX
--   **Future solution:** Use lua filters (e.g. figure notes)
+- The beauty of Quarto via pandoc is that you can render any document
+  into any format. This does not work if you use raw TeX.
+- But: Arriving at desired PDF outputs is however often simpler using
+  TeX
+- **Future solution:** Use lua filters (e.g. figure notes)
 
 ### Clunky Fixes
 
@@ -288,7 +289,7 @@ graphs followed by a series of graph notes.
 
 **Solution:** All output is generated in a dedicated `:::` environment.
 At the beginning, we define the label (`fig` / `tbl`) s.t. internal
-referencing works in Quarto. Then comes the main output. For reasons...
+referencing works in Quarto. Then comes the main output. For reasons…
 then the very last text line in the `:::` environment is used as the
 title of the Table or Figure.
 
@@ -328,8 +329,8 @@ This package is developed and maintained by Simon Reif and Benedikt
 Stelter. We are grateful for the feedback from the early test users
 Sabrina Schubert, Yasemin Karamik, Jan Köhler, Paul Peters and Theresa
 Bolz. If you experience bugs, or have ideas on how to improve the
-templates (functionality, examples, ...), let us know via Email, Issues
-or pull-request.
+templates (functionality, examples, …), let us know via Email, Issues or
+pull-request.
 
 Ideally, if you have an idea for improvements, implement it in the
 FullProject example and make a pull request. We can then test this and
@@ -337,26 +338,28 @@ implement the package features in the other places.
 
 Our current plans for future development are:
 
--   typst implementation
+- typst implementation
 
--   Revealjs slides
+- Revealjs slides
 
--   Word output for paper
+- Word output for paper
 
 These add-ons will require some work and coming up with specific lua
 filters. So this will take some time. If you have cool ideas or want to
 contribute, let us know!
 
-[^1]: Examples are the [Journal
-    templates](https://quarto.org/docs/journals/formats.html){target="_blank"}
-    maintained by Quarto, the [Hikmah
-    templates](https://github.com/andrewheiss/hikmah-academic-quarto){target="_blank"}
-    by Andrew Heiss, the [research
-    template](https://github.com/AaronGullickson/research-template/){target="_blank"}
-    by Aaron Gullickson or the
-    [froggeR](http://azimuth-project.tech/froggeR/index.html){target="_blank"}
-    package by Kyle Grealis. There is also the excellent
-    [econ-project-template](https://econ-project-templates.readthedocs.io/){target="_blank"}
-    by Hans-Martin von Gaudecker, Tim Mensinger, Tobias Raabe and Max
-    Jahn which provides a full Python setup and a lot of cool features
-    but has less focus on the design of final outpu
+[^1]: Examples are the
+    <a href="https://quarto.org/docs/journals/formats.html"
+    target="_blank">Journal templates</a> maintained by Quarto, the
+    <a href="https://github.com/andrewheiss/hikmah-academic-quarto"
+    target="_blank">Hikmah templates</a> by Andrew Heiss, the
+    <a href="https://github.com/AaronGullickson/research-template/"
+    target="_blank">research template</a> by Aaron Gullickson or the
+    <a href="http://azimuth-project.tech/froggeR/index.html"
+    target="_blank">froggeR</a> package by Kyle Grealis. There is also
+    the excellent
+    <a href="https://econ-project-templates.readthedocs.io/"
+    target="_blank">econ-project-template</a> by Hans-Martin von
+    Gaudecker, Tim Mensinger, Tobias Raabe and Max Jahn which provides a
+    full Python setup and a lot of cool features but has less focus on
+    the design of final outpu
