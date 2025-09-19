@@ -3,6 +3,7 @@ output: github_document
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit the Rmd file -->
+<!--  quarto render README.Rmd --to gfm -->
 
 # zewwwwEcon Quarto Templates <img src='pics/hex_sticker.png' align="right" height="138" />
 
