@@ -9,6 +9,7 @@
 
 % Packages
 \documentclass[12pt,a4paper,oneside]{article} % Layout
+\usepackage{amsmath, amssymb}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx,txfonts} % Even more symbols
 \usepackage[T1]{fontenc}
@@ -24,7 +25,6 @@
 \usepackage{subcaption}
 \usepackage[dvipsnames]{xcolor}
 \usepackage{fontspec}
-\usepackage{amssymb} % Extra symbols
 \usepackage{titling}
 \usepackage[style=$biblio-style$]{biblatex}
 \usepackage[linktoc=all, colorlinks=true]{hyperref}
@@ -54,6 +54,9 @@ ItalicFont=LinLibertine_RI.ttf]{LinLibertine_R.ttf}
   \fi%
 }
 \makeatother
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
 % Unnecessary but nice: change symbols for title page notes
 \makeatletter

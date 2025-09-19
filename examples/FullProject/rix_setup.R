@@ -7,7 +7,7 @@ library(rix)
 path_default_nix <- getwd()
 
 rix(
-  date = "2025-07-02",
+  date = "2025-09-15",
   r_pkgs = c("rix",
 "tidyverse",
 "broom", 
