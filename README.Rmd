@@ -180,6 +180,8 @@ All programs used in this template are still being developed and therefore some 
 
 This package is developed and maintained by Simon Reif and Benedikt Stelter. We are grateful for the feedback from the early test users Sabrina Schubert, Yasemin Karamik, Jan Köhler, Paul Peters and Theresa Bolz. If you experience bugs, or have ideas on how to improve the templates (functionality, examples, ...), let us know via Email, Issues or pull-request.
 
+Ideally, if you have an idea for improvements, implement it in the FullProject example and make a pull request. We can then test this and implement the package features in the other places.
+
 Our current plans for future development are:
 
 -   typst implementation
