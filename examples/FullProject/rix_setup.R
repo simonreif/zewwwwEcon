@@ -7,7 +7,7 @@ library(rix)
 path_default_nix <- getwd()
 
 rix(
-  date = "2025-09-16",
+  date = "2026-04-13",
   r_pkgs = c(
     "rix",
     "tidyverse",
@@ -44,10 +44,16 @@ rix(
     "hyperref",
     "placeins",
     "pdflscape",
+    "ninecolors",
+    "tabularray",
+    "tcolorbox",
+    "tikzfill",
+    "pdfcol",
+    "fontawesome5",
     "framed"
   ),
   git_pkgs = NULL,
-  ide = "rstudio",
+  ide = "none",
   project_path = path_default_nix,
   overwrite = TRUE,
   print = FALSE
