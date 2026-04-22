@@ -3,7 +3,8 @@
 # - Output: g_tsplot.rds
 
 # Load setup
-source("B_Prog/0setup.R")
+library(here)
+source(here("B_Prog/0setup.R"))
 
 # Generate data
 set.seed(123)
@@ -23,5 +24,5 @@ g_tsplot <- ggplot(df, aes(x = time, y = value, color = series)) +
   labs(x = "", y = "") +
   theme(legend.position = "none")
 
-saveRDS(g_tsplot, "D_Out/g_tsplot.rds")
+saveRDS(g_tsplot, here("D_Out/g_tsplot.rds"))
 rm(df, g_tsplot) # Clean workspace

@@ -3,7 +3,8 @@
 # - Output: g_eventstudy.rds
 
 # Load setup
-source("B_Prog/0setup.R")
+library(here)
+source(here("B_Prog/0setup.R"))
 
 # Create a simple data frame
 set.seed(42)
@@ -36,13 +37,14 @@ rm(rel_time, coefficients, std_errors, conf_min, conf_max)
 
 # Plot
 g_eventstudy <- ggplot(event_study_df, aes(x = rel_time, y = coefficient)) +
-  geom_errorbar(aes(ymin = conf_min, ymax = conf_max), width = 0.2) +
-  geom_point(size = 2) +
-  labs(x = "",
-       y = "") +
-  scale_x_continuous(labels = scales::number_format(accuracy = 1)) +
   geom_hline(yintercept = 0, linetype = "dashed") +
-  geom_vline(xintercept = 0, linetype = "dashed")
+  geom_vline(xintercept = 0, linetype = "dashed") +
+  geom_errorbar(aes(ymin = conf_min, ymax = conf_max), width = 0.2) +
+  geom_point(size = 3) +
+  labs(x = "", y = "") +
+  scale_x_continuous(labels = scales::number_format(accuracy = 1)) +
+  scale_y_continuous(expand = expansion(mult = c(0.1, 0.1)))
 
-saveRDS(g_eventstudy, "D_Out/g_eventstudy.rds")
+
+saveRDS(g_eventstudy, here("D_Out/g_eventstudy.rds"))
 rm(event_study_df, g_eventstudy) # Clean workspace

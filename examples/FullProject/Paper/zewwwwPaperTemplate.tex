@@ -1,5 +1,5 @@
 %***********************************************************
-% zewwww Paper Template
+% ZEW Paper Template
 % Simon Reif & Benedikt Stelter, 31 January 2025
 %
 % Preamble
@@ -31,6 +31,9 @@
 \usepackage{placeins}
 \usepackage{setspace}
 \usepackage{pdflscape} 
+\usepackage{array} 
+\usepackage{tabularray}
+
 
 
 % Use packages from YMAL header:
@@ -40,6 +43,11 @@ $add-tex$
 \setmainfont[BoldFont=LinLibertine_RB.ttf,
 ItalicFont=LinLibertine_RI.ttf]{LinLibertine_R.ttf}
 \definecolor{footnotecolor}{RGB}{$if(color-links)$$color-links$$else$0, 0, 0$endif$}
+
+% Allow shaded environment for code display
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
 
 % Add new pandocbounced command to comply with pandoc update 3.5
 \makeatletter
