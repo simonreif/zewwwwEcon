@@ -29,6 +29,9 @@ add-tex: |
    \usepackage{bm}
    \usepackage{lipsum} 
    
+filters:
+  - notes-block
+
 editor: source
 ---
 
@@ -36,12 +39,12 @@ editor: source
 #| echo: false
 #| warning: false
 #| message: false
-
 # Reload Setup s.t. everything renders as intended
-source("../B_Prog/0setup.R")
+library(here)
+source(here("B_Prog/0setup.R"))
 ```
 
-## Introduction
+## INTRODUCTION
 
 This Quarto template is supposed to make writing and presenting economic research easy. Since everything from data to publication is happening in the same environment, everything is easily reproducible and output can be modified for the paper and the presentation at the same time.
 
@@ -54,7 +57,7 @@ You can for example
 
 # The various forms of displaying text in a presentation
 
-## Different text inputs
+## DIFFERENT TEXT INPUTS
 
 You can make bullet lists with different levels
 
@@ -68,7 +71,7 @@ Sometimes one might need equations. Just use \LaTeX for this in the text to sho
 
 $$\hat{\beta} = (X'X)^{-1} X'Y$$
 
-## Text and picture side by side using columns
+## TEXT AND PICTURES SIDE BY SIDE USING COLUMNS
 
 There is a very small (0.4%) column on the left that aligns the first context column with the headline. These type of slides are in general not much fun to produce.
 
@@ -81,41 +84,45 @@ There is a very small (0.4%) column on the left that aligns the first context co
 :::
 
 ::: {.column width="55%"}
-\normalsize
 
-```{=tex}
-\begin{equation}
+$$
 \frac{\partial S(\beta)}{\partial \beta} = -2X^\top (y - X\beta) = 0
-\end{equation}
+$$
 
-\begin{equation}
+$$
 X^\top X \hat{\beta} = X^\top y
-\end{equation}
+$$
 
-\begin{equation}
+$$
 \hat{\bm{\beta}} = (X^\top X)^{-1} X^\top y
-\end{equation}
-```
+$$
+
 These equations minimize the sum of squared residuals $S$. While this seems promising, others argue that this has been done before. It is even used to health insurance risk adjustment [@reifSettingIncentivesRight2025, EJHE].
 :::
 :::
 
-## Highlighting and References
+## HIGHLIGHTING AND REFERENCES
 
 Sometimes it seems that not only are people putting books from boxes but also like boxes around some highlight text. An example would be something you (can not) find in @reifSettingIncentivesRight2025 [EJHE]:
 
-```{=tex}
-\begin{exampleblock}{Defining an example}
-\normalsize A lot could be in here. A definition. An equation.  A reference to \textcite[EJHE]{reifSettingIncentivesRight2025}. Not that since this is pure \LaTeX, you need to also use the respective cite styles \autocites[EJHE]{reifSettingIncentivesRight2025}. 
-\end{exampleblock}
-```
+::: {.callout-note icon="false"}
+## Defining an example 
 
-## Show code and Output
+Note that there are five types of callouts, including:
+`note`, `warning`, `important`, `tip`, and `caution`.
+:::
+
+::: {.callout-tip} 
+## Some insights 
+
+Note and insight are the only callouts with color adjusted boxes a.t.m.
+:::
+
+## SHOW CODE AND OUTPUT
 ```{r program}
 #| echo: true 
 #| warning: false
 #| message: false
-
 # We can use code that is displayed in the output
 2^2
 2^2 > 3
@@ -123,279 +130,209 @@ Sometimes it seems that not only are people putting books from boxes but also li
 
 # Graphs
 
-## Histogram
+## HISTOGRAM
 
-::: {#fig-hist}
-```{r Histogram, cache=TRUE, cache.extra=tools::md5sum("../D_Out/g_hist.rds")}
+:::: {#fig-hist fig-pos="h" fig-cap="Distribution of height (in cm) in random data"}
+
+```{r histogram, cache=TRUE, cache.extra=tools::md5sum(here("D_Out/g_hist.rds"))}
 #| echo: false
 #| warning: false
 #| message: false
 #| fig-width: 3.5
 #| fig-asp: 0.5
 #| fig-align: center
-#| fig-pos: H
-
-g_hist <- readRDS("../D_Out/g_hist.rds")
+g_hist <- readRDS(here("D_Out/g_hist.rds"))
 g_hist
 rm(g_hist)
 ```
 
-```{=tex}
-\vspace{-5pt}
-\begin{minipage}{0.9\textwidth}
-\scriptsize
-\singlespacing
-\textbf{Notes:} You can use this text to provide further information about the table. \lipsum[66]
-\end{minipage}
-\vspace{15pt}
-```
-Distribution of height (in cm) in random data
+::: {.notes-block}
+**Notes:** You can use this text to provide further information about the table. Nunc sed pede. Praesent vitaelectus. Praesent neque justo, vehicula eget, interdum id, facilisis et, nibh. Phasellus at purus et libero laciniadictum. Fusce aliquet. Nulla eu ante placerat leo semper dictum. Mauris metus. Curabitur lobortis. Curabitursollicitudin hendrerit nunc. Donec ultrices lacus id ipsum.
 :::
+::::
 
-## Barchart
+## BARCHART
 
-::: {#fig-barchart}
-```{r Barchart, cache=TRUE, cache.extra=tools::md5sum("../D_Out/g_bar.rds")}
+:::: {#fig-barchart fig-pos="h" fig-cap="Number of Federal States by Country"}
+```{r Barchart, cache=TRUE, cache.extra=tools::md5sum(here("D_Out/g_bar.rds"))}
 #| echo: false
 #| warning: false
 #| message: false
 #| fig-width: 3.5
 #| fig-asp: 0.5
 #| fig-align: center
-#| fig-pos: H
-
-g_bar <- readRDS("../D_Out/g_bar.rds")
+g_bar <- readRDS(here("D_Out/g_bar.rds"))
 g_bar
 rm(g_bar)
 ```
-
-```{=tex}
-\vspace{-5pt}
-\begin{minipage}{0.9\textwidth}
-\scriptsize
-\singlespacing
-\textbf{Notes:} You can use this text to provide further information about the table. \lipsum[66]
-\end{minipage}
-\vspace{15pt}
-```
-Number of Federal States by Country
+::: {.notes-block}
+**Notes:** You can use this text to provide further information about the table. Nunc sed pede. Praesent vitaelectus. Praesent neque justo, vehicula eget, interdum id, facilisis et, nibh. Phasellus at purus et libero laciniadictum. Fusce aliquet. Nulla eu ante placerat leo semper dictum. Mauris metus. Curabitur lobortis. Curabitursollicitudin hendrerit nunc. Donec ultrices lacus id ipsum.
 :::
+::::
 
-## Time Series
 
-::: {#fig-ts1}
-```{r tsplot1, cache=TRUE, cache.extra=tools::md5sum("../D_Out/g_tsplot.rds")}
+## TIME SERIES
+
+:::: {#fig-ts1 fig-pos="h" fig-cap="Displaying how things evolve over time"}
+```{r tsplot1, cache=TRUE, cache.extra=tools::md5sum(here("D_Out/g_tsplot.rds"))}
 #| echo: false
 #| warning: false
 #| message: false
 #| fig-width: 3
 #| fig-asp: 0.5
 #| fig-align: center
-#| fig-pos: H
-
-g_tsplot <- readRDS("../D_Out/g_tsplot.rds")
+g_tsplot <- readRDS(here("D_Out/g_tsplot.rds"))
 g_tsplot
 rm(g_tsplot)
 ```
 
-```{=tex}
-\vspace{-5pt}
-\begin{minipage}{0.9\textwidth}
-\scriptsize
-\singlespacing
-\textbf{Notes:} You can use this text to provide further information about the table. \lipsum[66]
-\end{minipage}
-\vspace{15pt}
-```
-Displaying how things evolve over time
+::: {.notes-block}
+**Notes:** You can use this text to provide further information about the figure. Nunc sed pede. Praesent vitaelectus. Praesent neque justo, vehicula eget, interdum id, facilisis et, nibh. Phasellus at purus et libero laciniadictum. Fusce aliquet. Nulla eu ante placerat leo semper dictum. Mauris metus. Curabitur lobortis. Curabitursollicitudin hendrerit nunc. Donec ultrices lacus id ipsum.
 :::
+::::
 
-## Scatterplot
+## SCATTERPLOT
 
-::: {#fig-scatterplot}
-```{r scatterplot, cache=TRUE, cache.extra=tools::md5sum("../D_Out/g_scatterplot.rds")}
+:::: {#fig-scatterplot fig-pos="h" fig-cap="Two groups have very different values"}
+```{r scatterplot, cache=TRUE, cache.extra=tools::md5sum(here("D_Out/g_scatterplot.rds"))}
 #| echo: false
 #| warning: false
 #| message: false
-#| fig-width: 3.5
+#| fig-width: 3.3
 #| fig-asp: 0.5
 #| fig-align: center
-#| fig-pos: H
-
-g_scatterplot <- readRDS("../D_Out/g_scatterplot.rds")
+g_scatterplot <- readRDS(here("D_Out/g_scatterplot.rds"))
 g_scatterplot
 rm(g_scatterplot)
 ```
 
-```{=tex}
-\vspace{-5pt}
-\begin{minipage}{0.9\textwidth}
-\scriptsize
-\singlespacing
-\textbf{Notes:} You can use this text to provide further information about the table. \lipsum[66]
-\end{minipage}
-\vspace{15pt}
-```
-Two groups have very different values
+::: {.notes-block}
+**Notes:** You can use this text to provide further information about the figure. Nunc sed pede. Praesent vitaelectus. Praesent neque justo, vehicula eget, interdum id, facilisis et, nibh. Phasellus at purus et libero laciniadictum. Fusce aliquet. Nulla eu ante placerat leo semper dictum. Mauris metus. Curabitur lobortis. Curabitursollicitudin hendrerit nunc. Donec ultrices lacus id ipsum.
 :::
+::::
 
-## Dotplot
+## DOTPLOT
 
-::: {#fig-dotplot}
-```{r dotplot, cache=TRUE, cache.extra=tools::md5sum("../D_Out/g_dotplot.rds")}
+:::: {#fig-dotplot fig-pos="h" fig-cap="Visualizing distributions with few observations"}
+```{r dotplot, cache=TRUE, cache.extra=tools::md5sum(here("D_Out/g_dotplot.rds"))}
 #| echo: false
 #| warning: false
 #| message: false
 #| fig-width: 3.5
 #| fig-asp: 0.5
 #| fig-align: center
-#| fig-pos: H
-
-g_dotplot <- readRDS("../D_Out/g_dotplot.rds")
+g_dotplot <- readRDS(here("D_Out/g_dotplot.rds"))
 g_dotplot
 rm(g_dotplot)
 ```
 
-```{=tex}
-\vspace{-10pt}
-\begin{minipage}{0.9\textwidth}
-\scriptsize
-\singlespacing
-\textbf{Notes:} You can use this text to provide further information about the table. \lipsum[66]
-\end{minipage}
-\vspace{15pt}
-```
-Visualizing distributions with few observations
+::: {.notes-block}
+**Notes:** You can use this text to provide further information about the figure. Nunc sed pede. Praesent vitaelectus. Praesent neque justo, vehicula eget, interdum id, facilisis et, nibh. Phasellus at purus et libero laciniadictum. Fusce aliquet. Nulla eu ante placerat leo semper dictum. Mauris metus. Curabitur lobortis. Curabitursollicitudin hendrerit nunc. Donec ultrices lacus id ipsum.
 :::
+::::
 
-## Event Study
+## EVENT STUDY
 
-::: {#fig-eventstudy}
-```{r eventstudy, cache.extra=tools::md5sum("../D_Out/g_eventstudy.rds")}
+:::: {#fig-eventstudy fig-pos="h" fig-cap="Coefficients relative to treatment time"}
+```{r eventstudy, cache.extra=tools::md5sum(here("D_Out/g_eventstudy.rds"))}
 #| echo: false
 #| warning: false
 #| message: false
-#| fig-width: 3.5
+#| fig-width: 3.2
 #| fig-asp: 0.6
 #| fig-align: center
-#| fig-pos: H
-
-g_eventstudy <- readRDS("../D_Out/g_eventstudy.rds")
+g_eventstudy <- readRDS(here("D_Out/g_eventstudy.rds"))
 g_eventstudy
 rm(g_eventstudy)
 ```
 
-```{=tex}
-\vspace{-10pt}
-\begin{minipage}{0.9\textwidth}
-\scriptsize
-\singlespacing
-\textbf{Notes:} You can use this text to provide further information about the table. \lipsum[66]
-\end{minipage}
-\vspace{15pt}
-```
-Coefficients relative to treatment time
+::: {.notes-block}
+**Notes:** You can use this text to provide further information about the figure. Nunc sed pede. Praesent vitaelectus. Praesent neque justo, vehicula eget, interdum id, facilisis et, nibh. Phasellus at purus et libero laciniadictum. Fusce aliquet. Nulla eu ante placerat leo semper dictum. Mauris metus. Curabitur lobortis. Curabitursollicitudin hendrerit nunc. Donec ultrices lacus id ipsum.
 :::
+::::
 
-## Tourism overnight stays in southern Germany in 2023
+## TOURISM OVERNIGHT STAYS IN SOUTHERN GERMANY IN 2023
 
-::: {#fig-choro}
-```{r choro, cache.extra=tools::md5sum("../D_Out/g_choro.rds")}
+:::: {#fig-choro fig-pos="h" fig-cap="This is a choropleth map"}
+```{r choro, cache.extra=tools::md5sum(here("D_Out/g_choro.rds"))}
 #| echo: false
 #| warning: false
 #| message: false
-#| fig-width: 3.5
-#| fig-asp: 0.6
+#| fig-width: 3.3
+#| fig-asp: 0.5
 #| fig-align: center
-#| fig-pos: H
-
-g_choro <- readRDS("../D_Out/g_choro.rds")
+g_choro <- readRDS(here("D_Out/g_choro.rds"))
 g_choro
 rm(g_choro)
 ```
 
-```{=tex}
-\vspace{-10pt}
-\begin{minipage}{0.9\textwidth}
-\scriptsize
-\singlespacing
-\textbf{Notes:} You can use this text to provide further information about the table. \lipsum[66]
-\end{minipage}
-\vspace{15pt}
-```
-This is a choropleth map
+::: {.notes-block}
+**Notes:** You can use this text to provide further information about the figure. Nunc sed pede. Praesent vitaelectus. Praesent neque justo, vehicula eget, interdum id, facilisis et, nibh. Phasellus at purus et libero laciniadictum. Fusce aliquet. Nulla eu ante placerat leo semper dictum. Mauris metus. Curabitur lobortis. Curabitursollicitudin hendrerit nunc. Donec ultrices lacus id ipsum.
 :::
+::::
 
-## Counties with University Hospitals in southern Germany in 2023
+## COUNTIES WITH UNIVERSITY HOSPITALS IN 2023
 
-::: {#fig-indic}
-```{r indic, cache.extra=tools::md5sum("../D_Out/g_indic.rds")}
+:::: {#fig-indic fig-pos="h" fig-cap="This is an indicator map"}
+```{r indic, cache.extra=tools::md5sum(here("D_Out/g_indic.rds"))}
 #| echo: false
 #| warning: false
 #| message: false
-#| fig-width: 3.5
+#| fig-width: 3.3
 #| fig-asp: 0.5
 #| fig-align: center
-#| fig-pos: H
-
-g_indic <- readRDS("../D_Out/g_indic.rds")
+g_indic <- readRDS(here("D_Out/g_indic.rds"))
 g_indic
 rm(g_indic)
 ```
 
-```{=tex}
-\vspace{-10pt}
-\begin{minipage}{0.9\textwidth}
-\scriptsize
-\singlespacing
-\textbf{Notes:} You can use this text to provide further information about the table. \lipsum[66]
-\end{minipage}
-\vspace{15pt}
-```
-This is an indicator map
+::: {.notes-block}
+**Notes:** You can use this text to provide further information about the figure. Nunc sed pede. Praesent vitaelectus. Praesent neque justo, vehicula eget, interdum id, facilisis et, nibh. Phasellus at purus et libero laciniadictum. Fusce aliquet. Nulla eu ante placerat leo semper dictum. Mauris metus. Curabitur lobortis. Curabitursollicitudin hendrerit nunc. Donec ultrices lacus id ipsum.
 :::
+::::
 
 # Tables
 
-## Descriptives Table
+## DESCRIPTIVES TABLE
 
-::: {#tbl-descriptives}
+:::: {#tbl-descriptives tbl-pos="h" tbl-cap="Descriptive statistics by group"}
 ```{r descriptives}
 #| echo: false
 #| warning: false
 #| message: false
 #| tbl-align: center
-#| tbl-pos: T
-
-t_descriptives <- readRDS("../D_Out/t_descriptives.rds")
+t_descriptives <- readRDS(here("D_Out/t_descriptives.rds"))
 t_descriptives
 rm(t_descriptives)
 ```
 
-Descriptive statistics by group
+::: {.notes-block}
+**Notes:** Here is additional information on the table, which can be lengthy. It does not have to be but in order to check for line breaks, it makes sense to have it this way. It does not have to be but in order to check for line breaks, it makes sense to have it this way.
 :::
+::::
 
-## Regression Tables
 
-::: {#tbl-regression}
+## REGRESSION TABLE
+
+:::: {#tbl-regression tbl-pos="h" tbl-cap="Linear Regression Models"}
 ```{r regressions}
 #| echo: false
 #| warning: false
 #| message: false
 #| tbl-align: center
-#| tbl-pos: T
-
-t_regression <- readRDS("../D_Out/t_regression.rds")
+t_regression <- readRDS(here("D_Out/t_regression.rds"))
 t_regression
 rm(t_regression)
 ```
 
-Linear Regression Models
+::: {.notes-block}
+**Notes:** Here is additional information on the table, which can be lengthy. It does not have to be but in order to check for line breaks, it makes sense to have it this way. It does not have to be but in order to check for line breaks, it makes sense to have it this way.
 :::
+::::
 
 # What we have learned
 
-## Last Slide
+## LAST SLIDE
 
 This slide will most likely be the one that the audience sees the longest. Take this into account when designing it. We could for example point out the following things: 
 
@@ -405,76 +342,63 @@ This slide will most likely be the one that the audience sees the longest. Take 
 
 # Appendix
 
-## Regression in the Appendix
+## REGRESSION IN THE APPENDIX
 
-```{=tex}
-% Always keep this code if you want to use an appendix
-
-\renewcommand{\thetable}{A.\arabic{table}}
-\renewcommand{\thefigure}{A.\arabic{figure}}
-\setcounter{table}{0}
-\setcounter{figure}{0}
-```
-::: {#tbl-regression2}
-```{r regression2}
+:::: {#tbl-regression2 tbl-pos="h" tbl-cap="Linear Regression Models for the Appendix"}
+```{r regressions2}
 #| echo: false
 #| warning: false
 #| message: false
 #| tbl-align: center
-#| tbl-pos: T
-
-t_regression <- readRDS("../D_Out/t_regression.rds")
+t_regression <- readRDS(here("D_Out/t_regression.rds"))
 t_regression
 rm(t_regression)
 ```
 
-Linear Regression Models for the Appendix
+::: {.notes-block}
+**Notes:** Here is additional information on the table, which can be lengthy. It does not have to be but in order to check for line breaks, it makes sense to have it this way. It does not have to be but in order to check for line breaks, it makes sense to have it this way.
 :::
+::::
 
-## Figures in the Appendix
+## FIGURES IN THE APPENDIX
 
-::: {#fig-two}
+:::: {#fig-two fig-pos="h" fig-cap="Complex figure with two parts"}
 ```{r jointplot, cache=TRUE, cache.extra=tools::md5sum("../D_Out/g_tsplot.rds")}
 #| echo: false
 #| warning: false
 #| message: false
 #| fig-align: center
-#| fig-pos: T
 #| fig-subcap:
 #|   - "Time Series"
 #|   - "Scatterplot"
 #| layout: [[-5, 35,-20, 35, -5]]
+g_tsplot <- readRDS(here("D_Out/g_tsplot.rds"))
+g_tsplot +
+  theme(
+    axis.title.x = element_text(size = 26),
+    axis.title.y = element_text(size = 26),
+    axis.text.x = element_text(size = 26),
+    axis.text.y = element_text(size = 26),
+    legend.text = element_text(size = 26),
+    legend.title = element_text(size = 26)
+  )
 
-g_tsplot <- readRDS("../D_Out/g_tsplot.rds")
-g_tsplot + theme(axis.title.x = element_text(size = 26), 
-                 axis.title.y = element_text(size = 26),
-                 axis.text.x = element_text(size = 26),
-                 axis.text.y = element_text(size = 26),
-                 legend.text = element_text(size = 26),
-                 legend.title = element_text(size = 26)
-)
-
-g_scatterplot <- readRDS("../D_Out/g_scatterplot.rds")
-g_scatterplot + theme(axis.title.x = element_text(size = 26), 
-                 axis.title.y = element_text(size = 26),
-                 axis.text.x = element_text(size = 26),
-                 axis.text.y = element_text(size = 26),
-                 legend.text = element_text(size = 26),
-                 legend.title = element_text(size = 26)
-)
+g_scatterplot <- readRDS(here("D_Out/g_scatterplot.rds"))
+g_scatterplot +
+  theme(
+    axis.title.x = element_text(size = 26),
+    axis.title.y = element_text(size = 26),
+    axis.text.x = element_text(size = 26),
+    axis.text.y = element_text(size = 26),
+    legend.text = element_text(size = 26),
+    legend.title = element_text(size = 26)
+  )
 
 rm(g_scatterplot)
 rm(g_tsplot)
 ```
 
-```{=tex}
-\vspace{-5pt}
-\begin{minipage}{0.9\textwidth}
-\scriptsize
-\singlespacing
-\textbf{Notes:} You can use this text to provide further information about the table. \lipsum[66]
-\end{minipage}
-\vspace{15pt}
-```
-Complex figure with two parts
+::: {.notes-block}
+**Notes:** You can use this text to provide further information about the figure. Nunc sed pede. Praesent vitaelectus. Praesent neque justo, vehicula eget, interdum id, facilisis et, nibh. 
 :::
+:::::

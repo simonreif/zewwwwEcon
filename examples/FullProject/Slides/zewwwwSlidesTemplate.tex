@@ -24,10 +24,28 @@
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx, tikz, color,framed, xcolor}
 \usetikzlibrary{decorations.pathreplacing,calc}
+\usepackage{tabularray}
 
 \usepackage{amsmath,amssymb, lmodern, array, multirow}
 \usepackage{iftex}
 
+
+\makeatletter
+\@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
+\@ifpackageloaded{fontawesome5}{}{\usepackage{fontawesome5}}
+\definecolor{quarto-callout-color}{HTML}{b4be28}
+\definecolor{quarto-callout-note-color}{HTML}{b4be28}
+\definecolor{quarto-callout-important-color}{HTML}{CC1914}
+\definecolor{quarto-callout-warning-color}{HTML}{EB9113}
+\definecolor{quarto-callout-tip-color}{HTML}{527DA4}
+\definecolor{quarto-callout-caution-color}{HTML}{FC5300}
+\definecolor{quarto-callout-color-frame}{HTML}{acacac}
+\definecolor{quarto-callout-note-color-frame}{HTML}{b4be28}
+\definecolor{quarto-callout-important-color-frame}{HTML}{d9534f}
+\definecolor{quarto-callout-warning-color-frame}{HTML}{f0ad4e}
+\definecolor{quarto-callout-tip-color-frame}{HTML}{D0E8EC}
+\definecolor{quarto-callout-caution-color-frame}{HTML}{fd7e14}
+\makeatother
 
 % Use packages from YMAL header:
 $add-tex$
