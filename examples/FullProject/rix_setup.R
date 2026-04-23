@@ -18,6 +18,7 @@ rix(
     "gt",
     "estimatr",
     "sf",
+    "data.table",
     "quarto",
     "showtext",
     "here"
