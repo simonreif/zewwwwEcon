@@ -13,7 +13,7 @@ TEMPLATE = _extensions/
 REFS     = references.bib
 
 # Default target
-all: $(PAPER_OUT) $(SLIDES_OUT) $(REPORT_OUT)
+all: $(PAPER_OUT) $(SLIDES_OUT) 
 
 # Input — add D_Out/*.rds produced by B_Prog scripts here
 GRAPHS =
