@@ -1,5 +1,9 @@
 # zewwwwEcon Quarto Templates <img src='pics/hex_sticker.png' align="right" height="138" />
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Quarto](https://img.shields.io/badge/Quarto-%E2%89%A51.7.0-blue)](https://quarto.org)
+[![Version](https://img.shields.io/badge/Version-0.2.0-brightgreen)](https://github.com/simonreif/moderncv-typst/releases)
+
 The `zewwwwEcon` package allows to set up new projects for reproducible empirical research using [Quarto](https://quarto.org/). A project contains templates and some `ggplot2` style adjustments to generate PDFs for Slides and Papers. This is an
 unbranded version to be shared on the `www` based on the `zewEcon` package developed for internal use at the [ZEW - Leibniz Centre for European Economic Research](https://www.zew.de/en) in Mannheim, Germany. For a preview of the PDF versions, have a look at the
 [Paper](https://github.com/simonreif/zewwwwEcon/blob/main/examples/FullProject/Paper/example_paper.pdf) and [Slides](https://github.com/simonreif/zewwwwEcon/blob/main/examples/FullProject/Slides/example_slides.pdf) examples.
