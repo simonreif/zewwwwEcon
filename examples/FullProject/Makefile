@@ -12,7 +12,7 @@ SLIDES_TEMPLATE = _extensions/
 REFS = references.bib
 
 # Default target
-all: $(PAPER_OUT) $(SLIDES_OUT) $(REPORT_OUT)
+all: $(PAPER_OUT) $(SLIDES_OUT) 
 
 # Input
 GRAPHS = \
@@ -46,9 +46,6 @@ $(PAPER_OUT): $(PAPER_SRC) $(PAPER_TEMPLATE) $(REFS) $(GRAPHS) $(TABLES)
 
 $(SLIDES_OUT): $(SLIDES_SRC) $(SLIDES_TEMPLATE) $(REFS) $(GRAPHS) $(TABLES)
 	quarto render $(SLIDES_SRC)
-
-$(REPORT_OUT): $(REPORT_SRC) $(REPORT_TEMPLATE) $(REFS) $(GRAPHS) $(TABLES)
-	quarto render $(REPORT_SRC)
 
 ## Generate Graphs
 D_Out/g_hist.rds: $(R_SETUP) B_Prog/histogram.R

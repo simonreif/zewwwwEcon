@@ -30,8 +30,6 @@ $(PAPER_OUT): $(PAPER_SRC) $(TEMPLATE) $(REFS) $(GRAPHS) $(TABLES)
 	quarto render $(PAPER_SRC)
 $(SLIDES_OUT): $(SLIDES_SRC) $(TEMPLATE) $(REFS) $(GRAPHS) $(TABLES)
 	quarto render $(SLIDES_SRC)
-$(REPORT_OUT): $(REPORT_SRC) $(TEMPLATE) $(REFS) $(GRAPHS) $(TABLES)
-	quarto render $(REPORT_SRC)
 	
 ## Generate Graphs
 # Pattern: D_Out/g_name.rds: $(R_SETUP) B_Prog/script.R

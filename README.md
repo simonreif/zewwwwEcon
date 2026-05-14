@@ -89,7 +89,7 @@ You probably want to initiate the Project in a new directory.
 
 <img src="pics/wizz2.png" width="50%">
 
-The `zewEcon` template should be somewhere down there.
+The `zewwwwEcon` template should be somewhere down there.
 
 <img src="pics/wizz3.png" width="50%">
 
@@ -100,7 +100,7 @@ The target folder now contains the full project setup.
 An alternative to the RStudio wizzard is to use the R console directly. A fresh project is set up using 
 
 ``` r
-zewEcon::new_project(".")
+zewwwwEcon::new_project(".")
 ```
 
 where `"."` indicates that the project should get created in the current directory. Instead, also other paths could get specified there.
@@ -189,7 +189,7 @@ The YAML header at the beginning of the `.qmd` document contains information tha
 
 #### Options for Slides and Paper 
 
-Some settings are defined in the template in `_extensions/../_extension.yml`. This can be overwritten in the YAML header, e.g. when intermediate `.tex` files and folders should be kept, then the YAML header can overwrite the default (note the `:` after `zew-econ-pdf` that allows to continue to specify things).
+Some settings are defined in the template in `_extensions/../_extension.yml`. This can be overwritten in the YAML header, e.g. when intermediate `.tex` files and folders should be kept, then the YAML header can overwrite the default (note the `:` after `zewwww-econ-pdf` that allows to continue to specify things).
 
 ``` yaml
 format:
@@ -213,8 +213,9 @@ Additional settings:
 #### Options for Slides
 
 - `presenter:` If a name is supposed to appear on every slide at the bottom right, it can get added here.
-- `partner-logo:` This is a placeholder in case more logos are needed on the title page.
-- `totalnumber:` If `true` then the total number of slides in the presentation is printed next to the current slide number at the bottom right.
+- `yourlogo.png:` If a logo should appear on the top-left of the title page, a `yourlogo.png` file (500 x 150 px) will get added when it is in the slides folder. more logos are needed on the title page.
+- `totalnumber:` If `true` then the total numb
+- `partner-logo:` This is a placeholder in caseer of slides in the presentation is printed next to the current slide number at the bottom right.
 - `references:` If `true` then a bibliography will get printed as the last slide(s).
 
 ### References
@@ -234,7 +235,7 @@ A makefile automates the execution of the full project. In the file, the full fl
 
 ### Git
 
-In order to use Git for version control, the local folder needs to get added to a remote repository e.g. on [Github](https://github.com/), [ZEW's Gitea](https://git.zew.de/) or any [other Git hosting service](https://codeberg.org/). The first step is to create a [local git repository](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github#initializing-a-git-repository) and then adding the [local repository to the remote repository](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github#adding-a-local-repository-to-github-using-git).
+In order to use Git for version control, the local folder needs to get added to a remote repository e.g. on [Github](https://github.com/) or any [other Git hosting service](https://codeberg.org/). The first step is to create a [local git repository](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github#initializing-a-git-repository) and then adding the [local repository to the remote repository](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github#adding-a-local-repository-to-github-using-git).
 
 ### gitignore
 
