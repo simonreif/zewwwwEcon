@@ -1,16 +1,18 @@
 Package: zewwwwEcon
 Type: Package
 Title: zewwwwEcon: Quarto Templates for Applied Economic Research Projects
-Version: 0.1.0
+Version: 0.2.0
 Authors@R: c(
     person("Simon", "Reif", email = "simon.reif@zew.de", role = c("aut", "cre")),
-    person("Benedikt", "Stelter", email = "benedikt.stelter@outlook.com", role = "aut"))
-Description: This package automates the setup of applied economic research projects with a pre set  folder structure and templates for papers and presentations in Quarto. 
+    person("Benedikt", "Stelter", email = "benedikt.stelter@outlook.com", role = "aut"),
+    person("Sabrina", "Schubert", email = "sabrina.schubert@zew.de", role = "aut"),
+    person("Paul", "Peters", email = "paul.peters@zew.de", role = "aut"))
+Description: This package automates the setup of applied economic research projects with a pre set folder structure and templates for papers and presentations in Quarto. 
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 Suggests: 
     quarto
 License: MIT
 Imports: 
-    tidyverse, gt, gtsummary, ggpubr, broom, estimatr, modelsummary, sf, readr
+    here, tidyverse, gt, gtsummary, modelsummary, ggpubr, showtext, broom

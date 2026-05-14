@@ -24,6 +24,7 @@ g_choro <- ggplot(analysis_df) +
     color = "white",
     fill = "grey10",
     size = 5,
+    label.size = 0.5,
     label.r = unit(0.15, "lines")
   ) +
   annotate("point", x = 8.4658811, y = 49.481899, color = "grey10", size = 4) +
@@ -35,6 +36,7 @@ g_choro <- ggplot(analysis_df) +
     color = "white",
     fill = "grey10",
     size = 5,
+    label.size = 0.5,
     label.r = unit(0.15, "lines")
   ) +
   theme_void()
