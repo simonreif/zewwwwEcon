@@ -1,0 +1,41 @@
+---
+title: "INTRODUCTION TO THE ZEWWWW ECON TEMPLATE"
+author:
+  - name: "Lord Macbeth"
+    affiliation: Thane of Glamis
+  - name: "Lady Macbeth"
+    affiliation: Queen of Scotland
+event: "Dunsinane Hill"
+presenter: "Simon" # Write name if it should appear on the bottom of every slide
+date: today
+date-format: "D MMM YYYY"
+partner-logo: "partnerlogo.png" #Replace file in this folder to include another logo
+totalnumber: false # Make true if total number of slides should be shown on bottom
+chapter-signal: false # Make true if chapter overview and progress should be at bottom
+section-slides: true # Make true to show section slides
+format:
+  zewwww-econ-beamer: default
+
+english: yes
+references: false 
+bibliography: ../references.bib
+biblio-style: apa #Select from https://www.overleaf.com/learn/latex/Biblatex_bibliography_styles  
+
+add-tex: |
+       \usepackage{lipsum}
+   
+editor: source
+---
+
+
+```{r Setup}
+#| echo: false
+#| warning: false
+#| message: false
+# Reload Setup s.t. everything renders as intended
+library(here)
+source(here("B_Prog/0setup.R"))
+```
+
+# INTRODUCTION
+These are slides.

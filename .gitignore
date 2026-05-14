@@ -24,3 +24,7 @@ examples/FullProject/D_Out/*
 !examples/FullProject/D_Out/.gitkeep
 
 /.quarto/
+
+**/*.quarto_ipynb
+
+/.luarc.json

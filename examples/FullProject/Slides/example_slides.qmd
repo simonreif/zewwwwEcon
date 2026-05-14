@@ -1,7 +1,7 @@
 ---
-title: "Introducing the zewwwwEcon Presentation Template"
+title: "INTRODUCTION TO THE ZEWWWW ECON TEMPLATE"
 pdf-engine: xelatex
-authors:
+author:
   - name: "Lord Macbeth"
     affiliation: Thane of Glamis
   - name: "Lady Macbeth"
@@ -13,24 +13,16 @@ date-format: "D MMM YYYY"
 partner-logo: "empty.png" #Change or override file to include another logo
 totalnumber: false # Make true if total number of slides should be shown on bottom
 format:
-  beamer: 
-    template: zewwwwSlidesTemplate.tex
-    keep-tex: true
-    cite-method: biblatex
+  zewwww-econ-beamer: default
 
 english: yes
-references: yes
-cap-location: top    
+references: true 
+
 bibliography: ../references.bib
 biblio-style: apa #Select from https://www.overleaf.com/learn/latex/Biblatex_bibliography_styles  
 
 add-tex: |
-   \usepackage{setspace}
-   \usepackage{bm}
-   \usepackage{lipsum} 
-   
-filters:
-  - notes-block
+       \usepackage{lipsum}
 
 editor: source
 ---
@@ -94,7 +86,7 @@ X^\top X \hat{\beta} = X^\top y
 $$
 
 $$
-\hat{\bm{\beta}} = (X^\top X)^{-1} X^\top y
+\hat{\beta} = (X^\top X)^{-1} X^\top y
 $$
 
 These equations minimize the sum of squared residuals $S$. While this seems promising, others argue that this has been done before. It is even used to health insurance risk adjustment [@reifSettingIncentivesRight2025, EJHE].
