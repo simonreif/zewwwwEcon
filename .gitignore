@@ -1,5 +1,5 @@
+# R and RStudio
 .Rproj.user
-.Rprofile
 .Rproj.user/
 .Rhistory
 .Rapp.history
@@ -7,24 +7,30 @@
 *.RData
 .RDataTmp
 .Ruserdata
+
+# macOS
 .DS_Store
+
+# Quarto
+**/*.quarto_ipynb
+/.quarto/
+/.luarc.json
+.quarto
 *_cache/
 /cache/
-examples/Paper/example_paper.tex
-examples/Paper/example_paper_files
-examples/Slides/example_slides.tex
-examples/Slides/example_slides_files
-examples/FullProject/Paper/example_paper.tex
-examples/FullProject/Paper/example_paper_files
-examples/FullProject/Slides/example_slides.tex
-examples/FullProject/Slides/example_slides_files
-examples/FullProject/C_Temp/*
-!examples/FullProject/C_Temp/.gitkeep
-examples/FullProject/D_Out/*
-!examples/FullProject/D_Out/.gitkeep
+*_files/
 
-/.quarto/
+# Nix
+result
 
-**/*.quarto_ipynb
+# Files that could get stored locally
+A_Orig/*
+!A_Orig/.gitkeep
+C_Temp/*
+!C_Temp/.gitkeep
+D_Out/*
+!D_Out/.gitkeep
 
-/.luarc.json
+# Binary outputs except project specific inputs
+*.pdf
+!bgmain.pdf

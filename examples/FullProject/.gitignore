@@ -18,6 +18,7 @@
 .quarto
 *_cache/
 /cache/
+*_files/
 
 # Nix
 result
@@ -32,5 +33,4 @@ D_Out/*
 
 # Binary outputs except project specific inputs
 *.pdf
-!bg.pdf
-!Project_Titlepage.pdf
+!bgmain.pdf
