@@ -3,7 +3,8 @@
 # - Output: t_regression.rds
 
 # Load setup
-source("B_Prog/0setup.R")
+library(here)
+source(here("B_Prog/0setup.R"))
 
 # Generate random data
 set.seed(123)
@@ -29,58 +30,48 @@ rm(n, treatment, female, severity, age, logit_survival, prob_survival, survival)
 
 # Make table
 models <- list(
-  "(I)" = lm_robust(survival ~ treatment,
-                    data = df),
-  "(II)" = lm_robust(survival ~ treatment + female + age + severity,
-                     data = df),
-  "(III)" = lm_robust(survival ~ treatment,
-                      data = df |> filter(female == 0)),
-  "(IV)" = lm_robust(survival ~ treatment + female + age + severity,
-                     data = df |> filter(female == 0)),
-  "(V)" = lm_robust(survival ~ treatment,
-                    data = df |> filter(female == 1)),
-  "(VI)" = lm_robust(survival ~ treatment + female + age + severity,
-                     data = df |> filter(female == 1))
+  "(I)" = lm_robust(survival ~ treatment, data = df),
+  "(II)" = lm_robust(survival ~ treatment + female + age + severity, data = df),
+  "(III)" = lm_robust(survival ~ treatment, data = df |> filter(female == 0)),
+  "(IV)" = lm_robust(survival ~ treatment + female + age + severity, data = df |> filter(female == 0)),
+  "(V)" = lm_robust(survival ~ treatment, data = df |> filter(female == 1)),
+  "(VI)" = lm_robust(survival ~ treatment + female + age + severity, data = df |> filter(female == 1))
 )
 
 # Format summary statistics
 gm <- tibble::tribble(
-                      ~raw,        ~clean,          ~fmt,
-                      "nobs",      "N",             0,
-                      "r.squared", "R²",            2)
+  ~raw        ,
+  ~clean      ,
+  ~fmt        ,
+  "nobs"      ,
+  "N"         ,
+            0 ,
+  "r.squared" ,
+  "R²"        ,
+            2
+)
 
 # Format coefficients
 cm <- c(treatment = "Treatment")
 
-t_regression <- modelsummary(models,
-                             stars = c("*" = .1, "**" = .05, "***" = 0.01),
-                             coef_rename = c(),
-                             statistic = "std.error",
-                             gof_map = gm,
-                             coef_map = cm,
-                             escape = FALSE,
-                             output = "gt") |>
-  tab_spanner(
-    label = "Full Sample",
-    columns = c(2, 3)
-  ) |>
-  tab_spanner(
-    label = "Men",
-    columns = c(4, 5)
-  ) |>
-  tab_spanner(label = "Women",
-              columns = c(6, 7)) |>
-  rm_source_notes() |>
-  tab_source_note(source_note = md("­")) |>
-  tab_source_note(source_note = md(
-    "**Notes:** Here is additional information on the table, which can be 
-    lengthy. It does not have to be but in order to check for line breaks, 
-    it makes sense to have it this way. It does not have to be but in order 
-    to check for line breaks, it makes sense to have it this way."
-  )) |>
-  tab_style(style = cell_borders(sides = c("bottom"),
-                                 color = "red", weight = px(1.5)),
-            locations = cells_body(rows = c(2))) #ATM not converted to TeX!
+# Create tinytable output (works with both Typst and LaTeX)
+# NO stars parameter - avoid asterisks entirely
+t_regression <- modelsummary(
+  models,
+  output = "tinytable",
+  coef_map = cm,
+  gof_map = gm,
+  statistic = "std.error",
+  stars = c("*" = 0.1, "**" = 0.05, "***" = 0.01) # Use + instead of *
+) |>
+  group_tt(
+    j = list(
+      "Full Sample" = 2:3,
+      "Men" = 4:5,
+      "Women" = 6:7
+    ),
+    bold = TRUE
+  )
 
-saveRDS(t_regression, "D_Out/t_regression.rds")
+saveRDS(t_regression, here("D_Out/t_regression.rds"))
 rm(df, models, gm, cm, t_regression) # Clean workspace

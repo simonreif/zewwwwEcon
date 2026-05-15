@@ -1,0 +1,24 @@
+{
+  "Fenced Table": {
+    "prefix": "tbl",
+    "scope": "quarto",
+    "body": [
+      ":::: {#tbl-${1:example} tbl-pos=\"h\" tbl-cap=\"${2:Caption}\"}",
+      "```{r ${1:example}}",
+      "#| echo: false",
+      "#| warning: false",
+      "#| message: false",
+      "#| tbl-align: center",
+      "#| tbl-pos: T",
+      "t_${1:example} <- readRDS(here(\"D_Out/t_${1:example}.rds\"))",
+      "t_${1:example}",
+      "rm(t_${1:example})",
+      "```",
+      "::: {.notes-block}",
+      "**Notes:** ${3:Notes text here.}",
+      ":::",
+      "::::"
+    ],
+    "description": "Fenced Quarto table with notes-block"
+  }
+}
