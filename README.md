@@ -111,21 +111,21 @@ where `"."` indicates that the project should get created in the current directo
 
 ### Quarto CLI and Quarto Wizzard
 
-Technically a project can also get set up using the Quarto CLI from the Terminal where the template is provided as `file.zip' 
+Technically a project can also get set up using the Quarto CLI from the Terminal where the template is provided as Zip file, for example the `ProjectTemplate.zip` shipped with the `v0.2.0` release here. 
 
 ```
-quarto use template file.zip
+quarto use template https://github.com/simonreif/zewwwwEcon/releases/download/v0.2.0/ProjectTemplate.zip
 ```
 
 Or use the [Quarto Wizzard](https://m.canouil.dev/quarto-wizard/) where you select to "Use Template"
 
 <img src="pics/qwizz1.png" width="50%">
 
-and then "Install from local"
+and then "Install from URL" or "Install from local"
 
 ![](pics/qwizz2.png)
 
-which promts to select `file.zip`. Since all content from `file.zip` is copied to the target directory, the structure for `file.zip` needs to be cleaned up to be usefull. 
+which can also be used with the [`ProjectTemplate.zip`](https://github.com/simonreif/zewwwwEcon/releases/download/v0.2.0/ProjectTemplate.zip) shipped with the `v0.2.0` release here.
 
 
 ## Working with the template
