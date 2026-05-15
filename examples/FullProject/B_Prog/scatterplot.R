@@ -1,6 +1,6 @@
 # This file creates a Scatterplot
 # - Input:  None
-# - Output: g_scatter.rds
+# - Output: g_scatterplot.rds
 
 # Load setup
 library(here)

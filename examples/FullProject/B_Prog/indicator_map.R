@@ -1,12 +1,13 @@
-# This file creates a Barchart
+# This file creates a indicator map
 # - Input:  analysis.df
 # - Output: g_indic.rds
 
 # Load setup
-source("B_Prog/0setup.R")
+library(here)
+source(here("B_Prog/0setup.R"))
 
 # Get data
-analysis_df <- readRDS("C_Temp/analysis_df.rds")
+analysis_df <- readRDS(here("C_Temp/analysis_df.rds"))
 
 # Plot the map with ggplot2 and geom_sf
 g_indic <- ggplot(data = analysis_df) +
@@ -39,5 +40,5 @@ g_indic <- ggplot(data = analysis_df) +
   theme_void() +
   theme(legend.position = "none")
 
-saveRDS(g_indic, "D_Out/g_indic.rds")
+saveRDS(g_indic, here("D_Out/g_indic.rds"))
 rm(analysis_df, g_indic) # Clean workspace

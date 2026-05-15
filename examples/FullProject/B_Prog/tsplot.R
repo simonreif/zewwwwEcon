@@ -18,6 +18,8 @@ df <- data.frame(
   series = rep(c("Series 1", "Series 2"), each = 12)
 )
 
+rm(time, series1, series2)
+
 #Plot1
 g_tsplot <- ggplot(df, aes(x = time, y = value, color = series)) +
   geom_line() +

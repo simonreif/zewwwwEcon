@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Quarto](https://img.shields.io/badge/Quarto-%E2%89%A51.7.0-blue)](https://quarto.org)
-[![Version](https://img.shields.io/badge/Version-0.2.0-brightgreen)](https://github.com/simonreif/moderncv-typst/releases)
+[![Version](https://img.shields.io/badge/Version-0.2.0-brightgreen)](https://github.com/simonreif/zewwwwEcon/releases)
 
 The `zewwwwEcon` package allows to set up new projects for reproducible empirical research using [Quarto](https://quarto.org/). A project contains templates and some `ggplot2` style adjustments to generate PDFs for Slides and Papers. This is an
 unbranded version to be shared on the `www` based on the `zewEcon` package developed for internal use at the [ZEW - Leibniz Centre for European Economic Research](https://www.zew.de/en) in Mannheim, Germany. For a preview of the PDF versions, have a look at the
@@ -52,7 +52,7 @@ Alternatively, Quarto also works directly from the Terminal using `quarto previe
 
 ### Full project example
 
-A full project example is in `examples/FullProject`. The `*qmd` files in the Paper, Report, and Slides subdirectories can be rendered only when the full data science pipeline is executed. This means all scripts in `B_Prog` need to get executed to create the intermediate files in `C_Temp` and output files in `D_Out`. If Make is installed, everything will be executed at once by typing `make` in the Terminal in the `FullProject` folder. 
+A full project example is in `examples/FullProject`. The `*qmd` files in the Paper and Slides subdirectories can be rendered only when the full data science pipeline is executed. This means all scripts in `B_Prog` need to get executed to create the intermediate files in `C_Temp` and output files in `D_Out`. If Make is installed, everything will be executed at once by typing `make` in the Terminal in the `FullProject` folder. 
 
 ## Installation as R package
 
@@ -160,7 +160,7 @@ When you initiate a project under the name `Project_Title` you get the following
 ├── references.bib
 ```
 
-In the Paper, Slides, and Report folders, the `.qmd` files are the Quarto documents to produce the respective output (where `TITLE` could get replaced with a better name for the project). To render a `.qmd` file to the output `.pdf` document, IDEs like RStudio or Positron either have a `Render` button or some shortcut, most commonly `CMD + Shift + k` that triggers the complete render process. Under the hood, Quarto uses `knitr` to turn code output into formats that can be used for the final document (e.g. PDF files for graphs). Then an intermediate markdown file is generated and taken up by `pandoc` which in turn uses the intermediate markdown file and the respective `*template.tex` file to produce a `LaTeX` document. This `LaTeX` document is then compiled to the final PDF. The cool thing is: you do not need to worry about these details since Quarto is taking care of everything.
+In the Paper and Slides folders, the `.qmd` files are the Quarto documents to produce the respective output (where `TITLE` could get replaced with a better name for the project). To render a `.qmd` file to the output `.pdf` document, IDEs like RStudio or Positron either have a `Render` button or some shortcut, most commonly `CMD + Shift + k` that triggers the complete render process. Under the hood, Quarto uses `knitr` to turn code output into formats that can be used for the final document (e.g. PDF files for graphs). Then an intermediate markdown file is generated and taken up by `pandoc` which in turn uses the intermediate markdown file and the respective `*template.tex` file to produce a `LaTeX` document. This `LaTeX` document is then compiled to the final PDF. The cool thing is: you do not need to worry about these details since Quarto is taking care of everything.
 
 ![](pics/quarto_flow_current.png)
 
@@ -168,7 +168,7 @@ In the Paper, Slides, and Report folders, the `.qmd` files are the Quarto docume
 
 - Raw data from `A_Orig` is used for data wrangling and estimations through scripts in `B_Prog`.
 - Intermediate files are stored in `C_Temp` and the final output goes into `D_Out` as `.rds` files.
-- The `.qmd` documents in `Paper`, `Slides`, and `Report` take the results from `D_Out` and integrate them in the final documents. Using `.rds` files here allows for final adjustments if outputs need to be different between slides and paper.
+- The `.qmd` documents in `Paper` and `Slides` take the results from `D_Out` and integrate them in the final documents. Using `.rds` files here allows for final adjustments if outputs need to be different between slides and paper.
 - `0setup.R` loads all packages needed in the project and defines the ggplot2 style.
 - Each script sources the setup, but does not load any additional packages.
 - Each script starts with a fresh environment and ends with an empty environment.
@@ -262,7 +262,7 @@ In designing the templates we made some decisions that we believe are sensible b
 
 - The workflow probably intended by the Quarto developers is to work on the baseline implementation that comes with Quarto and adjust the *parts* as needed
 - Up to now it feels easier to twist everything from scratch (just change `template.tex`)
-- **Caveats:** 1) There are things that generally work in Quarto that do not work with the templates (e.g. Callout Blocks). 2) When something changes for Quarto or R under the hood, the templates need to get updated manually.
+- **Caveats:** 1) Some things that generally work in Quarto do not work with the templates. Callout Blocks work in slides (`zewwww-econ-beamer`) but are not supported in the paper format (`zewwww-econ-pdf`). 2) When something changes for Quarto or R under the hood, the templates need to get updated manually.
 
 ### Caching in Quarto chunks
 

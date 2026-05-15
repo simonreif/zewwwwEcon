@@ -26,9 +26,6 @@ df <- data.frame(
 
 # Remove temp variables
 rm(treatment, survival, age, female, severity, logit_survival, prob_survival, n)
-library(tinytable)
-library(gtsummary)
-library(dplyr)
 
 desc_tib <- tbl_summary(
   df,

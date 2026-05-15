@@ -30,7 +30,7 @@ new_project <- function(path) {
 
   # .gitkeep placeholders for data/output folders that should stay empty
   for (d in c("A_Orig", "C_Temp", "D_Out")) {
-    file.copy(from = fp(".gitkeep"), to = file.path(path, d, ".gitkeep"))
+    file.copy(from = fp("A_Orig", ".gitkeep"), to = file.path(path, d, ".gitkeep"))
   }
 
   # -------------------------------------------------------------------------
@@ -64,7 +64,8 @@ new_project <- function(path) {
     "default.nix",
     ".gitignore",
     ".Rprofile",
-    ".lintr"
+    ".lintr",
+    "AGENTS.md"
   )) {
     file.copy(from = fp(f), to = file.path(path, f))
   }

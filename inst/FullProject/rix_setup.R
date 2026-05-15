@@ -15,6 +15,7 @@ rix(
     "quarto",
     "data.table",
     "tidyverse",
+    "tinytable",
     "readr",
     "broom",
     "readxl",

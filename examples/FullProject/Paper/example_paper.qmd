@@ -205,7 +205,7 @@ rm(g_dotplot)
 {{< lipsum 1-2 >}}
 
 :::: {#fig-eventstudy fig-pos="h" fig-cap="Coefficients relative to treatment time"}
-```{r eventstudy, cache.extra=tools::md5sum(here("D_Out/g_eventstudy.rds"))}
+```{r eventstudy, cache=TRUE, cache.extra=tools::md5sum(here("D_Out/g_eventstudy.rds"))}
 #| echo: false
 #| warning: false
 #| message: false
@@ -225,7 +225,7 @@ rm(g_eventstudy)
 
 
 :::: {#fig-choro fig-pos="h" fig-cap="This is a choropleth map"}
-```{r choro, cache.extra=tools::md5sum(here("D_Out/g_choro.rds"))}
+```{r choro, cache=TRUE, cache.extra=tools::md5sum(here("D_Out/g_choro.rds"))}
 #| echo: false
 #| warning: false
 #| message: false
@@ -245,7 +245,7 @@ rm(g_choro)
 
 
 :::: {#fig-indic fig-pos="h" fig-cap="This is an indicator map"}
-```{r indic, cache.extra=tools::md5sum(here("D_Out/g_indic.rds"))}
+```{r indic, cache=TRUE, cache.extra=tools::md5sum(here("D_Out/g_indic.rds"))}
 #| echo: false
 #| warning: false
 #| message: false
@@ -338,7 +338,7 @@ rm(t_regression)
 ::::
 
 :::: {#fig-two fig-pos="h" fig-cap="Complex figure with two parts"}
-```{r jointplot, cache=TRUE, cache.extra=tools::md5sum("../D_Out/g_tsplot.rds")}
+```{r jointplot, cache=TRUE, cache.extra=tools::md5sum(here("D_Out/g_tsplot.rds"))}
 #| echo: false
 #| warning: false
 #| message: false
@@ -379,7 +379,7 @@ rm(g_tsplot)
 :::::
 
 :::: {#fig-complex fig-pos="h" fig-cap="Complex figure with three parts"}
-```{r complexplot, cache=TRUE, cache.extra=tools::md5sum("../D_Out/g_tsplot.rds")}
+```{r complexplot, cache=TRUE, cache.extra=tools::md5sum(here("D_Out/g_tsplot.rds"))}
 #| echo: false
 #| warning: false
 #| message: false

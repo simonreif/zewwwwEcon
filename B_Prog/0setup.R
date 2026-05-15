@@ -1,5 +1,5 @@
 # Load packages
-# install.packages(c("here", "tidyverse", "readr", "sf", "estimatr", "gt", "gtsummary", "modelsummary", "ggpubr", "showtext", "broom"))
+# install.packages(c("here", "tinytable", "tidyverse", "readr", "sf", "estimatr", "gt", "gtsummary", "modelsummary", "ggpubr", "showtext", "broom"))
 
 library(here) # Make sure relative paths work
 library(tidyverse) # Data wrangling
@@ -8,6 +8,7 @@ library(sf) # Data wrangling
 library(estimatr) # Estimating things
 library(gt) # Format output
 library(gtsummary) # Format output
+library(tinytable) # Format output
 library(modelsummary) # Format output
 library(ggpubr) # Format output
 library(broom) # Format output

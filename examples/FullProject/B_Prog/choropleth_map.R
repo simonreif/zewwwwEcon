@@ -1,6 +1,6 @@
-# This file creates a Barchart
+# This file creates a Choropleth Map
 # - Input:  analysis.df
-# - Output: g_choromap.rds
+# - Output: g_choro.rds
 
 # Load setup
 library(here)

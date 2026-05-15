@@ -6,8 +6,6 @@
 library(here)
 source(here("B_Prog/0setup.R"))
 
-library(tinytable)
-
 # Generate random data
 set.seed(123)
 n <- 500
