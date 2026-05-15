@@ -6,7 +6,7 @@ Authors@R: c(
     person("Simon", "Reif", email = "simon.reif@zew.de", role = c("aut", "cre")),
     person("Benedikt", "Stelter", email = "benedikt.stelter@outlook.com", role = "aut"),
     person("Sabrina", "Schubert", email = "sabrina.schubert@zew.de", role = "aut"),
-    person("Paul", "Peters", email = "paul.peters@zew.de", role = "aut"))
+    person("Paul Gerhard", "Peters", email = "paul.peters@zew.de", role = "aut"))
 Description: This package automates the setup of applied economic research projects with a pre set folder structure and templates for papers and presentations in Quarto. 
 Encoding: UTF-8
 RoxygenNote: 7.3.3
