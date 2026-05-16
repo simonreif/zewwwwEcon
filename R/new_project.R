@@ -62,13 +62,17 @@ new_project <- function(path) {
     "air.toml",
     "rix_setup.R",
     "default.nix",
-    ".gitignore",
-    ".Rprofile",
+    "gitignore.template",
+    "Rprofile.template",
     ".lintr",
     "AGENTS.md"
   )) {
     file.copy(from = fp(f), to = file.path(path, f))
   }
+
+  # Rename template files to dotfiles (necessary because R excludes dotfiles by default)
+  file.rename(from = file.path(path, "gitignore.template"), to = file.path(path, ".gitignore"))
+  file.rename(from = file.path(path, "Rprofile.template"), to = file.path(path, ".Rprofile"))
 
   # -------------------------------------------------------------------------
   # 5. Analysis setup script
