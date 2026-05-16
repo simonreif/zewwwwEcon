@@ -54,3 +54,8 @@ source(here("B_Prog/0setup.R"))
 
 # Introduction
 This is the document.
+
+# References {.unnumbered}
+
+::: {#refs}
+:::
