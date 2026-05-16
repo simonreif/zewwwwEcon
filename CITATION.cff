@@ -11,7 +11,7 @@ authors:
 - family-names: "Peters"
   given-names: "Paul Gerhard"
 title: "zewwwwwEcon: Quarto Templates for Applied Economic Research Projects"
-version: 0.2.0
+version: 0.2.1
 doi: 10.5281/zenodo.20206181
 date-released: 2026-05-15
 url: "https://github.com/simonreif/zewwwwEcon"

@@ -1,7 +1,7 @@
 Package: zewwwwEcon
 Type: Package
 Title: Quarto Templates for Applied Economic Research Projects
-Version: 0.2.0
+Version: 0.2.1
 Authors@R: c(
     person("Simon", "Reif", email = "simon.reif@zew.de", role = c("aut", "cre")),
     person("Benedikt", "Stelter", email = "benedikt.stelter@outlook.com", role = "aut"),

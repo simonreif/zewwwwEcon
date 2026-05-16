@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Quarto](https://img.shields.io/badge/Quarto-%E2%89%A51.7.0-blue)](https://quarto.org)
-[![Version](https://img.shields.io/badge/Version-0.2.0-brightgreen)](https://github.com/simonreif/zewwwwEcon/releases)
+[![Version](https://img.shields.io/badge/Version-0.2.1-brightgreen)](https://github.com/simonreif/zewwwwEcon/releases)
 
 The `zewwwwEcon` package allows to set up new projects for reproducible empirical research using [Quarto](https://quarto.org/). A project contains templates and some `ggplot2` style adjustments to generate PDFs for Slides and Papers. This is an
 unbranded version to be shared on the `www` based on the `zewEcon` package developed for internal use at the [ZEW - Leibniz Centre for European Economic Research](https://www.zew.de/en) in Mannheim, Germany. For a preview of the PDF versions, have a look at the
@@ -111,10 +111,10 @@ where `"."` indicates that the project should get created in the current directo
 
 ### Quarto CLI and Quarto Wizzard
 
-Technically a project can also get set up using the Quarto CLI from the Terminal where the template is provided as Zip file, for example the `ProjectTemplate.zip` shipped with the `v0.2.0` release here. 
+Technically a project can also get set up using the Quarto CLI from the Terminal where the template is provided as Zip file, for example the `ProjectTemplate.zip` shipped with the `v0.2.1` release here. 
 
 ```
-quarto use template https://github.com/simonreif/zewwwwEcon/releases/download/v0.2.0/ProjectTemplate.zip
+quarto use template https://github.com/simonreif/zewwwwEcon/releases/download/v0.2.1/ProjectTemplate.zip
 ```
 
 Or use the [Quarto Wizzard](https://m.canouil.dev/quarto-wizard/) where you select to "Use Template"
@@ -125,7 +125,7 @@ and then "Install from URL" or "Install from local"
 
 ![](pics/qwizz2.png)
 
-which can also be used with the [`ProjectTemplate.zip`](https://github.com/simonreif/zewwwwEcon/releases/download/v0.2.0/ProjectTemplate.zip) shipped with the `v0.2.0` release here.
+which can also be used with the [`ProjectTemplate.zip`](https://github.com/simonreif/zewwwwEcon/releases/download/v0.2.1/ProjectTemplate.zip) shipped with the `v0.2.1` release here.
 
 
 ## Working with the template
