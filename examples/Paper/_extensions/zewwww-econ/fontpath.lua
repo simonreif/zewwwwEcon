@@ -4,8 +4,9 @@
 -- fonts regardless of where the user's document lives.
 
 function Meta(meta)
-  -- Get the directory containing this filter script
-  local scriptdir = PANDOC_SCRIPT_FILE:match("(.+)[/\\][^/\\]+$") or "."
+  -- Get the directory containing this filter script, need gsub for windows
+  local script = PANDOC_SCRIPT_FILE:gsub("\\", "/")
+  local scriptdir = script:match("^(.+)/[^/]+$") or "."
   -- Wrap as raw LaTeX inlines so pandoc does not escape underscores or
   -- other characters when substituting into the pandoc template.
   meta["font-path"] = pandoc.MetaInlines({
